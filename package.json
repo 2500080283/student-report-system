@@ -1,0 +1,21 @@
+{
+  "name": "edumetrics-pro-student-report-system",
+  "version": "2.0.0",
+  "description": "Institutional student performance tracking, custom grading scales, report card transcript compilation, and interactive analytics.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y serve .",
+    "start": "npx -y serve ."
+  },
+  "keywords": [
+    "education",
+    "report-card",
+    "academic-transcript",
+    "grading-system",
+    "analytics",
+    "school-portal",
+    "teacher-gradebook"
+  ],
+  "author": "EduMetrics",
+  "license": "MIT"
+}

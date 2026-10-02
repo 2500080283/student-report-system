@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>EduMetrics Pro | Institutional Student Performance & Report Card Management System</title>
+  <meta name="description" content="Enterprise-grade educational performance tracking, custom grading scales, official transcript generation, interactive analytics, and multi-role student & parent portals.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    // Prevent theme Flash of Unstyled Content (FOUC)
+    (function() {
+      const savedTheme = localStorage.getItem('edumetrics_theme');
+      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+<body>
+  <div class="app-container" id="app">
+    <!-- Top Navigation Bar -->
+    <header class="top-header" role="banner">
+      <div class="header-left">
+        <!-- Mobile Sidebar Toggle -->
+        <button id="mobileSidebarToggle" class="btn btn-icon mobile-only" aria-label="Toggle Student Directory Menu" title="Toggle Students List">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <div class="header-brand">
+          <div class="brand-logo" id="brandLogoIcon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1 id="brandSchoolTitle">EduMetrics <span>Pro</span></h1>
+            <p class="institution-name" id="brandSchoolSub">St. Jude Academy of Science & Arts</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls & Format Customizer in Navbar -->
+      <div class="header-actions">
+        <!-- Grading Format Selector -->
+        <div class="grading-format-control" title="Change active grading evaluation format">
+          <label for="gradingScaleSelect">Grading:</label>
+          <select id="gradingScaleSelect" class="custom-select">
+            <option value="percentage">Percentage (0 - 100%)</option>
+            <option value="letter" selected>Letter Grades (A+ to F)</option>
+            <option value="gpa">GPA Scale (4.0 Standard)</option>
+            <option value="standards">Standards-Based (Exemplary to Novice)</option>
+          </select>
+          <button id="configScaleBtn" class="btn btn-icon" title="Customize Grading Thresholds & Scales" aria-label="Configure Scale Thresholds">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Role / View Switcher -->
+        <div class="role-switcher-group" role="group" aria-label="Portal Role Selector">
+          <button class="role-btn active" data-role="teacher" id="roleTeacherBtn" title="Administrative & Grading Mode">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            <span>Teacher/Admin</span>
+          </button>
+          <button class="role-btn" data-role="student" id="roleStudentBtn" title="Student Personal Dashboard">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span>Student</span>
+          </button>
+          <button class="role-btn" data-role="parent" id="roleParentBtn" title="Parent/Guardian Portal">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Parent</span>
+          </button>
+        </div>
+
+        <!-- Action Tools: Settings, Data Backup, Dark Mode, Print -->
+        <div class="header-utility-group">
+          <!-- Institutional Settings Button -->
+          <button id="schoolSettingsBtn" class="btn btn-icon" title="Institution & Academic Term Settings" aria-label="School Settings">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </button>
+
+          <!-- Data Center / Backup / Export Button -->
+          <button id="dataCenterBtn" class="btn btn-icon" title="Data Hub (Export CSV, JSON Backup, Import, Demo Data)" aria-label="Data Center">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+          </button>
+
+          <!-- Dark / Light Theme Toggle -->
+          <button id="themeToggleBtn" class="btn btn-icon" title="Toggle Theme (Dark / Light Mode)" aria-label="Toggle Theme">
+            <svg class="sun-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <!-- Print / Batch Print Buttons -->
+          <button id="batchPrintBtn" class="btn btn-outline btn-compact" title="Batch Print Class Reports">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+            <span>Batch Print</span>
+          </button>
+
+          <button id="printReportBtn" class="btn btn-primary btn-compact" title="Print or Save official PDF Report Card">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            <span>Print Report</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer Backdrop Overlay -->
+    <div id="sidebarBackdrop" class="sidebar-backdrop" aria-hidden="true"></div>
+
+    <!-- Main Workspace -->
+    <div class="workspace-layout">
+      <!-- Left Sidebar: Students & Filter Navigation -->
+      <aside class="sidebar-students" id="studentSidebar" aria-label="Student Directory Sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-title-row">
+            <h2>Student Directory</h2>
+            <div class="sidebar-header-btns">
+              <button id="addStudentModalBtn" class="btn btn-sm btn-primary" title="Enroll New Student">+ New Student</button>
+            </div>
+          </div>
+          
+          <div class="search-box">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="studentSearchInput" placeholder="Search by name, ID, or advisor..." aria-label="Search student by name or ID">
+            <kbd class="search-shortcut" title="Press / to focus search">/</kbd>
+          </div>
+
+          <div class="filter-row-dual">
+            <div class="filter-col">
+              <label for="classFilterSelect" class="sr-only">Filter by Class</label>
+              <select id="classFilterSelect" class="custom-select select-sm">
+                <option value="all">All Classes</option>
+                <option value="Grade 10-A">Grade 10-A (STEM)</option>
+                <option value="Grade 10-B">Grade 10-B (Arts & Hum.)</option>
+                <option value="Grade 11-A">Grade 11-A (AP Prep)</option>
+              </select>
+            </div>
+            <div class="filter-col">
+              <label for="studentSortSelect" class="sr-only">Sort Students</label>
+              <select id="studentSortSelect" class="custom-select select-sm">
+                <option value="name-asc">Sort: Name (A-Z)</option>
+                <option value="rank-asc">Sort: Rank / GPA</option>
+                <option value="att-desc">Sort: Attendance</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Student List Container -->
+        <ul class="students-list" id="studentsListContainer" role="listbox" aria-label="Student Selection List">
+          <!-- Populated by JavaScript -->
+        </ul>
+
+        <!-- Class Quick Stats Footer -->
+        <div class="sidebar-stats-footer">
+          <div class="stat-mini">
+            <span class="stat-mini-label">Enrolled</span>
+            <span class="stat-mini-val" id="totalEnrolledCount">6</span>
+          </div>
+          <div class="stat-mini">
+            <span class="stat-mini-label">Class Avg</span>
+            <span class="stat-mini-val text-accent" id="classAvgVal">89.4%</span>
+          </div>
+          <div class="stat-mini">
+            <span class="stat-mini-label">Avg Attend.</span>
+            <span class="stat-mini-val text-success" id="classAttendanceVal">96.8%</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Center & Right: Main Content Area -->
+      <main class="main-content" id="mainContentArea" role="main">
+        <!-- Navigation Tabs -->
+        <nav class="view-tabs" role="tablist" aria-label="Report Views Navigation">
+          <button class="tab-btn active" role="tab" id="tabReportBtn" data-target="reportView" aria-selected="true" aria-controls="reportView">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            <span>Comprehensive Report Card</span>
+          </button>
+          <button class="tab-btn" role="tab" id="tabInputBtn" data-target="inputView" aria-selected="false" aria-controls="inputView">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            <span>Teacher Gradebook & Input</span>
+          </button>
+          <button class="tab-btn" role="tab" id="tabAnalyticsBtn" data-target="analyticsView" aria-selected="false" aria-controls="analyticsView">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            <span>Performance Trends & Analytics</span>
+          </button>
+          <button class="tab-btn" role="tab" id="tabPortalBtn" data-target="portalView" aria-selected="false" aria-controls="portalView">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>Student & Parent Insights</span>
+          </button>
+        </nav>
+
+        <!-- VIEW 1: COMPREHENSIVE REPORT CARD -->
+        <section id="reportView" class="view-panel active" role="tabpanel" aria-labelledby="tabReportBtn">
+          <!-- Institutional Report Header (for print & screen) -->
+          <div class="report-document" id="printableReportCard">
+            <div class="report-watermark" id="watermarkSchoolName">ST. JUDE ACADEMY</div>
+            
+            <header class="report-doc-header">
+              <div class="doc-school-info">
+                <div class="doc-school-crest" id="docSchoolCrestBox">
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                </div>
+                <div>
+                  <h2 class="doc-school-title" id="docSchoolTitle">St. Jude Academy of Science & Arts</h2>
+                  <p class="doc-school-sub" id="docSchoolSub">Accredited International College Preparatory Institution &bull; Founded 1984</p>
+                  <p class="doc-meta-sub" id="docAcademicYearMeta">Official Academic Transcript &bull; Academic Year 2025–2026</p>
+                </div>
+              </div>
+              <div class="doc-seal-badge">
+                <span class="seal-text">OFFICIAL</span>
+                <span class="seal-sub">TRANSCRIPT</span>
+                <div class="seal-emblem">★ VERIFIED ★</div>
+              </div>
+            </header>
+
+            <!-- Student Bio Profile Strip -->
+            <div class="student-profile-strip" id="studentProfileHeader">
+              <div class="student-avatar-box">
+                <div class="avatar-circle" id="studentAvatarInitials">SC</div>
+              </div>
+              <div class="student-core-details">
+                <div class="student-name-row">
+                  <h3 id="reportStudentName">Sophia Chen</h3>
+                  <span class="badge badge-honor" id="reportStudentHonor">Honor Roll with Distinction</span>
+                  <button id="editStudentQuickBtn" class="btn btn-sm btn-outline no-print" title="Edit Student Information">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                    Edit Profile
+                  </button>
+                </div>
+                <div class="student-meta-grid">
+                  <div><strong>Student ID:</strong> <span id="reportStudentID">STU-10492</span></div>
+                  <div><strong>Class & Section:</strong> <span id="reportStudentClass">Grade 10-A</span></div>
+                  <div><strong>Academic Advisor:</strong> <span id="reportStudentAdvisor">Dr. Marcus Sterling</span></div>
+                  <div><strong>Assessment Session:</strong> 
+                    <select id="reportTermSelector" class="custom-select select-inline" title="Switch Assessment Term for Report Card">
+                      <option value="term2" selected>Term 2 (Spring 2026)</option>
+                      <option value="midterm">Midterm Milestone (Winter 2026)</option>
+                      <option value="term1">Term 1 (Fall 2025)</option>
+                      <option value="cumulative">Full Year Cumulative (2025–2026)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Top Highlights Metric Badges -->
+              <div class="student-quick-kpis">
+                <div class="kpi-card highlight">
+                  <div class="kpi-label" id="reportScoreLabel">Overall Evaluation</div>
+                  <div class="kpi-value" id="reportScoreValue">3.92 GPA</div>
+                  <div class="kpi-sub" id="reportScoreSub">94.8% Raw Weighted</div>
+                </div>
+                <div class="kpi-card">
+                  <div class="kpi-label">Class Rank</div>
+                  <div class="kpi-value text-accent" id="reportClassRank">#1 <span class="kpi-sub-inline">of 6</span></div>
+                  <div class="kpi-sub" id="reportRankPercentile">Top 5th Percentile</div>
+                </div>
+                <div class="kpi-card">
+                  <div class="kpi-label">Attendance</div>
+                  <div class="kpi-value text-success" id="reportAttendanceRate">98.5%</div>
+                  <div class="kpi-sub" id="reportAttendanceSub">88 of 90 Days Present</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Academic Subject Performance Table -->
+            <div class="report-section">
+              <div class="section-heading-row">
+                <h4>I. Course Evaluation & Academic Progress</h4>
+                <div class="scale-indicator-tag" id="activeFormatBadge">Displaying: Letter Grades (A+ to F)</div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="report-table" id="academicScoresTable">
+                  <thead>
+                    <tr>
+                      <th style="width: 25%;">Course & Department</th>
+                      <th style="width: 15%;">Instructor</th>
+                      <th style="width: 10%; text-align: center;">Coursework (30%)</th>
+                      <th style="width: 10%; text-align: center;">Midterm (30%)</th>
+                      <th style="width: 10%; text-align: center;">Exam (40%)</th>
+                      <th style="width: 12%; text-align: center;" id="colScoreHeader">Final Evaluation</th>
+                      <th style="width: 9%; text-align: center;">Class Avg</th>
+                      <th style="width: 9%; text-align: center;">Delta</th>
+                    </tr>
+                  </thead>
+                  <tbody id="scoresTableBody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                  <tfoot id="scoresTableFoot">
+                    <!-- Weighted summary row -->
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+
+            <!-- Subject Remarks Breakdown -->
+            <div class="report-section">
+              <h4>II. Subject-by-Subject Faculty Remarks & Observations</h4>
+              <div class="subject-remarks-grid" id="subjectRemarksList">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+
+            <!-- Attendance & Behavioral Evaluation Grid -->
+            <div class="report-section dual-grid">
+              <!-- Attendance Box -->
+              <div class="doc-box">
+                <h5>III. Attendance & Punctuality Record</h5>
+                <div class="attendance-breakdown">
+                  <div class="attendance-bar-wrapper">
+                    <div class="attendance-bar-fill" id="attendanceProgressFill" style="width: 98%;"></div>
+                  </div>
+                  <div class="attendance-stats-row">
+                    <div class="att-item">
+                      <span class="att-num" id="attPresent">88</span>
+                      <span class="att-label">Days Present</span>
+                    </div>
+                    <div class="att-item">
+                      <span class="att-num" id="attExcused">2</span>
+                      <span class="att-label">Excused</span>
+                    </div>
+                    <div class="att-item">
+                      <span class="att-num" id="attUnexcused">0</span>
+                      <span class="att-label">Unexcused</span>
+                    </div>
+                    <div class="att-item">
+                      <span class="att-num" id="attTardy">1</span>
+                      <span class="att-label">Tardy / Late</span>
+                    </div>
+                  </div>
+                  <p class="att-note" id="attSummaryText">Student displays exemplary commitment to attendance and prompt arrivals.</p>
+                </div>
+              </div>
+
+              <!-- General Remarks & Counselor Evaluation -->
+              <div class="doc-box">
+                <h5>IV. Counselor & Institutional Appraisal</h5>
+                <blockquote class="counselor-quote" id="counselorRemarks">
+                  "Sophia continues to demonstrate intellectual curiosity and academic rigor across all disciplines. Her leadership in collaborative laboratory projects and debate sessions is exemplary. Keep up the distinguished focus!"
+                </blockquote>
+                <div class="signature-block">
+                  <div class="sig-line">
+                    <div class="sig-signature" id="advisorSigName">Dr. Marcus Sterling, Ph.D.</div>
+                    <div class="sig-title" id="advisorSigTitle">Senior Academic Dean</div>
+                  </div>
+                  <div class="sig-line">
+                    <div class="sig-signature" id="principalSigName">Eleanor Vance, M.Ed.</div>
+                    <div class="sig-title" id="principalSigTitle">Head of Institution</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parent Sign-Off & Official Footer -->
+            <footer class="report-doc-footer">
+              <div class="parent-ack-strip">
+                <div class="ack-status">
+                  <span class="status-indicator-dot online" id="ackStatusDot"></span>
+                  <span id="parentAckStatusText">Parent Acknowledged Online on March 18, 2026 by Arthur Chen</span>
+                </div>
+                <div class="doc-verify-code">Verification Hash: <code id="verifyCodeText">EDUMET-8942-A8F1</code></div>
+              </div>
+            </footer>
+          </div>
+        </section>
+
+        <!-- VIEW 2: TEACHER GRADE & REMARKS INPUT SUITE -->
+        <section id="inputView" class="view-panel" role="tabpanel" aria-labelledby="tabInputBtn">
+          <div class="panel-card">
+            <div class="panel-header-actions">
+              <div>
+                <h3>Teacher Gradebook & Live Input Suite</h3>
+                <p class="text-muted">Enter assessment scores (30% coursework, 30% midterm, 40% exam), manage subjects, attendance, and remarks.</p>
+              </div>
+              <div class="input-actions-group">
+                <button id="addSubjectBtn" class="btn btn-outline" title="Add Subject to Current Student">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  + Add Subject
+                </button>
+                <button id="saveGradesBtn" class="btn btn-success">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                  Save & Update Report
+                </button>
+                <button id="resetGradesBtn" class="btn btn-outline">Reset Changes</button>
+              </div>
+            </div>
+
+            <!-- Selected Student Sub-header -->
+            <div class="editor-student-banner">
+              <div class="banner-info">
+                Editing records for: <strong id="editorStudentName">Sophia Chen</strong> (<span id="editorStudentID">STU-10492</span>) &bull; <span id="editorStudentClass">Grade 10-A</span>
+              </div>
+              <div class="banner-term">
+                Assessment Term: 
+                <select id="editorTermSelector" class="custom-select select-inline">
+                  <option value="term2" selected>Term 2 (Spring 2026)</option>
+                  <option value="midterm">Midterm Milestone (Winter 2026)</option>
+                  <option value="term1">Term 1 (Fall 2025)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Interactive Grade Entry Form Table -->
+            <div class="table-responsive">
+              <table class="editor-table">
+                <thead>
+                  <tr>
+                    <th>Subject & Dept</th>
+                    <th>Teacher</th>
+                    <th style="text-align: center;">Coursework (30%)</th>
+                    <th style="text-align: center;">Midterm (30%)</th>
+                    <th style="text-align: center;">Final Exam (40%)</th>
+                    <th style="text-align: center;">Weighted %</th>
+                    <th style="text-align: center;">Evaluation</th>
+                    <th>Teacher Observation / Remark</th>
+                    <th style="text-align: center;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="editorGradesTableBody">
+                  <!-- Inputs dynamically generated -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Attendance Input & Counselor Remarks -->
+            <div class="editor-additional-grid">
+              <div class="editor-box">
+                <h4>Log Attendance Record</h4>
+                <div class="form-row-grid">
+                  <div class="form-group">
+                    <label for="inputDaysPresent">Days Present:</label>
+                    <input type="number" id="inputDaysPresent" min="0" max="180" class="form-control" value="88">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputDaysExcused">Excused Absences:</label>
+                    <input type="number" id="inputDaysExcused" min="0" max="50" class="form-control" value="2">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputDaysUnexcused">Unexcused Absences:</label>
+                    <input type="number" id="inputDaysUnexcused" min="0" max="50" class="form-control" value="0">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputDaysTardy">Tardy / Late arrivals:</label>
+                    <input type="number" id="inputDaysTardy" min="0" max="50" class="form-control" value="1">
+                  </div>
+                </div>
+                <div class="form-group mt-2">
+                  <label for="inputAttNote">Attendance & Punctuality Notes:</label>
+                  <input type="text" id="inputAttNote" class="form-control" value="Student displays exemplary commitment to attendance and prompt arrivals.">
+                </div>
+              </div>
+
+              <div class="editor-box">
+                <h4>General Counselor / Dean Appraisal</h4>
+                <div class="form-group">
+                  <label for="inputCounselorRemarks">Overall Term Feedback:</label>
+                  <textarea id="inputCounselorRemarks" rows="4" class="form-control" placeholder="Enter comprehensive semester remarks..."></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="inputHonorBadge">Honor Designation:</label>
+                  <select id="inputHonorBadge" class="custom-select">
+                    <option value="Honor Roll with Distinction">Honor Roll with Distinction</option>
+                    <option value="Principal's Honor Roll">Principal's Honor Roll</option>
+                    <option value="Academic Merit Award">Academic Merit Award</option>
+                    <option value="Good Academic Standing">Good Academic Standing</option>
+                    <option value="Academic Support Recommended">Academic Support Recommended</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 3: PERFORMANCE TRENDS & ANALYTICS -->
+        <section id="analyticsView" class="view-panel" role="tabpanel" aria-labelledby="tabAnalyticsBtn">
+          <div class="analytics-dashboard">
+            <div class="analytics-header">
+              <div>
+                <h3>Academic Analytics & Longitudinal Trends</h3>
+                <p class="text-muted">Interactive visual analysis tracking subject proficiencies, term trajectories, and class distribution.</p>
+              </div>
+              <div class="analytics-controls">
+                <span class="badge badge-primary" id="analyticsCohortBadge">Cohort: Class of 2026</span>
+              </div>
+            </div>
+
+            <!-- Top Metric Tiles -->
+            <div class="analytics-kpi-grid">
+              <div class="analytics-card">
+                <div class="card-title">Class Cohort Median</div>
+                <div class="card-big-num" id="analyticsClassMedian">87.6%</div>
+                <div class="card-trend positive" id="analyticsMedianTrend">&uarr; +2.4% vs Term 1</div>
+              </div>
+              <div class="analytics-card">
+                <div class="card-title">Selected Student vs Class Benchmark</div>
+                <div class="card-big-num text-accent" id="analyticsStudentDelta">+7.2%</div>
+                <div class="card-trend positive" id="analyticsDeltaTrend">Above Cohort Benchmark</div>
+              </div>
+              <div class="analytics-card">
+                <div class="card-title">Strongest Competency</div>
+                <div class="card-big-num text-success" id="analyticsTopSubject">Computer Science (98%)</div>
+                <div class="card-sub" id="analyticsTopSub">Top 1% in Institution</div>
+              </div>
+              <div class="analytics-card">
+                <div class="card-title">Growth Opportunity</div>
+                <div class="card-big-num text-warning" id="analyticsGrowthSubject">World History (91%)</div>
+                <div class="card-sub" id="analyticsGrowthSub">Target for next milestone</div>
+              </div>
+            </div>
+
+            <!-- Chart Row 1: Term Trend Trajectory & Subject Competency Comparison -->
+            <div class="charts-grid-two">
+              <!-- Trajectory Line Chart -->
+              <div class="chart-box">
+                <div class="chart-header">
+                  <h4>Longitudinal Term-over-Term Trajectory</h4>
+                  <div class="legend-row">
+                    <span class="legend-pill"><span class="dot student-dot"></span> Student</span>
+                    <span class="legend-pill"><span class="dot class-dot"></span> Class Cohort Average</span>
+                  </div>
+                </div>
+                <div class="canvas-wrapper">
+                  <canvas id="termTrendCanvas" width="560" height="260" aria-label="Line chart showing term over term progression"></canvas>
+                </div>
+                <div class="chart-footer-note">Tracking historical weighted progression across Fall Term 1, Midterm, and Spring Term 2.</div>
+              </div>
+
+              <!-- Subject Comparison Bar Chart -->
+              <div class="chart-box">
+                <div class="chart-header">
+                  <h4>Subject Proficiencies vs. Class Benchmark</h4>
+                  <div class="legend-row">
+                    <span class="legend-pill"><span class="dot bar-dot"></span> Student Score</span>
+                    <span class="legend-pill"><span class="dot target-dot"></span> Class Benchmark</span>
+                  </div>
+                </div>
+                <div class="canvas-wrapper">
+                  <canvas id="subjectBarCanvas" width="560" height="260" aria-label="Bar chart comparing student marks with class benchmark"></canvas>
+                </div>
+                <div class="chart-footer-note">Dynamic comparison with subject class averages. Hover over bars for details.</div>
+              </div>
+            </div>
+
+            <!-- Chart Row 2: Grade Distribution Curve & Attendance Correlation -->
+            <div class="charts-grid-two mt-4">
+              <!-- Class Distribution Histogram -->
+              <div class="chart-box">
+                <div class="chart-header">
+                  <h4>Cohort Grade Distribution (Histogram)</h4>
+                  <span class="badge badge-outline" id="histogramTotalCountBadge">Total Students: 6</span>
+                </div>
+                <div class="canvas-wrapper">
+                  <canvas id="distributionCanvas" width="560" height="240" aria-label="Histogram of student marks across letter grade brackets"></canvas>
+                </div>
+                <div class="chart-footer-note">Distribution of student marks across performance brackets.</div>
+              </div>
+
+              <!-- Attendance Correlation Matrix -->
+              <div class="chart-box">
+                <div class="chart-header">
+                  <h4>Attendance vs. Academic Achievement Correlation</h4>
+                  <span class="badge badge-success" id="correlationStatBadge">Correlation: R = +0.84</span>
+                </div>
+                <div class="canvas-wrapper">
+                  <canvas id="correlationCanvas" width="560" height="240" aria-label="Scatter plot showing correlation between attendance and score"></canvas>
+                </div>
+                <div class="chart-footer-note">Strong positive correlation between attendance rate and final grade outcomes.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 4: STUDENT & PARENT INSIGHTS PORTAL -->
+        <section id="portalView" class="view-panel" role="tabpanel" aria-labelledby="tabPortalBtn">
+          <div class="portal-container">
+            <!-- Personalized Welcome Banner -->
+            <div class="portal-welcome-card">
+              <div class="welcome-copy">
+                <h2>Welcome to the Family Academic Portal, <span id="portalGreetingName">Chen Family</span>!</h2>
+                <p>Track academic milestones, curriculum objectives, attendance records, and submit digital signatures.</p>
+              </div>
+              <div class="welcome-action">
+                <div class="portal-status-pill">
+                  <span class="dot online"></span>
+                  <span id="portalActiveSessionUser">Active Guardian Session: <strong>Arthur Chen</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Graduation Progress & Credit Meter -->
+            <div class="portal-section-card">
+              <div class="portal-card-header-row">
+                <div>
+                  <h3>Academic Milestone & Diploma Progress</h3>
+                  <p class="text-muted">Tracking cumulative credits, graduation milestones, and honors requirements.</p>
+                </div>
+                <div class="badge badge-primary" id="portalDiplomaPill">College Preparatory Track: 92% Complete</div>
+              </div>
+              <div class="progress-bar-container mt-2">
+                <div class="progress-bar-fill" id="portalDiplomaFill" style="width: 92%;"></div>
+              </div>
+              <div class="credit-stats-grid mt-2">
+                <div class="credit-stat">
+                  <span class="credit-val">22 / 24</span>
+                  <span class="credit-lbl">Credits Completed</span>
+                </div>
+                <div class="credit-stat">
+                  <span class="credit-val">6 / 6</span>
+                  <span class="credit-lbl">Active Core Subjects</span>
+                </div>
+                <div class="credit-stat">
+                  <span class="credit-val text-success">3.92</span>
+                  <span class="credit-lbl">Cumulative GPA</span>
+                </div>
+                <div class="credit-stat">
+                  <span class="credit-val text-accent">0</span>
+                  <span class="credit-lbl">Remediation Flags</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Student Badges & Achievements Gallery -->
+            <div class="portal-section-card">
+              <h3>Academic Honors & Extracurricular Milestones</h3>
+              <div class="achievements-gallery">
+                <div class="achievement-badge">
+                  <div class="badge-icon gold">🏆</div>
+                  <div class="badge-title">Dean's Honor List</div>
+                  <div class="badge-desc">Maintained 3.9+ GPA in Consecutive Semesters</div>
+                </div>
+                <div class="achievement-badge">
+                  <div class="badge-icon blue">🔬</div>
+                  <div class="badge-title">STEM Olympiad Finalist</div>
+                  <div class="badge-desc">State-level algorithmic computing award</div>
+                </div>
+                <div class="achievement-badge">
+                  <div class="badge-icon green">🎯</div>
+                  <div class="badge-title">Perfect Attendance Star</div>
+                  <div class="badge-desc">Exemplary attendance record throughout term</div>
+                </div>
+                <div class="achievement-badge">
+                  <div class="badge-icon purple">🤝</div>
+                  <div class="badge-title">Peer Tutoring Vanguard</div>
+                  <div class="badge-desc">25+ hours of community peer mentoring</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parent Sign-Off & Feedback Note Area -->
+            <div class="portal-section-card">
+              <div class="portal-card-header-row">
+                <div>
+                  <h3>Parent / Guardian Formal Sign-Off & Communication</h3>
+                  <p class="text-muted">Review the official academic report card and confirm digital acknowledgment.</p>
+                </div>
+                <button type="button" id="openConferenceModalBtn" class="btn btn-outline btn-sm">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                  Request Faculty Conference
+                </button>
+              </div>
+              
+              <form id="parentAckForm" class="parent-ack-form">
+                <div class="form-row-grid">
+                  <div class="form-group">
+                    <label for="parentNameInput">Guardian Full Name *</label>
+                    <input type="text" id="parentNameInput" class="form-control" value="Arthur Chen" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="parentRelationship">Relationship to Student *</label>
+                    <select id="parentRelationship" class="custom-select">
+                      <option value="Father">Father</option>
+                      <option value="Mother">Mother</option>
+                      <option value="Guardian">Legal Guardian</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group mt-2">
+                  <label for="parentCommentsInput">Guardian Remarks & Feedback to Faculty:</label>
+                  <textarea id="parentCommentsInput" rows="3" class="form-control" placeholder="Share any thoughts, questions, or notes for upcoming conferences...">We are extremely proud of Sophia's dedication in STEM and debate. Thank you to the faculty for your constant guidance.</textarea>
+                </div>
+
+                <div class="form-check-row mt-2">
+                  <input type="checkbox" id="parentCertifyCheck" checked required>
+                  <label for="parentCertifyCheck">I certify that I have reviewed the comprehensive academic report card, teacher remarks, and attendance record.</label>
+                </div>
+
+                <div class="form-action-row mt-3">
+                  <button type="submit" id="submitParentAckBtn" class="btn btn-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Confirm Digital Acknowledgment
+                  </button>
+                  <span id="parentAckConfirmationMsg" class="text-success hidden">&check; Digital Acknowledgment successfully registered!</span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- ======================================================================
+         MODALS & DIALOGS
+         ====================================================================== -->
+
+    <!-- MODAL 1: CUSTOMIZE GRADING SCALE THRESHOLDS -->
+    <dialog id="scaleConfigModal" class="app-dialog" closedby="any" aria-labelledby="scaleModalTitle">
+      <div class="dialog-content">
+        <header class="dialog-header">
+          <h3 id="scaleModalTitle">Customize Grading Scale & Thresholds</h3>
+          <button id="closeScaleModalBtn" class="dialog-close-btn" aria-label="Close dialog">&times;</button>
+        </header>
+        <div class="dialog-body">
+          <p class="text-muted">Adjust percentage cutoffs, 4.0 GPA conversions, and Standards-based labels. Updates apply immediately to all student evaluations.</p>
+          
+          <div class="scale-preset-table-wrapper">
+            <table class="table-compact" id="thresholdsTable">
+              <thead>
+                <tr>
+                  <th>Grade Label</th>
+                  <th>Min % Threshold</th>
+                  <th>4.0 GPA Equivalent</th>
+                  <th>Standards Equivalent</th>
+                  <th>Color Indicator</th>
+                </tr>
+              </thead>
+              <tbody id="thresholdsTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <footer class="dialog-footer">
+          <button id="resetScaleDefaultBtn" class="btn btn-outline">Reset to Defaults</button>
+          <button id="saveScaleConfigBtn" class="btn btn-primary">Apply & Recalculate</button>
+        </footer>
+      </div>
+    </dialog>
+
+    <!-- MODAL 2: REGISTER NEW STUDENT -->
+    <dialog id="newStudentModal" class="app-dialog" closedby="any" aria-labelledby="newStudentModalTitle">
+      <div class="dialog-content">
+        <header class="dialog-header">
+          <h3 id="newStudentModalTitle">Enroll New Student</h3>
+          <button id="closeNewStudentModalBtn" class="dialog-close-btn" aria-label="Close dialog">&times;</button>
+        </header>
+        <form id="newStudentForm">
+          <div class="dialog-body">
+            <div class="form-row-grid">
+              <div class="form-group">
+                <label for="newStudentFullName">Full Legal Name *</label>
+                <input type="text" id="newStudentFullName" class="form-control" placeholder="e.g. Maya Lin" required>
+              </div>
+              <div class="form-group">
+                <label for="newStudentGradeClass">Class & Section *</label>
+                <select id="newStudentGradeClass" class="custom-select" required>
+                  <option value="Grade 10-A">Grade 10-A (Science & Math)</option>
+                  <option value="Grade 10-B">Grade 10-B (Arts & Humanities)</option>
+                  <option value="Grade 11-A">Grade 11-A (Advanced Placement)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row-grid mt-2">
+              <div class="form-group">
+                <label for="newStudentID">Student ID *</label>
+                <input type="text" id="newStudentID" class="form-control" placeholder="e.g. STU-10530" required>
+              </div>
+              <div class="form-group">
+                <label for="newStudentAdvisor">Academic Advisor</label>
+                <input type="text" id="newStudentAdvisor" class="form-control" value="Dr. Marcus Sterling">
+              </div>
+            </div>
+            <div class="form-row-grid mt-2">
+              <div class="form-group">
+                <label for="newStudentParentName">Guardian Name</label>
+                <input type="text" id="newStudentParentName" class="form-control" placeholder="e.g. Daniel Lin">
+              </div>
+              <div class="form-group">
+                <label for="newStudentParentRelation">Relationship</label>
+                <select id="newStudentParentRelation" class="custom-select">
+                  <option value="Father">Father</option>
+                  <option value="Mother">Mother</option>
+                  <option value="Guardian">Guardian</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <footer class="dialog-footer">
+            <button type="button" id="cancelNewStudentBtn" class="btn btn-outline">Cancel</button>
+            <button type="submit" class="btn btn-primary">Enroll Student</button>
+          </footer>
+        </form>
+      </div>
+    </dialog>
+
+    <!-- MODAL 3: EDIT STUDENT BIO -->
+    <dialog id="editStudentModal" class="app-dialog" closedby="any" aria-labelledby="editStudentModalTitle">
+      <div class="dialog-content">
+        <header class="dialog-header">
+          <h3 id="editStudentModalTitle">Edit Student Profile</h3>
+          <button id="closeEditStudentModalBtn" class="dialog-close-btn" aria-label="Close dialog">&times;</button>
+        </header>
+        <form id="editStudentForm">
+          <div class="dialog-body">
+            <div class="form-row-grid">
+              <div class="form-group">
+                <label for="editStudentFullName">Full Legal Name *</label>
+                <input type="text" id="editStudentFullName" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="editStudentGradeClass">Class & Section *</label>
+                <select id="editStudentGradeClass" class="custom-select" required>
+                  <option value="Grade 10-A">Grade 10-A (Science & Math)</option>
+                  <option value="Grade 10-B">Grade 10-B (Arts & Humanities)</option>
+                  <option value="Grade 11-A">Grade 11-A (Advanced Placement)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row-grid mt-2">
+              <div class="form-group">
+                <label for="editStudentID">Student ID *</label>
+                <input type="text" id="editStudentID" class="form-control" required readonly style="background: var(--neutral-100); opacity: 0.8;">
+              </div>
+              <div class="form-group">
+                <label for="editStudentAdvisor">Academic Advisor</label>
+                <input type="text" id="editStudentAdvisor" class="form-control">
+              </div>
+            </div>
+            <div class="form-row-grid mt-2">
+              <div class="form-group">
+                <label for="editStudentParentName">Guardian Name</label>
+                <input type="text" id="editStudentParentName" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="editStudentParentRelation">Relationship</label>
+                <select id="editStudentParentRelation" class="custom-select">
+                  <option value="Father">Father</option>
+                  <option value="Mother">Mother</option>
+                  <option value="Guardian">Guardian</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group mt-2">
+              <label for="editStudentHonor">Academic Honor Designation</label>
+              <select id="editStudentHonor" class="custom-select">
+                <option value="Honor Roll with Distinction">Honor Roll with Distinction</option>
+                <option value="Principal's Honor Roll">Principal's Honor Roll</option>
+                <option value="Academic Merit Award">Academic Merit Award</option>
+                <option value="Good Academic Standing">Good Academic Standing</option>
+                <option value="Academic Support Recommended">Academic Support Recommended</option>
+              </select>
+            </div>
+          </div>
+          <footer class="dialog-footer">
+            <button type="button" id="deleteStudentBtn" class="btn btn-danger-outline" style="margin-right: auto;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              Delete Student
+            </button>
+            <button type="button" id="cancelEditStudentBtn" class="btn btn-outline">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </footer>
+        </form>
+      </div>
+    </dialog>
+
+    <!-- MODAL 4: ADD SUBJECT / COURSE -->
+    <dialog id="addSubjectModal" class="app-dialog" closedby="any" aria-labelledby="addSubjectModalTitle">
+      <div class="dialog-content">
+        <header class="dialog-header">
+          <h3 id="addSubjectModalTitle">Add Subject to Curriculum</h3>
+          <button id="closeAddSubjectModalBtn" class="dialog-close-btn" aria-label="Close dialog">&times;</button>
+        </header>
+        <form id="addSubjectForm">
+          <div class="dialog-body">
+            <div class="form-row-grid">
+              <div class="form-group">
+                <label for="newSubjectName">Subject Title *</label>
+                <input type="text" id="newSubjectName" class="form-control" placeholder="e.g. AP Environmental Science" required>
+              </div>
+              <div class="form-group">
+                <label for="newSubjectDept">Department *</label>
+                <select id="newSubjectDept" class="custom-select" required>
+                  <option value="STEM">STEM</option>
+                  <option value="Mathematics">Mathematics</option>
+                  <option value="Science">Science</option>
+                  <option value="Humanities">Humanities</option>
+                  <option value="Social Sciences">Social Sciences</option>
+                  <option value="Fine Arts">Fine Arts</option>
+                  <option value="World Languages">World Languages</option>
+                  <option value="Physical Education">Physical Education</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row-grid mt-2">
+              <div class="form-group">
+                <label for="newSubjectTeacher">Instructor Name *</label>
+                <input type="text" id="newSubjectTeacher" class="form-control" placeholder="e.g. Dr. Helena Thorne" required>
+              </div>
+              <div class="form-group">
+                <label for="newSubjectClassAvg">Cohort Benchmark Avg (%)</label>
+                <input type="number" id="newSubjectClassAvg" min="0" max="100" class="form-control" value="85">
+              </div>
+            </div>
+            <div class="form-row-grid mt-2">
+              <div class="form-group">
+                <label for="newSubjectCw">Coursework Mark (30%)</label>
+                <input type="number" id="newSubjectCw" min="0" max="100" class="form-control" value="90">
+              </div>
+              <div class="form-group">
+                <label for="newSubjectMt">Midterm Mark (30%)</label>
+                <input type="number" id="newSubjectMt" min="0" max="100" class="form-control" value="88">
+              </div>
+              <div class="form-group">
+                <label for="newSubjectEx">Final Exam Mark (40%)</label>
+                <input type="number" id="newSubjectEx" min="0" max="100" class="form-control" value="92">
+              </div>
+            </div>
+            <div class="form-group mt-2">
+              <label for="newSubjectRemark">Instructor Initial Observation / Remark</label>
+              <input type="text" id="newSubjectRemark" class="form-control" placeholder="e.g. Highly engaged and inquisitive learner.">
+            </div>
+          </div>
+          <footer class="dialog-footer">
+            <button type="button" id="cancelAddSubjectBtn" class="btn btn-outline">Cancel</button>
+            <button type="submit" class="btn btn-primary">Add Subject</button>
+          </footer>
+        </form>
+      </div>
+    </dialog>
+
+    <!-- MODAL 5: INSTITUTION SETTINGS -->
+    <dialog id="institutionSettingsModal" class="app-dialog" closedby="any" aria-labelledby="instModalTitle">
+      <div class="dialog-content">
+        <header class="dialog-header">
+          <h3 id="instModalTitle">Institutional Profile & Academic Settings</h3>
+          <button id="closeInstModalBtn" class="dialog-close-btn" aria-label="Close dialog">&times;</button>
+        </header>
+        <form id="institutionSettingsForm">
+          <div class="dialog-body">
+            <div class="form-row-grid">
+              <div class="form-group">
+                <label for="instNameInput">Institution Legal Name *</label>
+                <input type="text" id="instNameInput" class="form-control" value="St. Jude Academy of Science & Arts" required>
+              </div>
+              <div class="form-group">
+                <label for="instSubInput">Institution Accreditation Subtitle</label>
+                <input type="text" id="instSubInput" class="form-control" value="Accredited International College Preparatory Institution • Founded 1984">
+              </div>
+            </div>
+            <div class="form-row-grid mt-2">
+              <div class="form-group">
+                <label for="instYearInput">Academic Year *</label>
+                <input type="text" id="instYearInput" class="form-control" value="2025–2026" required>
+              </div>
+              <div class="form-group">
+                <label for="instActiveTermInput">Active Term / Semester Name</label>
+                <input type="text" id="instActiveTermInput" class="form-control" value="Term 2 (Spring 2026)">
+              </div>
+            </div>
+            <div class="form-row-grid mt-2">
+              <div class="form-group">
+                <label for="instDeanNameInput">Senior Academic Dean Name</label>
+                <input type="text" id="instDeanNameInput" class="form-control" value="Dr. Marcus Sterling, Ph.D.">
+              </div>
+              <div class="form-group">
+                <label for="instDeanTitleInput">Dean Title</label>
+                <input type="text" id="instDeanTitleInput" class="form-control" value="Senior Academic Dean">
+              </div>
+            </div>
+            <div class="form-row-grid mt-2">
+              <div class="form-group">
+                <label for="instPrincipalNameInput">Head of Institution / Principal Name</label>
+                <input type="text" id="instPrincipalNameInput" class="form-control" value="Eleanor Vance, M.Ed.">
+              </div>
+              <div class="form-group">
+                <label for="instPrincipalTitleInput">Head Title</label>
+                <input type="text" id="instPrincipalTitleInput" class="form-control" value="Head of Institution">
+              </div>
+            </div>
+          </div>
+          <footer class="dialog-footer">
+            <button type="button" id="resetInstDefaultsBtn" class="btn btn-outline">Reset to Defaults</button>
+            <button type="submit" class="btn btn-primary">Save Institution Profile</button>
+          </footer>
+        </form>
+      </div>
+    </dialog>
+
+    <!-- MODAL 6: DATA HUB (EXPORT CSV, JSON BACKUP, IMPORT, SAMPLE DATA) -->
+    <dialog id="dataCenterModal" class="app-dialog" closedby="any" aria-labelledby="dataHubModalTitle">
+      <div class="dialog-content">
+        <header class="dialog-header">
+          <h3 id="dataHubModalTitle">Data Management & Institutional Hub</h3>
+          <button id="closeDataCenterModalBtn" class="dialog-close-btn" aria-label="Close dialog">&times;</button>
+        </header>
+        <div class="dialog-body">
+          <div class="data-hub-grid">
+            <!-- CSV Export Card -->
+            <div class="data-hub-card">
+              <div class="hub-icon green">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="16" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              </div>
+              <h4>Export Gradebook to CSV</h4>
+              <p>Download a comprehensive spreadsheet containing all student grades, weighted GPAs, attendance, and rank.</p>
+              <button id="downloadCsvBtn" class="btn btn-primary btn-sm mt-2">Download .CSV File</button>
+            </div>
+
+            <!-- JSON Backup Card -->
+            <div class="data-hub-card">
+              <div class="hub-icon purple">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              </div>
+              <h4>Backup Full Database (JSON)</h4>
+              <p>Export student cohorts, courses, institution settings, and custom grading scales to a backup JSON file.</p>
+              <button id="downloadJsonBackupBtn" class="btn btn-outline btn-sm mt-2">Export JSON Backup</button>
+            </div>
+
+            <!-- Restore JSON Card -->
+            <div class="data-hub-card">
+              <div class="hub-icon blue">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              </div>
+              <h4>Restore from Backup</h4>
+              <p>Upload a previously exported JSON backup to restore cohorts and institutional configuration.</p>
+              <label class="btn btn-outline btn-sm mt-2 file-upload-btn">
+                <span>Select JSON File</span>
+                <input type="file" id="importJsonFileInput" accept=".json" class="sr-only">
+              </label>
+            </div>
+
+            <!-- Sample Data Card -->
+            <div class="data-hub-card">
+              <div class="hub-icon amber">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              </div>
+              <h4>Demo Sample Cohort</h4>
+              <p>Reset and populate the system with a balanced 8-student sample database across multiple grade classes.</p>
+              <button id="loadSampleDataBtn" class="btn btn-outline btn-sm mt-2">Populate Sample Cohort</button>
+            </div>
+          </div>
+        </div>
+        <footer class="dialog-footer">
+          <button id="closeDataCenterBtn" class="btn btn-primary">Close Data Hub</button>
+        </footer>
+      </div>
+    </dialog>
+
+    <!-- MODAL 7: BATCH PRINT CLASS TRANSCRIPTS -->
+    <dialog id="batchPrintModal" class="app-dialog" closedby="any" aria-labelledby="batchPrintModalTitle">
+      <div class="dialog-content">
+        <header class="dialog-header">
+          <h3 id="batchPrintModalTitle">Batch Print Report Cards</h3>
+          <button id="closeBatchPrintModalBtn" class="dialog-close-btn" aria-label="Close dialog">&times;</button>
+        </header>
+        <div class="dialog-body">
+          <p class="text-muted">Generate consecutive official print-ready transcripts for an entire class or all enrolled students with clean page breaks.</p>
+          
+          <div class="form-group mt-2">
+            <label for="batchClassSelect">Select Class to Print:</label>
+            <select id="batchClassSelect" class="custom-select">
+              <option value="all">All Enrolled Students (Full Institution)</option>
+              <option value="Grade 10-A">Grade 10-A (Science & Math)</option>
+              <option value="Grade 10-B">Grade 10-B (Arts & Humanities)</option>
+              <option value="Grade 11-A">Grade 11-A (Advanced Placement)</option>
+            </select>
+          </div>
+
+          <div class="batch-preview-meta mt-2" id="batchPreviewMetaText">
+            Ready to compile 6 official student report cards.
+          </div>
+        </div>
+        <footer class="dialog-footer">
+          <button id="cancelBatchPrintBtn" class="btn btn-outline">Cancel</button>
+          <button id="executeBatchPrintBtn" class="btn btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            Print Class Reports
+          </button>
+        </footer>
+      </div>
+    </dialog>
+
+    <!-- MODAL 8: PARENT CONFERENCE REQUEST -->
+    <dialog id="conferenceModal" class="app-dialog" closedby="any" aria-labelledby="confModalTitle">
+      <div class="dialog-content">
+        <header class="dialog-header">
+          <h3 id="confModalTitle">Schedule Faculty Conference</h3>
+          <button id="closeConferenceModalBtn" class="dialog-close-btn" aria-label="Close dialog">&times;</button>
+        </header>
+        <form id="conferenceForm">
+          <div class="dialog-body">
+            <p class="text-muted">Request a 1-on-1 virtual or in-person conference with your student's academic advisor or subject teacher.</p>
+            
+            <div class="form-row-grid mt-2">
+              <div class="form-group">
+                <label for="confTeacherSelect">Requested Faculty Member *</label>
+                <select id="confTeacherSelect" class="custom-select" required>
+                  <option value="Dr. Marcus Sterling (Academic Dean)">Dr. Marcus Sterling (Academic Dean)</option>
+                  <option value="Dr. Evelyn Reed (Mathematics)">Dr. Evelyn Reed (Mathematics)</option>
+                  <option value="Prof. David Lin (Computer Science)">Prof. David Lin (Computer Science)</option>
+                  <option value="Ms. Clara Oswald (World Literature)">Ms. Clara Oswald (World Literature)</option>
+                  <option value="Mr. Julian Vance (World History)">Mr. Julian Vance (World History)</option>
+                  <option value="Elena Rostova, MFA (Visual Design)">Elena Rostova, MFA (Visual Design)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="confFormatSelect">Conference Format *</label>
+                <select id="confFormatSelect" class="custom-select">
+                  <option value="Virtual Video Call (Google Meet)">Virtual Video Call (Google Meet)</option>
+                  <option value="In-Person Campus Meeting">In-Person Campus Meeting</option>
+                  <option value="Telephone Consultation">Telephone Consultation</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row-grid mt-2">
+              <div class="form-group">
+                <label for="confPreferredDate">Preferred Date *</label>
+                <input type="date" id="confPreferredDate" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="confPreferredTime">Preferred Time Slot *</label>
+                <select id="confPreferredTime" class="custom-select">
+                  <option value="09:00 AM - 09:30 AM">09:00 AM - 09:30 AM</option>
+                  <option value="11:30 AM - 12:00 PM">11:30 AM - 12:00 PM</option>
+                  <option value="02:30 PM - 03:00 PM">02:30 PM - 03:00 PM</option>
+                  <option value="04:00 PM - 04:30 PM">04:00 PM - 04:30 PM</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group mt-2">
+              <label for="confTopicsInput">Discussion Topic / Inquiry</label>
+              <textarea id="confTopicsInput" rows="3" class="form-control" placeholder="Share specific academic goals, university preparation inquiries, or questions..."></textarea>
+            </div>
+          </div>
+          <footer class="dialog-footer">
+            <button type="button" id="cancelConferenceBtn" class="btn btn-outline">Cancel</button>
+            <button type="submit" class="btn btn-primary">Submit Conference Request</button>
+          </footer>
+        </form>
+      </div>
+    </dialog>
+
+    <!-- MODAL 9: DELETE CONFIRMATION DIALOG -->
+    <dialog id="confirmDeleteModal" class="app-dialog" closedby="any" aria-labelledby="confirmDeleteTitle">
+      <div class="dialog-content">
+        <header class="dialog-header">
+          <h3 id="confirmDeleteTitle">Confirm Deletion</h3>
+          <button id="closeConfirmDeleteModalBtn" class="dialog-close-btn" aria-label="Close dialog">&times;</button>
+        </header>
+        <div class="dialog-body">
+          <p id="confirmDeleteMessage">Are you sure you want to delete this record? This action cannot be undone.</p>
+        </div>
+        <footer class="dialog-footer">
+          <button id="cancelConfirmDeleteBtn" class="btn btn-outline">Cancel</button>
+          <button id="proceedConfirmDeleteBtn" class="btn btn-danger">Delete Record</button>
+        </footer>
+      </div>
+    </dialog>
+
+    <!-- Floating Canvas Tooltip for Charts -->
+    <div id="chartTooltip" class="chart-tooltip" role="tooltip" aria-hidden="true"></div>
+
+    <!-- Container for Batch Printing Multi-Transcripts -->
+    <div id="batchPrintContainer" class="batch-print-wrapper" aria-hidden="true"></div>
+
+    <!-- Notification Toast Container -->
+    <div id="toastNotification" class="toast-notification" role="status" aria-live="polite"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
