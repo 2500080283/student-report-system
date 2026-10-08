@@ -705,6 +705,7 @@ body {
   font-weight: 900;
   color: var(--watermark-color);
   pointer-events: none;
+  -webkit-user-select: none;
   user-select: none;
   letter-spacing: 0.15em;
   white-space: nowrap;
@@ -1548,6 +1549,7 @@ body {
   transform: translate(-50%, -120%);
   transition: opacity 0.15s ease-out;
   box-shadow: var(--shadow-lg);
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   white-space: nowrap;
@@ -1595,6 +1597,7 @@ body {
 
 .portal-status-pill {
   background: rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   padding: 0.45rem 0.9rem;
   border-radius: var(--radius-full);
@@ -1739,6 +1742,7 @@ body {
 
 .app-dialog::backdrop {
   background: rgba(15, 23, 42, 0.65);
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
 }
 
@@ -1982,7 +1986,7 @@ body {
 
   .workspace-layout {
     display: block !important;
-    min-height: auto !important;
+    min-height: 0 !important;
   }
 
   .main-content {
@@ -2117,6 +2121,7 @@ body {
     right: 0;
     bottom: 0;
     background: rgba(15, 23, 42, 0.5);
+    -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
     z-index: 45;
   }
@@ -2276,6 +2281,7 @@ body {
   gap: 0.15rem;
   cursor: pointer;
   transition: all 0.2s ease;
+  -webkit-user-select: none;
   user-select: none;
 }
 
