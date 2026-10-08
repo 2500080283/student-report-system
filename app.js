@@ -8087,6 +8087,58 @@ const DEFAULT_CONFERENCES = [
   { id: 'CONF-302', studentName: 'Sophia Chen', teacher: 'Dr. Evelyn Reed (Mathematics)', format: 'In-Person Campus Meeting', date: '2026-04-05', time: '11:30 AM - 12:00 PM', topic: 'Discuss advanced calculus competition preparation.', status: 'Scheduled' }
 ];
 
+// Universal Authentication User Accounts (Admin, Teacher, Parent, Student)
+const DEFAULT_USERS = {
+  admin: {
+    id: 'USR-ADMIN-01',
+    role: 'admin',
+    name: 'Prof. Shireesh Kedare',
+    shortName: 'Prof. S. Kedare',
+    title: 'Director, IIT Bombay',
+    email: 'admin@edumetrics.edu',
+    allowedIdentifiers: ['admin@edumetrics.edu', 'admin', 'director@iitb.ac.in', 'dean@iitb.ac.in', 'director', 'administrator'],
+    allowedPasswords: ['Admin@2026', 'admin123', 'admin', 'Admin123'],
+    defaultTab: 'tabAdminBtn',
+    defaultView: 'adminView'
+  },
+  teacher: {
+    id: 'USR-FAC-01',
+    role: 'teacher',
+    name: 'Dr. Marcus Sterling',
+    shortName: 'Dr. M. Sterling',
+    title: 'Senior Faculty & Dept Head',
+    email: 'teacher@edumetrics.edu',
+    allowedIdentifiers: ['teacher@edumetrics.edu', 'teacher', 'dr.sterling@edumetrics.edu', 'faculty@edumetrics.edu', 'faculty', 'm.sterling'],
+    allowedPasswords: ['Teacher@2026', 'teacher123', 'teacher', 'Teacher123'],
+    defaultTab: 'tabTeacherBtn',
+    defaultView: 'teacherView'
+  },
+  parent: {
+    id: 'USR-PRT-01',
+    role: 'parent',
+    name: 'Arthur Chen',
+    shortName: 'Arthur Chen',
+    title: 'Guardian (Sophia Chen, Gr. 10-A)',
+    email: 'parent@edumetrics.edu',
+    allowedIdentifiers: ['parent@edumetrics.edu', 'parent', 'chen.family@edumetrics.edu', 'arthur.chen@edumetrics.edu', 'guardian', 'chen'],
+    allowedPasswords: ['Parent@2026', 'parent123', 'parent', 'Parent123'],
+    defaultTab: 'tabParentBtn',
+    defaultView: 'parentView'
+  },
+  student: {
+    id: 'STU-10492',
+    role: 'student',
+    name: 'Sophia Chen',
+    shortName: 'Sophia Chen',
+    title: 'Scholar • Grade 10-A (Rank #1)',
+    email: 'sophia.chen@student.edumetrics.edu',
+    allowedIdentifiers: ['STU-10492', 'stu-10492', 'sophia.chen', 'student@edumetrics.edu', 'student'],
+    allowedPasswords: ['Student@2026', 'student123', 'student', 'Student123'],
+    defaultTab: 'tabReportBtn',
+    defaultView: 'reportView'
+  }
+};
+
 class EduMetricsApp {
   constructor() {
     window.app = this;
@@ -8102,13 +8154,18 @@ class EduMetricsApp {
     this.conferences = this.loadConferences();
     this.attendanceRecords = {};
     
+    // Authentication & Session
+    this.authUsers = DEFAULT_USERS;
+    this.currentAuthUser = this.loadAuthSession();
+    this.currentRole = this.currentAuthUser ? this.currentAuthUser.role : 'admin';
+
     this.selectedStudentId = this.students[0]?.id || 'STU-10492';
     this.currentGradingFormat = localStorage.getItem('edumetrics_format') || 'letter';
-    this.currentRole = 'teacher'; // teacher | admin | parent | student
-    this.activeTab = 'reportView';
+    this.activeTab = this.currentAuthUser?.defaultView || 'adminView';
     this.activeReportTerm = 'term2'; // term2 | midterm | term1 | cumulative
     this.activeEditorTerm = 'term2';
     this.sortMode = 'name-asc';
+    this.activeAuthModalRole = 'admin';
 
     // Indian Universities Directory State
     this.univSearchQuery = '';
@@ -8271,6 +8328,34 @@ class EduMetricsApp {
       localStorage.setItem('edumetrics_conferences', JSON.stringify(this.conferences));
     } catch (e) {
       console.error('Failed to save conferences to localStorage', e);
+    }
+  }
+
+  loadAuthSession() {
+    try {
+      const stored = localStorage.getItem('edumetrics_auth_user');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed && parsed.role && DEFAULT_USERS[parsed.role]) {
+          return parsed;
+        }
+      }
+    } catch (e) {
+      console.warn('Failed to load auth session from localStorage:', e);
+    }
+    // Default institutional session: Admin (Prof. Shireesh Kedare, Director)
+    return JSON.parse(JSON.stringify(DEFAULT_USERS.admin));
+  }
+
+  saveAuthSession(user) {
+    try {
+      if (user) {
+        localStorage.setItem('edumetrics_auth_user', JSON.stringify(user));
+      } else {
+        localStorage.removeItem('edumetrics_auth_user');
+      }
+    } catch (e) {
+      console.error('Failed to save auth session to localStorage:', e);
     }
   }
 
@@ -8498,6 +8583,24 @@ class EduMetricsApp {
     this.parentConferencesList = document.getElementById('parentConferencesList');
     this.parentCircularsGrid = document.getElementById('parentCircularsGrid');
 
+    // Universal Authentication Elements
+    this.authTriggerBtn = document.getElementById('authTriggerBtn');
+    this.authSignOutBtn = document.getElementById('authSignOutBtn');
+    this.authStatusDot = document.getElementById('authStatusDot');
+    this.authRoleChip = document.getElementById('authRoleChip');
+    this.authUserName = document.getElementById('authUserName');
+    this.authModal = document.getElementById('authModal');
+    this.closeAuthModalBtn = document.getElementById('closeAuthModalBtn');
+    this.cancelAuthModalBtn = document.getElementById('cancelAuthModalBtn');
+    this.authLoginForm = document.getElementById('authLoginForm');
+    this.authIdentifierInput = document.getElementById('authIdentifierInput');
+    this.authPasswordInput = document.getElementById('authPasswordInput');
+    this.authTogglePasswordBtn = document.getElementById('authTogglePasswordBtn');
+    this.authAlertBanner = document.getElementById('authAlertBanner');
+    this.authAlertText = document.getElementById('authAlertText');
+    this.authRoleTabs = document.querySelectorAll('.auth-role-tab');
+    this.quickFillChips = document.querySelectorAll('.quick-fill-chip');
+
     if (this.gradingScaleSelect) {
       this.gradingScaleSelect.value = this.currentGradingFormat;
     }
@@ -8633,16 +8736,41 @@ class EduMetricsApp {
     // Role Switching
     this.roleBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        this.roleBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        this.currentRole = btn.dataset.role;
-        this.handleRoleChange();
+        const targetRole = btn.dataset.role;
+        if (!this.currentAuthUser || this.currentAuthUser.role !== targetRole) {
+          this.openAuthModal(targetRole, `Authentication required for ${targetRole.toUpperCase()} portal.`);
+        } else {
+          this.roleBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          this.currentRole = targetRole;
+          this.handleRoleChange();
+        }
       });
     });
 
     // Tab Switching
     this.tabBtns.forEach(btn => {
       btn.addEventListener('click', () => {
+        const targetId = btn.dataset.target;
+
+        // Gate access to protected institutional portals
+        if (targetId === 'adminView') {
+          if (!this.currentAuthUser || this.currentAuthUser.role !== 'admin') {
+            this.openAuthModal('admin', 'Admin authorization required. Please sign in with Director or Admin credentials.');
+            return;
+          }
+        } else if (targetId === 'teacherView') {
+          if (!this.currentAuthUser || (this.currentAuthUser.role !== 'teacher' && this.currentAuthUser.role !== 'admin')) {
+            this.openAuthModal('teacher', 'Teacher Gradebook access restricted. Please sign in with Faculty credentials.');
+            return;
+          }
+        } else if (targetId === 'parentView') {
+          if (!this.currentAuthUser || (this.currentAuthUser.role !== 'parent' && this.currentAuthUser.role !== 'admin')) {
+            this.openAuthModal('parent', 'Parent Portal access restricted. Please sign in with Guardian credentials.');
+            return;
+          }
+        }
+
         this.tabBtns.forEach(b => {
           b.classList.remove('active');
           b.setAttribute('aria-selected', 'false');
@@ -8650,7 +8778,6 @@ class EduMetricsApp {
         btn.classList.add('active');
         btn.setAttribute('aria-selected', 'true');
 
-        const targetId = btn.dataset.target;
         this.activeTab = targetId;
         this.viewPanels.forEach(p => p.classList.remove('active'));
         document.getElementById(targetId)?.classList.add('active');
@@ -9082,6 +9209,43 @@ class EduMetricsApp {
       if (dateInp) dateInp.min = today;
       this.conferenceModal?.showModal();
     });
+
+    // Universal Authentication & Portal Access Listeners
+    this.authTriggerBtn?.addEventListener('click', () => {
+      this.openAuthModal(this.currentRole || 'admin');
+    });
+
+    this.authSignOutBtn?.addEventListener('click', () => {
+      this.handleSignOut();
+    });
+
+    this.closeAuthModalBtn?.addEventListener('click', () => {
+      this.authModal?.close();
+    });
+
+    this.cancelAuthModalBtn?.addEventListener('click', () => {
+      this.authModal?.close();
+    });
+
+    this.authRoleTabs?.forEach(tab => {
+      tab.addEventListener('click', () => {
+        this.switchAuthModalRole(tab.dataset.authRole);
+      });
+    });
+
+    this.quickFillChips?.forEach(chip => {
+      chip.addEventListener('click', () => {
+        this.handleQuickFill(chip.dataset.quickRole);
+      });
+    });
+
+    this.authTogglePasswordBtn?.addEventListener('click', () => {
+      this.toggleAuthPasswordVisibility();
+    });
+
+    this.authLoginForm?.addEventListener('submit', (e) => {
+      this.handleAuthSubmit(e);
+    });
   }
 
   // --- Indian Universities Registry Implementation ---
@@ -9338,18 +9502,246 @@ class EduMetricsApp {
     this.confirmDeleteModal.showModal();
   }
 
-  // --- Role Management ---
-  handleRoleChange() {
-    this.showToast(`Switched view to: ${this.currentRole.toUpperCase()} Module`);
-    if (this.currentRole === 'admin') {
-      document.getElementById('tabAdminBtn')?.click();
-    } else if (this.currentRole === 'teacher') {
-      document.getElementById('tabTeacherBtn')?.click();
-    } else if (this.currentRole === 'parent') {
-      document.getElementById('tabParentBtn')?.click();
+  // ==========================================================================
+  // UNIVERSAL AUTHENTICATION & ROLE MANAGEMENT SYSTEM
+  // ==========================================================================
+  renderAuthWidget() {
+    if (!this.headerAuthWidget) return;
+
+    if (this.currentAuthUser) {
+      const u = this.currentAuthUser;
+      if (this.authStatusDot) {
+        this.authStatusDot.className = 'auth-status-dot online';
+      }
+      if (this.authRoleChip) {
+        this.authRoleChip.textContent = (u.role || 'user').toUpperCase();
+        this.authRoleChip.className = `auth-user-role-chip role-${u.role || 'student'}`;
+      }
+      if (this.authUserName) {
+        this.authUserName.textContent = u.shortName || u.name || 'User';
+      }
+      if (this.authTriggerBtn) {
+        this.authTriggerBtn.title = `Signed in as ${u.name} (${u.title || u.role}). Click to switch session or sign in.`;
+      }
+      if (this.authSignOutBtn) {
+        this.authSignOutBtn.style.display = 'inline-flex';
+        this.authSignOutBtn.title = `Sign out (${u.shortName || u.name})`;
+      }
     } else {
-      document.getElementById('tabReportBtn')?.click();
+      if (this.authStatusDot) {
+        this.authStatusDot.className = 'auth-status-dot logged-out';
+      }
+      if (this.authRoleChip) {
+        this.authRoleChip.textContent = 'GUEST';
+        this.authRoleChip.className = 'auth-user-role-chip';
+      }
+      if (this.authUserName) {
+        this.authUserName.textContent = 'Sign In';
+      }
+      if (this.authTriggerBtn) {
+        this.authTriggerBtn.title = 'Click to Sign In with institutional credentials';
+      }
+      if (this.authSignOutBtn) {
+        this.authSignOutBtn.style.display = 'none';
+      }
     }
+  }
+
+  openAuthModal(preselectedRole = 'admin', alertMessage = null) {
+    if (!this.authModal) return;
+
+    this.switchAuthModalRole(preselectedRole || this.currentRole || 'admin');
+
+    if (this.authAlertBanner) {
+      if (alertMessage) {
+        this.showAuthAlert(alertMessage, 'warning');
+      } else {
+        this.authAlertBanner.classList.add('hidden');
+        if (this.authAlertText) this.authAlertText.textContent = '';
+      }
+    }
+
+    if (this.authPasswordInput) {
+      this.authPasswordInput.value = '';
+    }
+
+    if (this.authIdentifierInput) {
+      const targetUser = this.authUsers[this.activeAuthModalRole];
+      if (targetUser && targetUser.email) {
+        this.authIdentifierInput.value = targetUser.email;
+      }
+    }
+
+    this.authModal.showModal();
+    this.authPasswordInput?.focus();
+  }
+
+  switchAuthModalRole(role) {
+    if (!role || !this.authUsers[role]) role = 'admin';
+    this.activeAuthModalRole = role;
+
+    // Update Tab UI
+    this.authRoleTabs?.forEach(tab => {
+      const isSelected = tab.dataset.authRole === role;
+      tab.classList.toggle('active', isSelected);
+      tab.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+    });
+
+    const user = this.authUsers[role];
+    if (this.authIdentifierInput && user) {
+      if (role === 'student') {
+        this.authIdentifierInput.placeholder = 'Student ID (STU-10492) or email';
+        if (this.authIdentifierLabel) {
+          this.authIdentifierLabel.textContent = 'Student ID Number or School Email *';
+        }
+      } else if (role === 'admin') {
+        this.authIdentifierInput.placeholder = 'admin@edumetrics.edu or director';
+        if (this.authIdentifierLabel) {
+          this.authIdentifierLabel.textContent = 'Official Director / Administrator Email *';
+        }
+      } else if (role === 'teacher') {
+        this.authIdentifierInput.placeholder = 'teacher@edumetrics.edu or dr.sterling';
+        if (this.authIdentifierLabel) {
+          this.authIdentifierLabel.textContent = 'Faculty Academic Email Address *';
+        }
+      } else if (role === 'parent') {
+        this.authIdentifierInput.placeholder = 'parent@edumetrics.edu or guardian';
+        if (this.authIdentifierLabel) {
+          this.authIdentifierLabel.textContent = 'Registered Guardian Email Address *';
+        }
+      }
+    }
+
+    // Clear alert banner when switching role
+    if (this.authAlertBanner) {
+      this.authAlertBanner.classList.add('hidden');
+    }
+  }
+
+  handleQuickFill(role) {
+    if (!role || !this.authUsers[role]) return;
+    this.switchAuthModalRole(role);
+    const user = this.authUsers[role];
+    if (this.authIdentifierInput) {
+      this.authIdentifierInput.value = user.allowedIdentifiers[0];
+    }
+    if (this.authPasswordInput) {
+      this.authPasswordInput.value = user.allowedPasswords[0];
+    }
+    this.showAuthAlert(`Auto-filled credentials for ${user.name} (${user.role.toUpperCase()})`, 'success');
+  }
+
+  toggleAuthPasswordVisibility() {
+    if (!this.authPasswordInput || !this.authTogglePasswordBtn) return;
+    const isPassword = this.authPasswordInput.type === 'password';
+    this.authPasswordInput.type = isPassword ? 'text' : 'password';
+    this.authTogglePasswordBtn.textContent = isPassword ? 'Hide Password' : 'Show Password';
+  }
+
+  showAuthAlert(message, type = 'error') {
+    if (!this.authAlertBanner || !this.authAlertText) return;
+    this.authAlertBanner.className = 'auth-alert-banner';
+    if (type === 'error') {
+      this.authAlertBanner.classList.add('error');
+    } else if (type === 'warning') {
+      this.authAlertBanner.classList.add('warning');
+    } else if (type === 'success') {
+      this.authAlertBanner.classList.add('success');
+    }
+    this.authAlertText.textContent = message;
+    this.authAlertBanner.classList.remove('hidden');
+  }
+
+  handleAuthSubmit(e) {
+    if (e) e.preventDefault();
+    const identifier = (this.authIdentifierInput?.value || '').trim().toLowerCase();
+    const password = (this.authPasswordInput?.value || '').trim();
+
+    if (!identifier || !password) {
+      this.showAuthAlert('Please enter both your identifier and password to sign in.', 'warning');
+      return;
+    }
+
+    let matchedRole = null;
+    let matchedUser = null;
+
+    // Check selected role first
+    const activeUser = this.authUsers[this.activeAuthModalRole];
+    if (activeUser && 
+        activeUser.allowedIdentifiers.some(id => id.toLowerCase() === identifier) &&
+        activeUser.allowedPasswords.includes(password)) {
+      matchedRole = this.activeAuthModalRole;
+      matchedUser = activeUser;
+    } else {
+      // Smart fallback: check if user entered credentials for ANY valid institutional role
+      for (const [rKey, uObj] of Object.entries(this.authUsers)) {
+        if (uObj.allowedIdentifiers.some(id => id.toLowerCase() === identifier) &&
+            uObj.allowedPasswords.includes(password)) {
+          matchedRole = rKey;
+          matchedUser = uObj;
+          break;
+        }
+      }
+    }
+
+    if (matchedUser && matchedRole) {
+      this.currentAuthUser = matchedUser;
+      this.currentRole = matchedRole;
+
+      const remember = this.authRememberMeCheck ? this.authRememberMeCheck.checked : true;
+      if (remember) {
+        this.saveAuthSession(matchedUser);
+      } else {
+        this.saveAuthSession(null);
+      }
+
+      this.logAudit(
+        matchedUser.name, 
+        'AUTHENTICATION_LOGIN', 
+        `Successful handshake. Logged in as ${matchedRole.toUpperCase()} (${matchedUser.title || matchedUser.name})`
+      );
+
+      this.renderAuthWidget();
+      this.authModal?.close();
+      this.navigateToRole(matchedRole);
+      this.showToast(`Welcome back, ${matchedUser.name}! Signed into ${matchedRole.toUpperCase()} Portal.`);
+    } else {
+      this.showAuthAlert(
+        `Invalid credentials for ${this.activeAuthModalRole.toUpperCase()} role. Use Quick-Fill demo chips above or verify your password.`, 
+        'error'
+      );
+    }
+  }
+
+  handleSignOut() {
+    const prevName = this.currentAuthUser?.name || 'Authorized User';
+    this.logAudit(prevName, 'AUTHENTICATION_LOGOUT', 'Signed out from session');
+    this.currentAuthUser = null;
+    this.saveAuthSession(null);
+    this.renderAuthWidget();
+    this.showToast('You have signed out successfully.');
+    this.openAuthModal('admin', 'Session signed out. Please sign in to access institutional portals.');
+  }
+
+  navigateToRole(role) {
+    this.currentRole = role;
+    if (role === 'admin') {
+      const tab = document.getElementById('tabAdminBtn');
+      if (tab) tab.click();
+    } else if (role === 'teacher') {
+      const tab = document.getElementById('tabTeacherBtn');
+      if (tab) tab.click();
+    } else if (role === 'parent') {
+      const tab = document.getElementById('tabParentBtn');
+      if (tab) tab.click();
+    } else {
+      const tab = document.getElementById('tabReportBtn');
+      if (tab) tab.click();
+    }
+  }
+
+  handleRoleChange() {
+    this.navigateToRole(this.currentRole);
   }
 
   getSelectedStudent() {
@@ -9448,6 +9840,7 @@ class EduMetricsApp {
 
   // --- Master Render ---
   render() {
+    this.renderAuthWidget();
     this.updateInstitutionHeader();
     this.renderStudentList();
     this.renderReportCard();
