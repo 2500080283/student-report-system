@@ -73,17 +73,21 @@
 
         <!-- Role / View Switcher -->
         <div class="role-switcher-group" role="group" aria-label="Portal Role Selector">
-          <button class="role-btn active" data-role="teacher" id="roleTeacherBtn" title="Administrative & Grading Mode">
+          <button class="role-btn" data-role="admin" id="roleAdminBtn" title="Institutional Administration & Governance">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span>Admin</span>
+          </button>
+          <button class="role-btn active" data-role="teacher" id="roleTeacherBtn" title="Teacher Gradebook & Classroom Management">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-            <span>Teacher/Admin</span>
+            <span>Teacher</span>
           </button>
-          <button class="role-btn" data-role="student" id="roleStudentBtn" title="Student Personal Dashboard">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            <span>Student</span>
-          </button>
-          <button class="role-btn" data-role="parent" id="roleParentBtn" title="Parent/Guardian Portal">
+          <button class="role-btn" data-role="parent" id="roleParentBtn" title="Parent/Guardian Portal & Ward Oversight">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
             <span>Parent</span>
+          </button>
+          <button class="role-btn" data-role="student" id="roleStudentBtn" title="Student Personal Dashboard & Records">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span>Student</span>
           </button>
         </div>
 
@@ -215,17 +219,21 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
             <span>Comprehensive Report Card</span>
           </button>
-          <button class="tab-btn" role="tab" id="tabInputBtn" data-target="inputView" aria-selected="false" aria-controls="inputView">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-            <span>Teacher Gradebook & Input</span>
+          <button class="tab-btn" role="tab" id="tabAdminBtn" data-target="adminView" aria-selected="false" aria-controls="adminView">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span>Admin Module</span>
+          </button>
+          <button class="tab-btn" role="tab" id="tabTeacherBtn" data-target="teacherView" aria-selected="false" aria-controls="teacherView">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            <span>Teacher Module</span>
+          </button>
+          <button class="tab-btn" role="tab" id="tabParentBtn" data-target="parentView" aria-selected="false" aria-controls="parentView">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Parent Module</span>
           </button>
           <button class="tab-btn" role="tab" id="tabAnalyticsBtn" data-target="analyticsView" aria-selected="false" aria-controls="analyticsView">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
             <span>Performance Trends & Analytics</span>
-          </button>
-          <button class="tab-btn" role="tab" id="tabPortalBtn" data-target="portalView" aria-selected="false" aria-controls="portalView">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            <span>Student & Parent Insights</span>
           </button>
         </nav>
 
@@ -407,115 +415,599 @@
           </div>
         </section>
 
-        <!-- VIEW 2: TEACHER GRADE & REMARKS INPUT SUITE -->
-        <section id="inputView" class="view-panel" role="tabpanel" aria-labelledby="tabInputBtn">
-          <div class="panel-card">
-            <div class="panel-header-actions">
-              <div>
-                <h3>Teacher Gradebook & Live Input Suite</h3>
-                <p class="text-muted">Enter assessment scores (30% coursework, 30% midterm, 40% exam), manage subjects, attendance, and remarks.</p>
-              </div>
-              <div class="input-actions-group">
-                <button id="addSubjectBtn" class="btn btn-outline" title="Add Subject to Current Student">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                  + Add Subject
-                </button>
-                <button id="saveGradesBtn" class="btn btn-success">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
-                  Save & Update Report
-                </button>
-                <button id="resetGradesBtn" class="btn btn-outline">Reset Changes</button>
-              </div>
+        <!-- ==================================================================
+             VIEW 2: ADMIN MODULE (INSTITUTIONAL GOVERNANCE & OPERATIONS)
+             ================================================================== -->
+        <section id="adminView" class="view-panel" role="tabpanel" aria-labelledby="tabAdminBtn">
+          <!-- Admin Hero Banner -->
+          <div class="module-hero-banner admin-hero">
+            <div class="module-hero-copy">
+              <div class="scale-indicator-tag mb-1">Institutional Administration & Operations Suite</div>
+              <h2>Executive Governance Control Center</h2>
+              <p>Institutional oversight, certified faculty directory, class cohorts, university admissions registry, and audit logs.</p>
             </div>
-
-            <!-- Selected Student Sub-header -->
-            <div class="editor-student-banner">
-              <div class="banner-info">
-                Editing records for: <strong id="editorStudentName">Sophia Chen</strong> (<span id="editorStudentID">STU-10492</span>) &bull; <span id="editorStudentClass">Grade 10-A</span>
-              </div>
-              <div class="banner-term">
-                <label for="editorTermSelector" class="sr-only">Assessment Term</label>
-                Assessment Term: 
-                <select id="editorTermSelector" class="custom-select select-inline" title="Select Assessment Term for Grade Entry" aria-label="Assessment Term">
-                  <option value="term2" selected>Term 2 (Spring 2026)</option>
-                  <option value="midterm">Midterm Milestone (Winter 2026)</option>
-                  <option value="term1">Term 1 (Fall 2025)</option>
-                </select>
-              </div>
+            <div class="module-hero-actions">
+              <button type="button" id="adminNewStudentBtn" class="btn btn-primary btn-sm" title="Enroll New Student into Academy">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                + Enroll Student
+              </button>
+              <button type="button" id="adminNewFacultyBtn" class="btn btn-outline btn-sm" title="Register New Faculty Member">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+                + Add Faculty
+              </button>
+              <button type="button" id="adminExportBackupBtn" class="btn btn-outline btn-sm" title="Download Complete JSON Backup">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Backup Data
+              </button>
+              <button type="button" id="adminSchoolSettingsBtn" class="btn btn-outline btn-sm" title="Configure Institution Profile">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                Institution Settings
+              </button>
             </div>
+          </div>
 
-            <!-- Interactive Grade Entry Form Table -->
-            <div class="table-responsive">
-              <table class="editor-table">
-                <thead>
-                  <tr>
-                    <th>Subject & Dept</th>
-                    <th>Teacher</th>
-                    <th class="text-center">Coursework (30%)</th>
-                    <th class="text-center">Midterm (30%)</th>
-                    <th class="text-center">Final Exam (40%)</th>
-                    <th class="text-center">Weighted %</th>
-                    <th class="text-center">Evaluation</th>
-                    <th>Teacher Observation / Remark</th>
-                    <th class="text-center">Action</th>
-                  </tr>
-                </thead>
-                <tbody id="editorGradesTableBody">
-                  <!-- Inputs dynamically generated -->
-                </tbody>
-              </table>
+          <!-- Executive KPI Grid -->
+          <div class="module-kpi-grid">
+            <div class="module-kpi-card">
+              <span class="module-kpi-label">Total Enrollment</span>
+              <span class="module-kpi-val text-primary" id="adminTotalStudents">10</span>
+              <span class="module-kpi-sub">Active Students across 3 Cohorts</span>
             </div>
+            <div class="module-kpi-card">
+              <span class="module-kpi-label">Certified Faculty</span>
+              <span class="module-kpi-val text-success" id="adminTotalFaculty">8</span>
+              <span class="module-kpi-sub">Advisors & Department Heads</span>
+            </div>
+            <div class="module-kpi-card">
+              <span class="module-kpi-label">Campus Mean GPA</span>
+              <span class="module-kpi-val text-accent" id="adminCampusGpa">3.86</span>
+              <span class="module-kpi-sub">Standard 4.0 Scale Evaluation</span>
+            </div>
+            <div class="module-kpi-card">
+              <span class="module-kpi-label">Average Attendance</span>
+              <span class="module-kpi-val text-info" id="adminCampusAttendance">96.4%</span>
+              <span class="module-kpi-sub">Campus Punctuality & Attendance</span>
+            </div>
+            <div class="module-kpi-card">
+              <span class="module-kpi-label">University Mapped</span>
+              <span class="module-kpi-val text-warning" id="adminUnivMapped">100%</span>
+              <span class="module-kpi-sub">IITs / IISc / AIIMS Aspiration</span>
+            </div>
+          </div>
 
-            <!-- Attendance Input & Counselor Remarks -->
-            <div class="editor-additional-grid">
-              <div class="editor-box">
-                <h4>Log Attendance Record</h4>
-                <div class="form-row-grid">
-                  <div class="form-group">
-                    <label for="inputDaysPresent">Days Present:</label>
-                    <input type="number" id="inputDaysPresent" min="0" max="180" class="form-control" value="88">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputDaysExcused">Excused Absences:</label>
-                    <input type="number" id="inputDaysExcused" min="0" max="50" class="form-control" value="2">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputDaysUnexcused">Unexcused Absences:</label>
-                    <input type="number" id="inputDaysUnexcused" min="0" max="50" class="form-control" value="0">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputDaysTardy">Tardy / Late arrivals:</label>
-                    <input type="number" id="inputDaysTardy" min="0" max="50" class="form-control" value="1">
-                  </div>
-                </div>
-                <div class="form-group mt-2">
-                  <label for="inputAttNote">Attendance & Punctuality Notes:</label>
-                  <input type="text" id="inputAttNote" class="form-control" value="Student displays exemplary commitment to attendance and prompt arrivals.">
-                </div>
-              </div>
+          <!-- Admin Sub-Navigation -->
+          <nav class="module-subnav" aria-label="Admin Sub-Navigation">
+            <button type="button" class="subnav-btn active" data-pane="adminPaneFaculty" id="adminSubnavFacultyBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              Faculty & Staff Directory
+            </button>
+            <button type="button" class="subnav-btn" data-pane="adminPaneClasses" id="adminSubnavClassesBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+              Class Sections & Cohorts
+            </button>
+            <button type="button" class="subnav-btn" data-pane="adminPaneUniv" id="adminSubnavUnivBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              Indian Universities Pipeline
+            </button>
+            <button type="button" class="subnav-btn" data-pane="adminPaneAudit" id="adminSubnavAuditBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              Master Settings & Audit Trail
+            </button>
+          </nav>
 
-              <div class="editor-box">
-                <h4>General Counselor / Dean Appraisal</h4>
-                <div class="form-group">
-                  <label for="inputCounselorRemarks">Overall Term Feedback:</label>
-                  <textarea id="inputCounselorRemarks" rows="4" class="form-control" placeholder="Enter comprehensive semester remarks..."></textarea>
+          <!-- SUB-PANE 1: Faculty Directory -->
+          <div class="subnav-pane active" id="adminPaneFaculty">
+            <div class="panel-card">
+              <div class="panel-header-actions">
+                <div>
+                  <h3>Institutional Faculty & Academic Staff Roster</h3>
+                  <p class="text-muted">Manage instructors, advisors, departmental responsibilities, and contact information.</p>
                 </div>
-                <div class="form-group">
-                  <label for="inputHonorBadge">Honor Designation:</label>
-                  <select id="inputHonorBadge" class="custom-select">
-                    <option value="Honor Roll with Distinction">Honor Roll with Distinction</option>
-                    <option value="Principal's Honor Roll">Principal's Honor Roll</option>
-                    <option value="Academic Merit Award">Academic Merit Award</option>
-                    <option value="Good Academic Standing">Good Academic Standing</option>
-                    <option value="Academic Support Recommended">Academic Support Recommended</option>
+                <div class="input-actions-group">
+                  <input type="text" id="adminFacultySearchInput" class="form-control select-sm" placeholder="Search faculty by name, subject, or class...">
+                  <label for="adminFacultyDeptFilter" class="sr-only">Filter by Department</label>
+                  <select id="adminFacultyDeptFilter" class="custom-select select-sm" title="Filter by Department" aria-label="Filter by Department">
+                    <option value="all">All Departments</option>
+                    <option value="Science">Science</option>
+                    <option value="STEM & CS">STEM & Computer Science</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Humanities">Humanities & Social Sciences</option>
+                    <option value="Fine Arts">Fine Arts</option>
+                    <option value="Counseling">Counseling & Admissions</option>
                   </select>
                 </div>
+              </div>
+              <div class="table-responsive mt-2">
+                <table class="report-table" id="adminFacultyTable">
+                  <thead>
+                    <tr>
+                      <th class="col-w-25">Faculty Member</th>
+                      <th class="col-w-15">Department</th>
+                      <th class="col-w-25">Primary Disciplines</th>
+                      <th class="col-w-15">Assigned Cohorts</th>
+                      <th class="col-w-10 text-center">Status</th>
+                      <th class="col-w-10 text-center">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminFacultyTableBody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-PANE 2: Class Sections & Cohorts -->
+          <div class="subnav-pane" id="adminPaneClasses">
+            <div class="panel-card">
+              <div class="panel-header-actions">
+                <div>
+                  <h3>Academic Classes & Cohort Governance</h3>
+                  <p class="text-muted">High-level enrollment distribution, class advisors, GPA averages, and cohort attendance rates.</p>
+                </div>
+              </div>
+              <div class="cohort-card-grid mt-2" id="adminCohortGrid">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-PANE 3: Indian Universities Pipeline -->
+          <div class="subnav-pane" id="adminPaneUniv">
+            <div class="panel-card">
+              <div class="panel-header-actions">
+                <div>
+                  <h3>Higher Education Aspirations & Indian Universities Admissions</h3>
+                  <p class="text-muted">Track cohort aspirations mapped to 503+ Higher Education Institutions across all 36 States & UTs.</p>
+                </div>
+                <button type="button" id="adminOpenUnivDirectoryBtn" class="btn btn-outline btn-sm">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                  Explore All 503 Universities
+                </button>
+              </div>
+              <div class="table-responsive mt-2">
+                <table class="report-table" id="adminUnivPipelineTable">
+                  <thead>
+                    <tr>
+                      <th class="col-w-25">Student Candidate</th>
+                      <th class="col-w-12">Class</th>
+                      <th class="col-w-25">Target Indian University</th>
+                      <th class="col-w-15">Discipline Category</th>
+                      <th class="col-w-12 text-center">Current GPA</th>
+                      <th class="col-w-11 text-center">Admissions Readiness</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminUnivPipelineTableBody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-PANE 4: Master Settings & Audit Log -->
+          <div class="subnav-pane" id="adminPaneAudit">
+            <div class="panel-card">
+              <div class="panel-header-actions">
+                <div>
+                  <h3>System Audit Trail & Master Operations Log</h3>
+                  <p class="text-muted">Immutable tracking of grade updates, enrollments, sign-offs, and configuration revisions.</p>
+                </div>
+                <div class="input-actions-group">
+                  <button type="button" id="adminExportAuditCsvBtn" class="btn btn-outline btn-sm">Export Audit Log (CSV)</button>
+                  <button type="button" id="adminClearAuditBtn" class="btn btn-outline btn-sm">Clear Audit Logs</button>
+                </div>
+              </div>
+              <div class="table-responsive mt-2">
+                <table class="report-table" id="adminAuditTable">
+                  <thead>
+                    <tr>
+                      <th class="col-w-15">Timestamp</th>
+                      <th class="col-w-15">User / Role</th>
+                      <th class="col-w-25">Action Executed</th>
+                      <th>Operational Details</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminAuditTableBody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- VIEW 3: PERFORMANCE TRENDS & ANALYTICS -->
+        <!-- ==================================================================
+             VIEW 3: TEACHER MODULE (CLASSROOM GRADEBOOK, ATTENDANCE & REMARKS)
+             ================================================================== -->
+        <section id="teacherView" class="view-panel" role="tabpanel" aria-labelledby="tabTeacherBtn">
+          <!-- Teacher Hero Banner -->
+          <div class="module-hero-banner teacher-hero">
+            <div class="module-hero-copy">
+              <div class="scale-indicator-tag mb-1">Teacher Classroom Management Suite</div>
+              <h2>Instructor Gradebook & Classroom Operations</h2>
+              <p>Live student assessments, quick mark entry, daily attendance ledger, and qualitative observations.</p>
+            </div>
+            <div class="module-hero-actions">
+              <button type="button" id="teacherAddCourseBtn" class="btn btn-outline btn-sm" title="Add Subject Course to Active Student">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                + Add Subject
+              </button>
+              <button type="button" id="teacherSaveAllGradesBtn" class="btn btn-success btn-sm" title="Save and Publish All Scores">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                Save & Publish Marks
+              </button>
+            </div>
+          </div>
+
+          <!-- Teacher Context Ribbon -->
+          <div class="editor-student-banner mb-2">
+            <div class="banner-info">
+              <label for="teacherProfileSelect" class="sr-only">Active Instructor Profile</label>
+              Instructor: 
+              <select id="teacherProfileSelect" class="custom-select select-inline" title="Select Instructor Profile" aria-label="Select Instructor Profile">
+                <!-- Populated dynamically -->
+              </select>
+              &bull; Cohort:
+              <label for="teacherCohortSelect" class="sr-only">Select Class Cohort</label>
+              <select id="teacherCohortSelect" class="custom-select select-inline" title="Select Class Cohort" aria-label="Select Class Cohort">
+                <option value="Grade 10-A">Grade 10-A (STEM & Math)</option>
+                <option value="Grade 10-B">Grade 10-B (Arts & Humanities)</option>
+                <option value="Grade 11-A">Grade 11-A (Advanced Placement)</option>
+              </select>
+            </div>
+            <div class="banner-term">
+              <label for="teacherTermSelector" class="sr-only">Assessment Term</label>
+              Term: 
+              <select id="teacherTermSelector" class="custom-select select-inline" title="Select Assessment Term for Gradebook" aria-label="Assessment Term">
+                <option value="term2" selected>Term 2 (Spring 2026)</option>
+                <option value="midterm">Midterm Milestone (Winter 2026)</option>
+                <option value="term1">Term 1 (Fall 2025)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Teacher Sub-Navigation -->
+          <nav class="module-subnav" aria-label="Teacher Sub-Navigation">
+            <button type="button" class="subnav-btn active" data-pane="teacherPaneGradebook" id="teacherSubnavGradebookBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+              Student Gradebook Matrix
+            </button>
+            <button type="button" class="subnav-btn" data-pane="teacherPaneAttendance" id="teacherSubnavAttendanceBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              Daily Attendance Ledger
+            </button>
+            <button type="button" class="subnav-btn" data-pane="teacherPaneRemarks" id="teacherSubnavRemarksBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              Faculty Observations & Remarks
+            </button>
+            <button type="button" class="subnav-btn" data-pane="teacherPaneMetrics" id="teacherSubnavMetricsBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              Classroom Analytics
+            </button>
+          </nav>
+
+          <!-- SUB-PANE 1: Gradebook Matrix -->
+          <div class="subnav-pane active" id="teacherPaneGradebook">
+            <div class="panel-card">
+              <div class="panel-header-actions">
+                <div>
+                  <h3>Interactive Course Assessment Matrix</h3>
+                  <p class="text-muted">Editing subjects and evaluation for: <strong id="teacherActiveStudentName">Sophia Chen</strong> (<span id="teacherActiveStudentID">STU-10492</span>)</p>
+                </div>
+                <div class="input-actions-group">
+                  <button type="button" id="teacherAutofillClassAvgBtn" class="btn btn-outline btn-xs" title="Auto-fill Exam Class Averages">Fill Class Averages</button>
+                  <button type="button" id="teacherResetGradesBtn" class="btn btn-outline btn-xs">Reset Changes</button>
+                </div>
+              </div>
+              <div class="table-responsive mt-2">
+                <table class="editor-table">
+                  <thead>
+                    <tr>
+                      <th>Subject & Dept</th>
+                      <th>Instructor</th>
+                      <th class="text-center">Coursework (30%)</th>
+                      <th class="text-center">Midterm (30%)</th>
+                      <th class="text-center">Final Exam (40%)</th>
+                      <th class="text-center">Weighted %</th>
+                      <th class="text-center">Evaluation</th>
+                      <th>Teacher Remark</th>
+                      <th class="text-center">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="teacherGradesTableBody">
+                    <!-- Inputs dynamically generated -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-PANE 2: Daily Attendance Ledger -->
+          <div class="subnav-pane" id="teacherPaneAttendance">
+            <div class="panel-card">
+              <div class="panel-header-actions">
+                <div>
+                  <h3>Classroom Attendance Ledger & Roll Call</h3>
+                  <p class="text-muted">Take daily attendance with single-click toggles. Status updates sync to transcript records.</p>
+                </div>
+                <div class="input-actions-group">
+                  <label for="teacherAttendanceDateInput" class="sr-only">Attendance Date</label>
+                  <input type="date" id="teacherAttendanceDateInput" class="form-control select-sm" title="Attendance Date" aria-label="Attendance Date">
+                  <button type="button" id="teacherMarkAllPresentBtn" class="btn btn-outline btn-sm">Mark All Present</button>
+                </div>
+              </div>
+              <div class="table-responsive mt-2">
+                <table class="report-table" id="teacherAttendanceTable">
+                  <thead>
+                    <tr>
+                      <th class="col-w-25">Student Name</th>
+                      <th class="col-w-15">Student ID</th>
+                      <th class="col-w-15">Class</th>
+                      <th class="col-w-25">Attendance Status</th>
+                      <th class="col-w-20 text-center">Cumulative Rate</th>
+                    </tr>
+                  </thead>
+                  <tbody id="teacherAttendanceTableBody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-PANE 3: Observations & Remarks -->
+          <div class="subnav-pane" id="teacherPaneRemarks">
+            <div class="panel-card">
+              <div class="panel-header-actions">
+                <div>
+                  <h3>Qualitative Faculty Remarks & Academic Honors</h3>
+                  <p class="text-muted">Draft personalized observations, counselor notes, and nominate student academic honors.</p>
+                </div>
+                <button type="button" id="teacherSaveRemarksOnlyBtn" class="btn btn-primary btn-sm">Save Observations</button>
+              </div>
+              <div class="editor-additional-grid mt-2">
+                <div class="editor-box">
+                  <h5>Student & Academic Honor Nomination</h5>
+                  <div class="form-group">
+                    <label for="teacherRemarksStudentSelect">Target Student</label>
+                    <select id="teacherRemarksStudentSelect" class="custom-select" title="Target Student" aria-label="Target Student">
+                      <!-- Populated dynamically -->
+                    </select>
+                  </div>
+                  <div class="form-group mt-2">
+                    <label for="teacherHonorBadgeSelect">Academic Honor Designation</label>
+                    <select id="teacherHonorBadgeSelect" class="custom-select" title="Academic Honor" aria-label="Academic Honor">
+                      <option value="Honor Roll with Distinction">Honor Roll with Distinction (3.9+ GPA)</option>
+                      <option value="Principal's Honor Roll">Principal's Honor Roll (3.75 - 3.89 GPA)</option>
+                      <option value="Academic Merit Award">Academic Merit Award (3.5 - 3.74 GPA)</option>
+                      <option value="Good Academic Standing">Good Academic Standing</option>
+                      <option value="Academic Support Recommended">Academic Support Recommended</option>
+                    </select>
+                  </div>
+                  <div class="mt-2">
+                    <span class="text-muted text-xs">Quick Remark Presets:</span>
+                    <div class="remark-presets-container">
+                      <button type="button" class="remark-preset-btn" data-text="Demonstrates exceptional analytical acumen, creative thinking, and exemplary academic discipline.">Exceptional Acumen</button>
+                      <button type="button" class="remark-preset-btn" data-text="Shows consistent progress in problem solving; recommended to maintain daily practice routines.">Steady Progress</button>
+                      <button type="button" class="remark-preset-btn" data-text="Active contributor in laboratory inquiries with commendable collaborative leadership.">Lab Leadership</button>
+                      <button type="button" class="remark-preset-btn" data-text="Supplementary peer tutoring recommended prior to term comprehensive evaluations.">Needs Tutoring</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="editor-box">
+                  <h5>Counselor & Homeroom Observations</h5>
+                  <div class="form-group">
+                    <label for="teacherCounselorRemarksInput">Formal Transcript Observation</label>
+                    <textarea id="teacherCounselorRemarksInput" rows="5" class="form-control" placeholder="Enter detailed counselor observations for official transcripts..."></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-PANE 4: Classroom Metrics -->
+          <div class="subnav-pane" id="teacherPaneMetrics">
+            <div class="panel-card">
+              <div class="panel-header-actions">
+                <div>
+                  <h3>Classroom Performance Summary</h3>
+                  <p class="text-muted">Aggregate GPA distribution, high/low spread, and honors recipients in active cohort.</p>
+                </div>
+              </div>
+              <div class="credit-stats-grid mt-2" id="teacherCohortStatsGrid">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW 4: PARENT MODULE (STUDENT MONITORING & GUARDIAN COMMUNICATIONS)
+             ================================================================== -->
+        <section id="parentView" class="view-panel" role="tabpanel" aria-labelledby="tabParentBtn">
+          <!-- Parent Hero Banner -->
+          <div class="module-hero-banner parent-hero">
+            <div class="module-hero-copy">
+              <div class="scale-indicator-tag mb-1">Parent &amp; Guardian Portal</div>
+              <h2>Academic Progress &amp; Ward Oversight</h2>
+              <p>Comprehensive monitoring of learning milestones, daily attendance diary, faculty consultations, and institutional circulars.</p>
+            </div>
+            <div class="module-hero-actions">
+              <button type="button" id="parentOpenLeaveModalBtn" class="btn btn-outline btn-sm" title="Submit Student Leave / Absence Note">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                + Submit Absence Note
+              </button>
+              <button type="button" id="parentBookConferenceBtn" class="btn btn-primary btn-sm" title="Request 1-on-1 Faculty Conference">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                Book Conference
+              </button>
+            </div>
+          </div>
+
+          <!-- Ward Selector Ribbon -->
+          <div class="editor-student-banner mb-2">
+            <div class="banner-info">
+              <label for="parentWardSelect" class="sr-only">Select Ward / Child</label>
+              Active Ward: 
+              <select id="parentWardSelect" class="custom-select select-inline" title="Select Ward / Child" aria-label="Select Ward / Child">
+                <!-- Populated dynamically -->
+              </select>
+              &bull; <span id="parentWardClassText">Grade 10-A</span> &bull; Advisor: <span id="parentWardAdvisorText">Dr. Marcus Sterling</span>
+            </div>
+            <div class="banner-term">
+              <span class="badge badge-success" id="parentSignOffBadge">Acknowledged Term 2</span>
+            </div>
+          </div>
+
+          <!-- Parent Sub-Navigation -->
+          <nav class="module-subnav" aria-label="Parent Sub-Navigation">
+            <button type="button" class="subnav-btn active" data-pane="parentPaneAcademic" id="parentSubnavAcademicBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+              Academic Progress &amp; Grades
+            </button>
+            <button type="button" class="subnav-btn" data-pane="parentPaneAttendance" id="parentSubnavAttendanceBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              Attendance &amp; Leave Notes
+            </button>
+            <button type="button" class="subnav-btn" data-pane="parentPaneConferences" id="parentSubnavConferencesBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              Teacher Conferences
+            </button>
+            <button type="button" class="subnav-btn" data-pane="parentPaneCirculars" id="parentSubnavCircularsBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+              Notices &amp; Circulars
+            </button>
+          </nav>
+
+          <!-- SUB-PANE 1: Academic Progress & Grades -->
+          <div class="subnav-pane active" id="parentPaneAcademic">
+            <div class="panel-card">
+              <div class="panel-header-actions">
+                <div>
+                  <h3 id="parentAcademicTitle">Subject Mastery &amp; Academic Trajectory</h3>
+                  <p class="text-muted">Live term marks, evaluation weights, and instructor qualitative feedback for your child.</p>
+                </div>
+                <button type="button" id="parentPrintReportBtn" class="btn btn-outline btn-sm">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                  Print Official Transcript
+                </button>
+              </div>
+              <div class="table-responsive mt-2">
+                <table class="report-table" id="parentGradesTable">
+                  <thead>
+                    <tr>
+                      <th class="col-w-25">Enrolled Course</th>
+                      <th class="col-w-10">Credits</th>
+                      <th class="col-w-15">Score / Grade</th>
+                      <th class="col-w-15">Class Benchmark</th>
+                      <th>Instructor Feedback &amp; Qualitative Remark</th>
+                    </tr>
+                  </thead>
+                  <tbody id="parentGradesTableBody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Digital Term Acknowledgment Box -->
+              <div class="editor-box mt-3" id="parentSignOffBox">
+                <h5>Digital Term Acknowledgment &amp; Parent Signature</h5>
+                <p class="text-muted text-xs">By clicking below, you confirm that you have reviewed your ward's academic marks, behavioral standing, and attendance tally for the current grading period.</p>
+                <div class="parent-ack-action-row mt-2">
+                  <div class="ack-detail">
+                    <span id="parentAckDetailedStatus">Sign-off pending for current term</span>
+                  </div>
+                  <button type="button" id="parentSignOffBtn" class="btn btn-success btn-sm">Confirm &amp; Electronically Sign</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-PANE 2: Attendance & Leave Notes -->
+          <div class="subnav-pane" id="parentPaneAttendance">
+            <div class="panel-card">
+              <div class="panel-header-actions">
+                <div>
+                  <h3>Attendance Diary &amp; Leave Request Log</h3>
+                  <p class="text-muted">Official attendance tracking, excused leaves, and submitted absence excuses.</p>
+                </div>
+                <button type="button" id="parentAddLeaveBtn" class="btn btn-primary btn-sm">+ Submit Absence Note</button>
+              </div>
+              <div class="module-kpi-grid mt-2">
+                <div class="module-kpi-card">
+                  <span class="module-kpi-label">Present Days</span>
+                  <span class="module-kpi-val text-success" id="parentAttPresent">88</span>
+                  <span class="module-kpi-sub">Total Full Days</span>
+                </div>
+                <div class="module-kpi-card">
+                  <span class="module-kpi-label">Excused Absences</span>
+                  <span class="module-kpi-val text-info" id="parentAttExcused">2</span>
+                  <span class="module-kpi-sub">Medical / Official</span>
+                </div>
+                <div class="module-kpi-card">
+                  <span class="module-kpi-label">Unexcused Absences</span>
+                  <span class="module-kpi-val text-danger" id="parentAttUnexcused">0</span>
+                  <span class="module-kpi-sub">Action Required</span>
+                </div>
+                <div class="module-kpi-card">
+                  <span class="module-kpi-label">Tardy / Late</span>
+                  <span class="module-kpi-val text-warning" id="parentAttTardy">1</span>
+                  <span class="module-kpi-sub">Punctuality Record</span>
+                </div>
+              </div>
+              <h4 class="mt-3">Recent Absence Notes &amp; Leave Applications</h4>
+              <div class="table-responsive mt-1">
+                <table class="report-table" id="parentLeaveTable">
+                  <thead>
+                    <tr>
+                      <th class="col-w-15">Date / Range</th>
+                      <th class="col-w-20">Category</th>
+                      <th>Reason &amp; Justification</th>
+                      <th class="col-w-15 text-center">Dean's Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="parentLeaveTableBody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-PANE 3: Teacher Conferences -->
+          <div class="subnav-pane" id="parentPaneConferences">
+            <div class="panel-card">
+              <div class="panel-header-actions">
+                <div>
+                  <h3>Parent-Faculty Conferences &amp; Consultations</h3>
+                  <p class="text-muted">Schedule and manage 1-on-1 consultations with class advisors, subject teachers, and college counselors.</p>
+                </div>
+                <button type="button" id="parentNewConferenceBtn" class="btn btn-primary btn-sm">+ Book Conference</button>
+              </div>
+              <div class="conference-list-wrapper mt-2" id="parentConferencesList">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-PANE 4: Institutional Notices & Circulars -->
+          <div class="subnav-pane" id="parentPaneCirculars">
+            <div class="panel-card">
+              <div class="panel-header-actions">
+                <div>
+                  <h3>Institutional Notices &amp; School Circulars</h3>
+                  <p class="text-muted">Official academy communications, examination schedules, campus events, and holiday notices.</p>
+                </div>
+              </div>
+              <div class="circulars-grid mt-2" id="parentCircularsGrid">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 5: PERFORMANCE TRENDS & ANALYTICS -->
         <section id="analyticsView" class="view-panel" role="tabpanel" aria-labelledby="tabAnalyticsBtn">
           <div class="analytics-dashboard">
             <div class="analytics-header">
@@ -614,127 +1106,236 @@
           </div>
         </section>
 
-        <!-- VIEW 4: STUDENT & PARENT INSIGHTS PORTAL -->
-        <section id="portalView" class="view-panel" role="tabpanel" aria-labelledby="tabPortalBtn">
-          <div class="portal-container">
-            <!-- Personalized Welcome Banner -->
-            <div class="portal-welcome-card">
-              <div class="welcome-copy">
-                <h2>Welcome to the Family Academic Portal, <span id="portalGreetingName">Chen Family</span>!</h2>
-                <p>Track academic milestones, curriculum objectives, attendance records, and submit digital signatures.</p>
-              </div>
-              <div class="welcome-action">
-                <div class="portal-status-pill">
-                  <span class="dot online"></span>
-                  <span id="portalActiveSessionUser">Active Guardian Session: <strong>Arthur Chen</strong></span>
-                </div>
-              </div>
+        <!-- ==================================================================
+             VIEW 4: PARENT MODULE (GUARDIAN PORTAL, LEAVE REQUESTS & SIGN-OFF)
+             ================================================================== -->
+        <section id="parentView" class="view-panel" role="tabpanel" aria-labelledby="tabParentBtn">
+          <!-- Parent Hero Banner -->
+          <div class="module-hero-banner parent-hero">
+            <div class="module-hero-copy">
+              <div class="scale-indicator-tag mb-1">Parent & Guardian Family Portal</div>
+              <h2>Welcome to the Guardian Academic Center</h2>
+              <p>Transparent oversight of academic grades, attendance, conferences, and formal sign-offs for your ward.</p>
             </div>
+            <div class="module-hero-actions">
+              <button type="button" id="parentPrintTranscriptBtn" class="btn btn-outline btn-sm" title="View & Print Official Ward Report Card">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                Print Report Card
+              </button>
+              <button type="button" id="parentScheduleMeetingBtn" class="btn btn-primary btn-sm" title="Book Faculty Conference">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                Book Conference
+              </button>
+              <button type="button" id="parentApplyLeaveBtn" class="btn btn-outline btn-sm" title="Submit Absence Leave Note">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line></svg>
+                Submit Leave Note
+              </button>
+            </div>
+          </div>
 
-            <!-- Graduation Progress & Credit Meter -->
-            <div class="portal-section-card">
-              <div class="portal-card-header-row">
+          <!-- Ward Selector & Guardian Identity Ribbon -->
+          <div class="editor-student-banner mb-2">
+            <div class="banner-info">
+              Guardian: <strong id="parentActiveGuardianDisplay">Arthur Chen</strong> &bull; Ward:
+              <label for="parentStudentWardSelect" class="sr-only">Select Student Ward</label>
+              <select id="parentStudentWardSelect" class="custom-select select-inline" title="Select Student Ward" aria-label="Select Student Ward">
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+            <div class="banner-term">
+              Homeroom Advisor: <strong id="parentAdvisorDisplay">Dr. Marcus Sterling</strong>
+            </div>
+          </div>
+
+          <!-- Ward Academic KPI Snapshot -->
+          <div class="module-kpi-grid">
+            <div class="module-kpi-card">
+              <span class="module-kpi-label">Cumulative GPA</span>
+              <span class="module-kpi-val text-success" id="parentWardGpa">3.92</span>
+              <span class="module-kpi-sub" id="parentWardHonor">Honor Roll with Distinction</span>
+            </div>
+            <div class="module-kpi-card">
+              <span class="module-kpi-label">Term Average</span>
+              <span class="module-kpi-val text-primary" id="parentWardAvg">95.8%</span>
+              <span class="module-kpi-sub">Across 6 Core Subjects</span>
+            </div>
+            <div class="module-kpi-card">
+              <span class="module-kpi-label">Attendance Rate</span>
+              <span class="module-kpi-val text-info" id="parentWardAtt">98.0%</span>
+              <span class="module-kpi-sub" id="parentWardAttDays">88 / 90 Days Present</span>
+            </div>
+            <div class="module-kpi-card">
+              <span class="module-kpi-label">Target University</span>
+              <span class="module-kpi-val text-accent text-truncate" id="parentWardUniv">IIT Bombay</span>
+              <span class="module-kpi-sub">NIRF Rank #1 Engineering</span>
+            </div>
+          </div>
+
+          <!-- Parent Sub-Navigation -->
+          <nav class="module-subnav" aria-label="Parent Sub-Navigation">
+            <button type="button" class="subnav-btn active" data-pane="parentPaneReport" id="parentSubnavReportBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+              Ward Subject Report
+            </button>
+            <button type="button" class="subnav-btn" data-pane="parentPaneAttendance" id="parentSubnavAttendanceBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line></svg>
+              Attendance & Leave Diary
+            </button>
+            <button type="button" class="subnav-btn" data-pane="parentPaneConferences" id="parentSubnavConferencesBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              Conferences with Teachers
+            </button>
+            <button type="button" class="subnav-btn" data-pane="parentPaneNotices" id="parentSubnavNoticesBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+              School Circulars & Notices
+            </button>
+            <button type="button" class="subnav-btn" data-pane="parentPaneSignoff" id="parentSubnavSignoffBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>
+              Digital Sign-Off
+            </button>
+          </nav>
+
+          <!-- SUB-PANE 1: Ward Subject Report -->
+          <div class="subnav-pane active" id="parentPaneReport">
+            <div class="panel-card">
+              <div class="panel-header-actions">
                 <div>
-                  <h3>Academic Milestone & Diploma Progress</h3>
-                  <p class="text-muted">Tracking cumulative credits, graduation milestones, and honors requirements.</p>
+                  <h3>Official Subject Grades & Teacher Feedback</h3>
+                  <p class="text-muted">Detailed evaluation breakdown for current academic term.</p>
                 </div>
-                <div class="badge badge-primary" id="portalDiplomaPill">College Preparatory Track: 92% Complete</div>
               </div>
-              <div class="progress-bar-container mt-2">
-                <div class="progress-bar-fill" id="portalDiplomaFill"></div>
-              </div>
-              <div class="credit-stats-grid mt-2">
-                <div class="credit-stat">
-                  <span class="credit-val">22 / 24</span>
-                  <span class="credit-lbl">Credits Completed</span>
-                </div>
-                <div class="credit-stat">
-                  <span class="credit-val">6 / 6</span>
-                  <span class="credit-lbl">Active Core Subjects</span>
-                </div>
-                <div class="credit-stat">
-                  <span class="credit-val text-success">3.92</span>
-                  <span class="credit-lbl">Cumulative GPA</span>
-                </div>
-                <div class="credit-stat">
-                  <span class="credit-val text-accent">0</span>
-                  <span class="credit-lbl">Remediation Flags</span>
-                </div>
+              <div class="table-responsive mt-2">
+                <table class="report-table" id="parentCoursesTable">
+                  <thead>
+                    <tr>
+                      <th class="col-w-25">Course & Dept</th>
+                      <th class="col-w-15">Teacher</th>
+                      <th class="col-w-12 text-center">Coursework</th>
+                      <th class="col-w-12 text-center">Midterm</th>
+                      <th class="col-w-12 text-center">Final Exam</th>
+                      <th class="col-w-12 text-center">Final Grade</th>
+                      <th>Faculty Observation</th>
+                    </tr>
+                  </thead>
+                  <tbody id="parentCoursesTableBody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
               </div>
             </div>
+          </div>
 
-            <!-- Student Badges & Achievements Gallery -->
-            <div class="portal-section-card">
-              <h3>Academic Honors & Extracurricular Milestones</h3>
-              <div class="achievements-gallery">
-                <div class="achievement-badge">
-                  <div class="badge-icon gold">🏆</div>
-                  <div class="badge-title">Dean's Honor List</div>
-                  <div class="badge-desc">Maintained 3.9+ GPA in Consecutive Semesters</div>
-                </div>
-                <div class="achievement-badge">
-                  <div class="badge-icon blue">🔬</div>
-                  <div class="badge-title">STEM Olympiad Finalist</div>
-                  <div class="badge-desc">State-level algorithmic computing award</div>
-                </div>
-                <div class="achievement-badge">
-                  <div class="badge-icon green">🎯</div>
-                  <div class="badge-title">Perfect Attendance Star</div>
-                  <div class="badge-desc">Exemplary attendance record throughout term</div>
-                </div>
-                <div class="achievement-badge">
-                  <div class="badge-icon purple">🤝</div>
-                  <div class="badge-title">Peer Tutoring Vanguard</div>
-                  <div class="badge-desc">25+ hours of community peer mentoring</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Parent Sign-Off & Feedback Note Area -->
-            <div class="portal-section-card">
-              <div class="portal-card-header-row">
+          <!-- SUB-PANE 2: Attendance & Leave Diary -->
+          <div class="subnav-pane" id="parentPaneAttendance">
+            <div class="panel-card">
+              <div class="panel-header-actions">
                 <div>
-                  <h3>Parent / Guardian Formal Sign-Off & Communication</h3>
-                  <p class="text-muted">Review the official academic report card and confirm digital acknowledgment.</p>
+                  <h3>Punctuality Record & Submitted Leave Notes</h3>
+                  <p class="text-muted">Review attendance history or lodge medical / family absence notifications.</p>
                 </div>
-                <button type="button" id="openConferenceModalBtn" class="btn btn-outline btn-sm">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                  Request Faculty Conference
-                </button>
+                <button type="button" id="parentOpenLeaveFormBtn" class="btn btn-outline btn-sm">+ Submit Absence Note</button>
               </div>
-              
-              <form id="parentAckForm" class="parent-ack-form">
+              <div class="attendance-breakdown mt-2">
+                <div class="attendance-bar-wrapper">
+                  <div class="attendance-bar-fill" id="parentAttendanceProgressFill"></div>
+                </div>
+                <div class="attendance-stats-row mt-2">
+                  <div class="att-item">
+                    <span class="att-num text-success" id="parentAttDaysPresent">88</span>
+                    <span class="att-label">Days Present</span>
+                  </div>
+                  <div class="att-item">
+                    <span class="att-num text-warning" id="parentAttDaysExcused">2</span>
+                    <span class="att-label">Excused Absences</span>
+                  </div>
+                  <div class="att-item">
+                    <span class="att-num text-danger" id="parentAttDaysUnexcused">0</span>
+                    <span class="att-label">Unexcused</span>
+                  </div>
+                  <div class="att-item">
+                    <span class="att-num text-info" id="parentAttDaysTardy">1</span>
+                    <span class="att-label">Tardy / Late</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-3">
+                <h4>Submitted Absence Leave Applications</h4>
+                <div id="parentLeaveRequestsList" class="mt-2">
+                  <!-- Populated dynamically -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-PANE 3: Conferences -->
+          <div class="subnav-pane" id="parentPaneConferences">
+            <div class="panel-card">
+              <div class="panel-header-actions">
+                <div>
+                  <h3>Parent-Teacher Faculty Conferences</h3>
+                  <p class="text-muted">Upcoming consultations and scheduled academic guidance sessions.</p>
+                </div>
+                <button type="button" id="parentRequestConfBtn" class="btn btn-primary btn-sm">+ Schedule New Conference</button>
+              </div>
+              <div id="parentConferencesList" class="mt-2">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-PANE 4: Circulars & Notices -->
+          <div class="subnav-pane" id="parentPaneNotices">
+            <div class="panel-card">
+              <div class="panel-header-actions">
+                <div>
+                  <h3>Official School Circulars & Academic Notices</h3>
+                  <p class="text-muted">Direct announcements from administration regarding exams, events, and university admissions.</p>
+                </div>
+              </div>
+              <div class="circulars-grid mt-2" id="parentCircularsGrid">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-PANE 5: Digital Sign-Off -->
+          <div class="subnav-pane" id="parentPaneSignoff">
+            <div class="panel-card">
+              <div class="panel-header-actions">
+                <div>
+                  <h3>Parent / Guardian Formal Sign-Off & Verification</h3>
+                  <p class="text-muted">Register your digital acknowledgment of the term academic report card.</p>
+                </div>
+              </div>
+              <form id="parentSignoffForm" class="parent-ack-form mt-2">
                 <div class="form-row-grid">
                   <div class="form-group">
-                    <label for="parentNameInput">Guardian Full Name *</label>
-                    <input type="text" id="parentNameInput" class="form-control" value="Arthur Chen" required>
+                    <label for="parentSignoffNameInput">Guardian Legal Name *</label>
+                    <input type="text" id="parentSignoffNameInput" class="form-control" required>
                   </div>
                   <div class="form-group">
-                    <label for="parentRelationship">Relationship to Student *</label>
-                    <select id="parentRelationship" class="custom-select">
+                    <label for="parentSignoffRelationSelect">Relationship to Ward *</label>
+                    <select id="parentSignoffRelationSelect" class="custom-select" title="Relationship to Ward" aria-label="Relationship to Ward">
                       <option value="Father">Father</option>
                       <option value="Mother">Mother</option>
                       <option value="Guardian">Legal Guardian</option>
                     </select>
                   </div>
                 </div>
-
                 <div class="form-group mt-2">
-                  <label for="parentCommentsInput">Guardian Remarks & Feedback to Faculty:</label>
-                  <textarea id="parentCommentsInput" rows="3" class="form-control" placeholder="Share any thoughts, questions, or notes for upcoming conferences...">We are extremely proud of Sophia's dedication in STEM and debate. Thank you to the faculty for your constant guidance.</textarea>
+                  <label for="parentSignoffCommentsInput">Guardian Feedback & Comments to Faculty:</label>
+                  <textarea id="parentSignoffCommentsInput" rows="3" class="form-control" placeholder="Share any thoughts, appreciations, or questions for teachers..."></textarea>
                 </div>
-
                 <div class="form-check-row mt-2">
-                  <input type="checkbox" id="parentCertifyCheck" checked required>
-                  <label for="parentCertifyCheck">I certify that I have reviewed the comprehensive academic report card, teacher remarks, and attendance record.</label>
+                  <input type="checkbox" id="parentSignoffCertifyCheck" checked required>
+                  <label for="parentSignoffCertifyCheck">I certify that I have thoroughly reviewed my ward's academic evaluations, subject scores, and attendance record.</label>
                 </div>
-
                 <div class="form-action-row mt-3">
-                  <button type="submit" id="submitParentAckBtn" class="btn btn-primary">
+                  <button type="submit" id="parentConfirmSignoffBtn" class="btn btn-primary">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                     Confirm Digital Acknowledgment
                   </button>
-                  <span id="parentAckConfirmationMsg" class="text-success hidden">&check; Digital Acknowledgment successfully registered!</span>
+                  <span id="parentSignoffSuccessMsg" class="text-success hidden">&check; Digital Acknowledgment successfully registered!</span>
                 </div>
               </form>
             </div>
@@ -1217,7 +1818,109 @@
       </div>
     </dialog>
 
-    <!-- MODAL 9: DELETE CONFIRMATION DIALOG -->
+    <!-- MODAL 9: REGISTER NEW FACULTY MEMBER (ADMIN MODULE) -->
+    <dialog id="newFacultyModal" class="app-dialog" closedby="any" aria-labelledby="newFacultyModalTitle">
+      <div class="dialog-content">
+        <header class="dialog-header">
+          <h3 id="newFacultyModalTitle">Register New Faculty Member</h3>
+          <button id="closeNewFacultyModalBtn" class="dialog-close-btn" aria-label="Close dialog">&times;</button>
+        </header>
+        <form id="newFacultyForm">
+          <div class="dialog-body">
+            <p class="text-muted">Add a certified instructor or counselor to the Institutional Faculty Directory.</p>
+            <div class="form-row-grid mt-2">
+              <div class="form-group">
+                <label for="newFacultyName">Full Name &amp; Title *</label>
+                <input type="text" id="newFacultyName" class="form-control" placeholder="e.g. Dr. Arthur Pendelton, Ph.D." required>
+              </div>
+              <div class="form-group">
+                <label for="newFacultyDept">Academic Department *</label>
+                <select id="newFacultyDept" class="custom-select" required>
+                  <option value="Science">Science &amp; Laboratory Inquiries</option>
+                  <option value="STEM &amp; CS">STEM &amp; Computer Science</option>
+                  <option value="Mathematics">Mathematics &amp; Quantitative Logic</option>
+                  <option value="Humanities">Humanities &amp; Social Sciences</option>
+                  <option value="Fine Arts">Fine Arts &amp; Design</option>
+                  <option value="Counseling">Academic Counseling &amp; Admissions</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row-grid mt-2">
+              <div class="form-group">
+                <label for="newFacultySubjects">Primary Disciplines / Courses *</label>
+                <input type="text" id="newFacultySubjects" class="form-control" placeholder="e.g. AP Physics C, Quantum Chemistry" required>
+              </div>
+              <div class="form-group">
+                <label for="newFacultyCohorts">Assigned Cohorts *</label>
+                <input type="text" id="newFacultyCohorts" class="form-control" placeholder="e.g. Grade 10-A, Grade 11-A" required>
+              </div>
+            </div>
+            <div class="form-row-grid mt-2">
+              <div class="form-group">
+                <label for="newFacultyEmail">Institutional Email Address</label>
+                <input type="email" id="newFacultyEmail" class="form-control" placeholder="e.g. a.pendelton@stjude.edu">
+              </div>
+              <div class="form-group">
+                <label for="newFacultyStatus">Status</label>
+                <select id="newFacultyStatus" class="custom-select">
+                  <option value="Active" selected>Active / Full-Time</option>
+                  <option value="On Leave">Sabbatical / On Leave</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <footer class="dialog-footer">
+            <button type="button" id="cancelNewFacultyBtn" class="btn btn-outline">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Faculty Member</button>
+          </footer>
+        </form>
+      </div>
+    </dialog>
+
+    <!-- MODAL 10: LEAVE REQUEST / ABSENCE NOTE (PARENT MODULE) -->
+    <dialog id="leaveRequestModal" class="app-dialog" closedby="any" aria-labelledby="leaveRequestModalTitle">
+      <div class="dialog-content">
+        <header class="dialog-header">
+          <h3 id="leaveRequestModalTitle">Submit Student Absence / Leave Note</h3>
+          <button id="closeLeaveRequestModalBtn" class="dialog-close-btn" aria-label="Close dialog">&times;</button>
+        </header>
+        <form id="leaveRequestForm">
+          <div class="dialog-body">
+            <p class="text-muted">Submit an official notification for your student's absence for institutional records and excuse verification.</p>
+            <div class="form-group mt-2">
+              <label for="leaveStudentName">Student Ward</label>
+              <input type="text" id="leaveStudentName" class="form-control" readonly>
+            </div>
+            <div class="form-row-grid mt-2">
+              <div class="form-group">
+                <label for="leaveDate">Date of Absence *</label>
+                <input type="date" id="leaveDate" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="leaveCategory">Absence Category *</label>
+                <select id="leaveCategory" class="custom-select" required>
+                  <option value="Medical Illness / Doctor Visit">Medical Illness / Doctor Visit</option>
+                  <option value="Family Emergency / Urgent Event">Family Emergency / Urgent Event</option>
+                  <option value="Official Academic Competition">Official Academic Competition / Olympiad</option>
+                  <option value="Religious Observance">Religious Observance</option>
+                  <option value="Approved University Visit">Approved University Campus Visit</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group mt-2">
+              <label for="leaveReason">Reason &amp; Context *</label>
+              <textarea id="leaveReason" rows="3" class="form-control" placeholder="Provide details regarding the reason for absence..." required></textarea>
+            </div>
+          </div>
+          <footer class="dialog-footer">
+            <button type="button" id="cancelLeaveRequestBtn" class="btn btn-outline">Cancel</button>
+            <button type="submit" class="btn btn-primary">Submit Absence Note</button>
+          </footer>
+        </form>
+      </div>
+    </dialog>
+
+    <!-- MODAL 11: DELETE CONFIRMATION DIALOG -->
     <dialog id="confirmDeleteModal" class="app-dialog" closedby="any" aria-labelledby="confirmDeleteTitle">
       <div class="dialog-content">
         <header class="dialog-header">

@@ -8044,6 +8044,49 @@ const INITIAL_STUDENTS = [
   }
 ];
 
+// Certified Institutional Faculty Directory
+const DEFAULT_FACULTY = [
+  { id: 'FAC-101', name: 'Dr. Marcus Sterling, Ph.D.', dept: 'Science', subjects: 'Honors Physics II, Quantum Mechanics', cohorts: 'Grade 10-A, Grade 11-A', email: 'm.sterling@stjude.edu', status: 'Active' },
+  { id: 'FAC-102', name: 'Dr. Evelyn Reed, Ph.D.', dept: 'Mathematics', subjects: 'AP Calculus BC, Linear Algebra', cohorts: 'Grade 10-A, Grade 10-B', email: 'e.reed@stjude.edu', status: 'Active' },
+  { id: 'FAC-103', name: 'Prof. David Lin, M.S.', dept: 'STEM & CS', subjects: 'Advanced Computer Science, Data Structures', cohorts: 'Grade 10-A, Grade 11-A', email: 'd.lin@stjude.edu', status: 'Active' },
+  { id: 'FAC-104', name: 'Ms. Clara Oswald, M.A.', dept: 'Humanities', subjects: 'World Literature & Rhetoric', cohorts: 'Grade 10-A, Grade 10-B', email: 'c.oswald@stjude.edu', status: 'Active' },
+  { id: 'FAC-105', name: 'Mr. Julian Vance, M.Ed.', dept: 'Humanities', subjects: 'AP World History: Modern, Economics', cohorts: 'Grade 10-B, Grade 11-A', email: 'j.vance@stjude.edu', status: 'Active' },
+  { id: 'FAC-106', name: 'Elena Rostova, MFA', dept: 'Fine Arts', subjects: 'Digital Media & Visual Design', cohorts: 'Grade 10-A, Grade 10-B, Grade 11-A', email: 'e.rostova@stjude.edu', status: 'Active' },
+  { id: 'FAC-107', name: 'Dr. Rajeshwar Sharma, Ph.D.', dept: 'Science', subjects: 'AP Chemistry, Molecular Biology', cohorts: 'Grade 10-B, Grade 11-A', email: 'r.sharma@stjude.edu', status: 'Active' },
+  { id: 'FAC-108', name: 'Dr. Priya Nair, Ed.D.', dept: 'Counseling', subjects: 'Academic Advising & University Admissions', cohorts: 'All Cohorts', email: 'p.nair@stjude.edu', status: 'Active' }
+];
+
+// Master System Audit Trail
+const DEFAULT_AUDIT_LOGS = [
+  { timestamp: '2026-03-24 10:15:32', user: 'Admin (System)', action: 'System Initialization', details: 'Initialized institutional database with 503 Indian Universities and 3 Class Cohorts.' },
+  { timestamp: '2026-03-24 11:42:19', user: 'Teacher (Dr. Evelyn Reed)', action: 'Gradebook Update', details: 'Published Midterm marks for Grade 10-A Mathematics.' },
+  { timestamp: '2026-03-24 14:05:08', user: 'Parent (Arthur Chen)', action: 'Term Sign-Off', details: "Digitally signed Sophia Chen's official Term 2 transcript." },
+  { timestamp: '2026-03-25 09:20:44', user: 'Admin (Dean Sterling)', action: 'Faculty Assignment', details: 'Assigned Prof. David Lin as lead instructor for Advanced Computer Science.' },
+  { timestamp: '2026-03-25 15:30:11', user: 'Teacher (Prof. David Lin)', action: 'Attendance Audit', details: 'Recorded daily attendance ledger for Grade 10-A STEM lab session.' }
+];
+
+// Student Absence & Leave Requests Log
+const DEFAULT_LEAVE_REQUESTS = [
+  { id: 'LR-201', studentId: 'STU-10492', studentName: 'Sophia Chen', date: '2026-03-20', category: 'Official Academic Competition', reason: 'Representing Academy at National Science Olympiad finals.', status: 'Approved' },
+  { id: 'LR-202', studentId: 'STU-10492', studentName: 'Sophia Chen', date: '2026-02-14', category: 'Medical Illness / Doctor Visit', reason: 'Dental appointment and orthodontic follow-up.', status: 'Approved' },
+  { id: 'LR-203', studentId: 'STU-10493', studentName: 'Marcus Aurelius Vance', date: '2026-03-12', category: 'Approved University Visit', reason: 'Attending IIT Bombay campus open house and lab tour.', status: 'Approved' },
+  { id: 'LR-204', studentId: 'STU-10494', studentName: 'Aaliyah Patel', date: '2026-04-02', category: 'Family Emergency / Urgent Event', reason: 'Attending family milestone gathering.', status: 'Pending Review' }
+];
+
+// Institutional Circulars & Notices
+const DEFAULT_CIRCULARS = [
+  { id: 'CIR-101', title: 'Schedule of Term 2 Comprehensive Examinations', category: 'Examination', date: 'March 25, 2026', excerpt: 'Final examination timetable, laboratory practical evaluations, and grading policies for Spring 2026.', priority: 'High' },
+  { id: 'CIR-102', title: 'National Higher Education & JEE/NEET Counseling Workshop', category: 'Admissions', date: 'March 22, 2026', excerpt: 'Informational session for Grade 10 & 11 parents regarding Indian University admissions and NIRF ranking insights.', priority: 'Normal' },
+  { id: 'CIR-103', title: 'Annual STEM & Innovation Science Expo 2026', category: 'Academic Event', date: 'March 18, 2026', excerpt: 'Student project submissions, robotics displays, and jury reviews scheduled at Main Auditorium.', priority: 'Normal' },
+  { id: 'CIR-104', title: 'Spring Holiday Recess & Campus Library Timings', category: 'Administrative', date: 'March 15, 2026', excerpt: 'Campus operations, administrative office hours, and digital library portal access during recess.', priority: 'Low' }
+];
+
+// Parent-Faculty Consultations & Conferences
+const DEFAULT_CONFERENCES = [
+  { id: 'CONF-301', studentName: 'Sophia Chen', teacher: 'Dr. Marcus Sterling (Academic Dean)', format: 'Virtual Video Call (Google Meet)', date: '2026-03-30', time: '02:30 PM - 03:00 PM', topic: 'Review AP Physics laboratory milestones and university preparation.', status: 'Confirmed' },
+  { id: 'CONF-302', studentName: 'Sophia Chen', teacher: 'Dr. Evelyn Reed (Mathematics)', format: 'In-Person Campus Meeting', date: '2026-04-05', time: '11:30 AM - 12:00 PM', topic: 'Discuss advanced calculus competition preparation.', status: 'Scheduled' }
+];
+
 class EduMetricsApp {
   constructor() {
     window.app = this;
@@ -8052,10 +8095,16 @@ class EduMetricsApp {
     this.students = this.loadStudents();
     this.scaleConfig = this.loadScaleConfig();
     this.institution = this.loadInstitution();
+    this.faculty = this.loadFaculty();
+    this.auditLogs = this.loadAuditLogs();
+    this.leaveRequests = this.loadLeaveRequests();
+    this.circulars = this.loadCirculars();
+    this.conferences = this.loadConferences();
+    this.attendanceRecords = {};
     
     this.selectedStudentId = this.students[0]?.id || 'STU-10492';
     this.currentGradingFormat = localStorage.getItem('edumetrics_format') || 'letter';
-    this.currentRole = 'teacher'; // teacher | student | parent
+    this.currentRole = 'teacher'; // teacher | admin | parent | student
     this.activeTab = 'reportView';
     this.activeReportTerm = 'term2'; // term2 | midterm | term1 | cumulative
     this.activeEditorTerm = 'term2';
@@ -8141,6 +8190,87 @@ class EduMetricsApp {
       localStorage.setItem('edumetrics_institution', JSON.stringify(this.institution));
     } catch (e) {
       console.error('Failed to save institution config', e);
+    }
+  }
+
+  loadFaculty() {
+    try {
+      const stored = localStorage.getItem('edumetrics_faculty');
+      return stored ? JSON.parse(stored) : JSON.parse(JSON.stringify(DEFAULT_FACULTY));
+    } catch (e) {
+      return JSON.parse(JSON.stringify(DEFAULT_FACULTY));
+    }
+  }
+
+  saveFaculty() {
+    try {
+      localStorage.setItem('edumetrics_faculty', JSON.stringify(this.faculty));
+    } catch (e) {
+      console.error('Failed to save faculty to localStorage', e);
+    }
+  }
+
+  loadAuditLogs() {
+    try {
+      const stored = localStorage.getItem('edumetrics_audit_logs');
+      return stored ? JSON.parse(stored) : JSON.parse(JSON.stringify(DEFAULT_AUDIT_LOGS));
+    } catch (e) {
+      return JSON.parse(JSON.stringify(DEFAULT_AUDIT_LOGS));
+    }
+  }
+
+  saveAuditLogs() {
+    try {
+      localStorage.setItem('edumetrics_audit_logs', JSON.stringify(this.auditLogs));
+    } catch (e) {
+      console.error('Failed to save audit logs to localStorage', e);
+    }
+  }
+
+  logAudit(user, action, details) {
+    const now = new Date();
+    const timestamp = now.toISOString().replace('T', ' ').substring(0, 19);
+    this.auditLogs.unshift({ timestamp, user, action, details });
+    if (this.auditLogs.length > 80) this.auditLogs.pop();
+    this.saveAuditLogs();
+    this.renderAdminAuditTable();
+  }
+
+  loadLeaveRequests() {
+    try {
+      const stored = localStorage.getItem('edumetrics_leave_requests');
+      return stored ? JSON.parse(stored) : JSON.parse(JSON.stringify(DEFAULT_LEAVE_REQUESTS));
+    } catch (e) {
+      return JSON.parse(JSON.stringify(DEFAULT_LEAVE_REQUESTS));
+    }
+  }
+
+  saveLeaveRequests() {
+    try {
+      localStorage.setItem('edumetrics_leave_requests', JSON.stringify(this.leaveRequests));
+    } catch (e) {
+      console.error('Failed to save leave requests to localStorage', e);
+    }
+  }
+
+  loadCirculars() {
+    return JSON.parse(JSON.stringify(DEFAULT_CIRCULARS));
+  }
+
+  loadConferences() {
+    try {
+      const stored = localStorage.getItem('edumetrics_conferences');
+      return stored ? JSON.parse(stored) : JSON.parse(JSON.stringify(DEFAULT_CONFERENCES));
+    } catch (e) {
+      return JSON.parse(JSON.stringify(DEFAULT_CONFERENCES));
+    }
+  }
+
+  saveConferences() {
+    try {
+      localStorage.setItem('edumetrics_conferences', JSON.stringify(this.conferences));
+    } catch (e) {
+      console.error('Failed to save conferences to localStorage', e);
     }
   }
 
@@ -8295,6 +8425,78 @@ class EduMetricsApp {
     this.reportStudentTargetUniv = document.getElementById('reportStudentTargetUniv');
     this.newStudentTargetUniv = document.getElementById('newStudentTargetUniv');
     this.editStudentTargetUniv = document.getElementById('editStudentTargetUniv');
+
+    // Admin Module Elements
+    this.adminTotalStudents = document.getElementById('adminTotalStudents');
+    this.adminTotalFaculty = document.getElementById('adminTotalFaculty');
+    this.adminCampusGpa = document.getElementById('adminCampusGpa');
+    this.adminCampusAttendance = document.getElementById('adminCampusAttendance');
+    this.adminUnivMapped = document.getElementById('adminUnivMapped');
+    this.adminFacultyTableBody = document.getElementById('adminFacultyTableBody');
+    this.adminFacultySearchInput = document.getElementById('adminFacultySearchInput');
+    this.adminFacultyDeptFilter = document.getElementById('adminFacultyDeptFilter');
+    this.adminCohortGrid = document.getElementById('adminCohortGrid');
+    this.adminUnivPipelineTableBody = document.getElementById('adminUnivPipelineTableBody');
+    this.adminAuditTableBody = document.getElementById('adminAuditTableBody');
+    this.adminNewStudentBtn = document.getElementById('adminNewStudentBtn');
+    this.adminNewFacultyBtn = document.getElementById('adminNewFacultyBtn');
+    this.adminExportBackupBtn = document.getElementById('adminExportBackupBtn');
+    this.adminSchoolSettingsBtn = document.getElementById('adminSchoolSettingsBtn');
+    this.adminOpenUnivDirectoryBtn = document.getElementById('adminOpenUnivDirectoryBtn');
+    this.adminExportAuditCsvBtn = document.getElementById('adminExportAuditCsvBtn');
+    this.adminClearAuditBtn = document.getElementById('adminClearAuditBtn');
+
+    // Modals: New Faculty & Leave Request
+    this.newFacultyModal = document.getElementById('newFacultyModal');
+    this.closeNewFacultyModalBtn = document.getElementById('closeNewFacultyModalBtn');
+    this.cancelNewFacultyBtn = document.getElementById('cancelNewFacultyBtn');
+    this.newFacultyForm = document.getElementById('newFacultyForm');
+
+    this.leaveRequestModal = document.getElementById('leaveRequestModal');
+    this.closeLeaveRequestModalBtn = document.getElementById('closeLeaveRequestModalBtn');
+    this.cancelLeaveRequestBtn = document.getElementById('cancelLeaveRequestBtn');
+    this.leaveRequestForm = document.getElementById('leaveRequestForm');
+
+    // Teacher Module Elements
+    this.teacherAddCourseBtn = document.getElementById('teacherAddCourseBtn');
+    this.teacherSaveAllGradesBtn = document.getElementById('teacherSaveAllGradesBtn');
+    this.teacherProfileSelect = document.getElementById('teacherProfileSelect');
+    this.teacherCohortSelect = document.getElementById('teacherCohortSelect');
+    this.teacherTermSelector = document.getElementById('teacherTermSelector');
+    this.teacherActiveStudentName = document.getElementById('teacherActiveStudentName');
+    this.teacherActiveStudentID = document.getElementById('teacherActiveStudentID');
+    this.teacherGradesTableBody = document.getElementById('teacherGradesTableBody');
+    this.teacherAutofillClassAvgBtn = document.getElementById('teacherAutofillClassAvgBtn');
+    this.teacherResetGradesBtn = document.getElementById('teacherResetGradesBtn');
+    this.teacherAttendanceDateInput = document.getElementById('teacherAttendanceDateInput');
+    this.teacherMarkAllPresentBtn = document.getElementById('teacherMarkAllPresentBtn');
+    this.teacherAttendanceTableBody = document.getElementById('teacherAttendanceTableBody');
+    this.teacherRemarksStudentSelect = document.getElementById('teacherRemarksStudentSelect');
+    this.teacherHonorBadgeSelect = document.getElementById('teacherHonorBadgeSelect');
+    this.teacherCounselorRemarksInput = document.getElementById('teacherCounselorRemarksInput');
+    this.teacherSaveRemarksOnlyBtn = document.getElementById('teacherSaveRemarksOnlyBtn');
+    this.teacherCohortStatsGrid = document.getElementById('teacherCohortStatsGrid');
+
+    // Parent Module Elements
+    this.parentOpenLeaveModalBtn = document.getElementById('parentOpenLeaveModalBtn');
+    this.parentBookConferenceBtn = document.getElementById('parentBookConferenceBtn');
+    this.parentWardSelect = document.getElementById('parentWardSelect');
+    this.parentWardClassText = document.getElementById('parentWardClassText');
+    this.parentWardAdvisorText = document.getElementById('parentWardAdvisorText');
+    this.parentSignOffBadge = document.getElementById('parentSignOffBadge');
+    this.parentPrintReportBtn = document.getElementById('parentPrintReportBtn');
+    this.parentGradesTableBody = document.getElementById('parentGradesTableBody');
+    this.parentAckDetailedStatus = document.getElementById('parentAckDetailedStatus');
+    this.parentSignOffBtn = document.getElementById('parentSignOffBtn');
+    this.parentAttPresent = document.getElementById('parentAttPresent');
+    this.parentAttExcused = document.getElementById('parentAttExcused');
+    this.parentAttUnexcused = document.getElementById('parentAttUnexcused');
+    this.parentAttTardy = document.getElementById('parentAttTardy');
+    this.parentAddLeaveBtn = document.getElementById('parentAddLeaveBtn');
+    this.parentLeaveTableBody = document.getElementById('parentLeaveTableBody');
+    this.parentNewConferenceBtn = document.getElementById('parentNewConferenceBtn');
+    this.parentConferencesList = document.getElementById('parentConferencesList');
+    this.parentCircularsGrid = document.getElementById('parentCircularsGrid');
 
     if (this.gradingScaleSelect) {
       this.gradingScaleSelect.value = this.currentGradingFormat;
@@ -8453,8 +8655,28 @@ class EduMetricsApp {
         this.viewPanels.forEach(p => p.classList.remove('active'));
         document.getElementById(targetId)?.classList.add('active');
 
+        // Sync role switcher buttons to active module
+        let role = 'student';
+        if (targetId === 'adminView') role = 'admin';
+        else if (targetId === 'teacherView') role = 'teacher';
+        else if (targetId === 'parentView') role = 'parent';
+        else if (targetId === 'reportView') role = 'student';
+
+        this.roleBtns.forEach(b => {
+          b.classList.toggle('active', b.dataset.role === role);
+        });
+        this.currentRole = role;
+
         if (targetId === 'analyticsView') {
           setTimeout(() => this.renderCharts(), 50);
+        } else if (targetId === 'adminView') {
+          this.renderAdminModule();
+        } else if (targetId === 'teacherView') {
+          this.renderTeacherModule();
+        } else if (targetId === 'parentView') {
+          this.renderParentModule();
+        } else if (targetId === 'reportView') {
+          this.renderReportCard();
         }
       });
     });
@@ -8699,6 +8921,166 @@ class EduMetricsApp {
         if (match.officerTitle) document.getElementById('instPrincipalTitleInput').value = match.officerTitle;
         this.showToast(`Auto-configured accreditation & titles for ${match.name}`);
       }
+    });
+
+    // Module Sub-Navigation buttons across Admin, Teacher, Parent
+    document.querySelectorAll('.subnav-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const nav = btn.closest('.module-subnav');
+        if (!nav) return;
+        nav.querySelectorAll('.subnav-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const paneId = btn.dataset.pane;
+        const panel = nav.closest('.view-panel');
+        if (panel) {
+          panel.querySelectorAll('.subnav-pane').forEach(p => p.classList.remove('active'));
+          const targetPane = panel.querySelector(`#${paneId}`);
+          if (targetPane) targetPane.classList.add('active');
+        }
+      });
+    });
+
+    // --- Admin Module Event Listeners ---
+    this.adminNewStudentBtn?.addEventListener('click', () => {
+      this.newStudentForm?.reset();
+      this.newStudentModal?.showModal();
+    });
+    this.adminNewFacultyBtn?.addEventListener('click', () => {
+      this.newFacultyForm?.reset();
+      this.newFacultyModal?.showModal();
+    });
+    this.closeNewFacultyModalBtn?.addEventListener('click', () => this.newFacultyModal?.close());
+    this.cancelNewFacultyBtn?.addEventListener('click', () => this.newFacultyModal?.close());
+    this.newFacultyForm?.addEventListener('submit', (e) => this.handleNewFacultySubmit(e));
+
+    this.adminExportBackupBtn?.addEventListener('click', () => this.exportJsonBackup());
+    this.adminSchoolSettingsBtn?.addEventListener('click', () => {
+      this.populateInstitutionModal();
+      this.institutionSettingsModal?.showModal();
+    });
+    this.adminOpenUnivDirectoryBtn?.addEventListener('click', () => this.openIndianUniversitiesModal());
+    this.adminFacultySearchInput?.addEventListener('input', () => this.renderAdminFacultyTable());
+    this.adminFacultyDeptFilter?.addEventListener('change', () => this.renderAdminFacultyTable());
+    this.adminExportAuditCsvBtn?.addEventListener('click', () => this.exportAuditCsv());
+    this.adminClearAuditBtn?.addEventListener('click', () => {
+      this.promptConfirmDelete('all system audit log entries', () => {
+        this.auditLogs = [];
+        this.saveAuditLogs();
+        this.renderAdminAuditTable();
+        this.showToast('Cleared institutional audit logs.');
+      });
+    });
+
+    // --- Teacher Module Event Listeners ---
+    this.teacherAddCourseBtn?.addEventListener('click', () => {
+      this.addSubjectForm?.reset();
+      this.addSubjectModal?.showModal();
+    });
+    this.teacherSaveAllGradesBtn?.addEventListener('click', () => {
+      this.handleSaveTeacherInput();
+      this.logAudit('Teacher', 'Gradebook Saved', `Published term evaluation marks for ${this.getSelectedStudent()?.name}`);
+    });
+    this.teacherAutofillClassAvgBtn?.addEventListener('click', () => {
+      const student = this.getSelectedStudent();
+      if (student && student.courses) {
+        student.courses.forEach(c => {
+          c.coursework = Math.min(100, Math.max(0, c.classAvg + 4));
+          c.midterm = Math.min(100, Math.max(0, c.classAvg + 3));
+          c.exam = Math.min(100, Math.max(0, c.classAvg + 5));
+        });
+        this.renderTeacherGradebook();
+        this.showToast('Auto-populated marks with class benchmark baseline.');
+      }
+    });
+    this.teacherResetGradesBtn?.addEventListener('click', () => {
+      this.renderTeacherGradebook();
+      this.showToast('Reverted unsaved gradebook matrix inputs.');
+    });
+    this.teacherProfileSelect?.addEventListener('change', (e) => {
+      this.showToast(`Active instructor: ${e.target.value}`);
+    });
+    this.teacherCohortSelect?.addEventListener('change', (e) => {
+      this.showToast(`Cohort switched to: ${e.target.value}`);
+      this.renderTeacherModule();
+    });
+    this.teacherTermSelector?.addEventListener('change', (e) => {
+      this.activeEditorTerm = e.target.value;
+      this.showToast(`Assessment term: ${e.target.options[e.target.selectedIndex].text}`);
+      this.renderTeacherGradebook();
+    });
+    this.teacherAttendanceDateInput?.addEventListener('change', () => {
+      this.renderTeacherAttendanceLedger();
+    });
+    this.teacherMarkAllPresentBtn?.addEventListener('click', () => {
+      this.markAllCohortPresent();
+    });
+    this.teacherRemarksStudentSelect?.addEventListener('change', (e) => {
+      this.selectedStudentId = e.target.value;
+      this.render();
+    });
+    this.teacherHonorBadgeSelect?.addEventListener('change', (e) => {
+      const student = this.getSelectedStudent();
+      if (student) {
+        student.honor = e.target.value;
+        this.saveStudents();
+        this.render();
+      }
+    });
+    this.teacherSaveRemarksOnlyBtn?.addEventListener('click', () => {
+      const student = this.getSelectedStudent();
+      if (student && this.teacherCounselorRemarksInput) {
+        student.counselorRemarks = this.teacherCounselorRemarksInput.value.trim();
+        this.saveStudents();
+        this.logAudit('Teacher', 'Faculty Observation Saved', `Updated formal observation for ${student.name}`);
+        this.showToast(`Saved observations for ${student.name}`);
+        this.renderReportCard();
+      }
+    });
+    document.querySelectorAll('.remark-preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const text = btn.dataset.text;
+        if (this.teacherCounselorRemarksInput && text) {
+          const current = this.teacherCounselorRemarksInput.value.trim();
+          this.teacherCounselorRemarksInput.value = current ? `${current} ${text}` : text;
+          this.showToast('Appended remark preset to observation note.');
+        }
+      });
+    });
+
+    // --- Parent Module Event Listeners ---
+    this.parentWardSelect?.addEventListener('change', (e) => {
+      this.selectedStudentId = e.target.value;
+      this.render();
+      this.showToast(`Viewing academic profile for ${this.getSelectedStudent()?.name}`);
+    });
+    this.parentPrintReportBtn?.addEventListener('click', () => {
+      document.body.classList.remove('is-batch-printing');
+      window.print();
+    });
+    this.parentSignOffBtn?.addEventListener('click', () => {
+      this.handleParentDigitalSignOff();
+    });
+    this.parentOpenLeaveModalBtn?.addEventListener('click', () => {
+      this.openLeaveRequestModal();
+    });
+    this.parentAddLeaveBtn?.addEventListener('click', () => {
+      this.openLeaveRequestModal();
+    });
+    this.closeLeaveRequestModalBtn?.addEventListener('click', () => this.leaveRequestModal?.close());
+    this.cancelLeaveRequestBtn?.addEventListener('click', () => this.leaveRequestModal?.close());
+    this.leaveRequestForm?.addEventListener('submit', (e) => this.handleLeaveRequestSubmit(e));
+
+    this.parentBookConferenceBtn?.addEventListener('click', () => {
+      const today = new Date().toISOString().split('T')[0];
+      const dateInp = document.getElementById('confPreferredDate');
+      if (dateInp) dateInp.min = today;
+      this.conferenceModal?.showModal();
+    });
+    this.parentNewConferenceBtn?.addEventListener('click', () => {
+      const today = new Date().toISOString().split('T')[0];
+      const dateInp = document.getElementById('confPreferredDate');
+      if (dateInp) dateInp.min = today;
+      this.conferenceModal?.showModal();
     });
   }
 
@@ -8958,16 +9340,14 @@ class EduMetricsApp {
 
   // --- Role Management ---
   handleRoleChange() {
-    this.showToast(`Switched view to: ${this.currentRole.toUpperCase()} Portal`);
-    const student = this.getSelectedStudent();
-
-    if (this.currentRole === 'parent') {
-      document.getElementById('tabPortalBtn')?.click();
-      document.getElementById('portalActiveSessionUser').innerHTML = `Active Guardian Session: <strong>${student?.parentName || 'Parent / Guardian'}</strong>`;
-    } else if (this.currentRole === 'student') {
-      document.getElementById('tabReportBtn')?.click();
+    this.showToast(`Switched view to: ${this.currentRole.toUpperCase()} Module`);
+    if (this.currentRole === 'admin') {
+      document.getElementById('tabAdminBtn')?.click();
+    } else if (this.currentRole === 'teacher') {
+      document.getElementById('tabTeacherBtn')?.click();
+    } else if (this.currentRole === 'parent') {
+      document.getElementById('tabParentBtn')?.click();
     } else {
-      // Teacher / Admin
       document.getElementById('tabReportBtn')?.click();
     }
   }
@@ -9073,9 +9453,759 @@ class EduMetricsApp {
     this.renderReportCard();
     this.renderTeacherInput();
     this.renderSidebarStats();
+    this.renderAdminModule();
+    this.renderTeacherModule();
+    this.renderParentModule();
     if (this.activeTab === 'analyticsView') {
       this.renderCharts();
     }
+  }
+
+  // ==========================================================================
+  // ADMIN MODULE: INSTITUTIONAL GOVERNANCE & OPERATIONS
+  // ==========================================================================
+  renderAdminModule() {
+    this.renderAdminKPIs();
+    this.renderAdminFacultyTable();
+    this.renderAdminCohorts();
+    this.renderAdminUnivPipeline();
+    this.renderAdminAuditTable();
+  }
+
+  renderAdminKPIs() {
+    if (this.adminTotalStudents) this.adminTotalStudents.textContent = this.students.length;
+    if (this.adminTotalFaculty) this.adminTotalFaculty.textContent = this.faculty.length;
+    
+    // Mean GPA
+    const allGpas = this.students.map(s => this.calculateStudentAverages(s).gpa);
+    const avgGpa = allGpas.length ? (allGpas.reduce((a, b) => a + b, 0) / allGpas.length).toFixed(2) : '4.00';
+    if (this.adminCampusGpa) this.adminCampusGpa.textContent = avgGpa;
+
+    // Campus Attendance Rate
+    const totalAtt = this.students.reduce((acc, s) => {
+      const days = s.attendance.totalDays || 90;
+      return acc + (s.attendance.present / days);
+    }, 0);
+    const avgAtt = this.students.length ? ((totalAtt / this.students.length) * 100).toFixed(1) : '96.5';
+    if (this.adminCampusAttendance) this.adminCampusAttendance.textContent = `${avgAtt}%`;
+
+    // University Mapped %
+    const mapped = this.students.filter(s => !!s.targetUniversity).length;
+    const mappedPct = this.students.length ? Math.round((mapped / this.students.length) * 100) : 100;
+    if (this.adminUnivMapped) this.adminUnivMapped.textContent = `${mappedPct}%`;
+  }
+
+  renderAdminFacultyTable() {
+    if (!this.adminFacultyTableBody) return;
+    this.adminFacultyTableBody.innerHTML = '';
+
+    const query = (this.adminFacultySearchInput?.value || '').trim().toLowerCase();
+    const deptFilter = this.adminFacultyDeptFilter?.value || 'all';
+
+    const filtered = this.faculty.filter(f => {
+      const matchesSearch = !query || 
+        f.name.toLowerCase().includes(query) || 
+        f.subjects.toLowerCase().includes(query) ||
+        f.cohorts.toLowerCase().includes(query) ||
+        (f.email && f.email.toLowerCase().includes(query));
+      const matchesDept = deptFilter === 'all' || f.dept.toLowerCase().includes(deptFilter.toLowerCase());
+      return matchesSearch && matchesDept;
+    });
+
+    if (filtered.length === 0) {
+      this.adminFacultyTableBody.innerHTML = `
+        <tr>
+          <td colspan="6" class="text-center text-muted" style="padding: 2rem;">
+            No faculty members match your filter criteria.
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    filtered.forEach(f => {
+      const initials = f.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s*/, '').split(' ').map(p => p[0]).join('').substring(0, 2);
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>
+          <div class="faculty-name-cell">
+            <div class="faculty-avatar">${initials}</div>
+            <div>
+              <strong>${f.name}</strong><br>
+              <span class="text-muted text-xs">${f.email || 'N/A'}</span>
+            </div>
+          </div>
+        </td>
+        <td><span class="badge badge-info">${f.dept}</span></td>
+        <td>${f.subjects}</td>
+        <td>${f.cohorts}</td>
+        <td class="text-center">
+          <span class="badge ${f.status === 'Active' ? 'badge-success' : 'badge-warning'}">${f.status}</span>
+        </td>
+        <td class="text-center">
+          <button type="button" class="btn btn-outline btn-xs admin-remove-faculty-btn" data-id="${f.id}" title="Remove Faculty Member">Remove</button>
+        </td>
+      `;
+      this.adminFacultyTableBody.appendChild(tr);
+    });
+
+    // Remove faculty listener
+    this.adminFacultyTableBody.querySelectorAll('.admin-remove-faculty-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = e.currentTarget.dataset.id;
+        const target = this.faculty.find(f => f.id === id);
+        if (target) {
+          this.promptConfirmDelete(`faculty member "${target.name}"`, () => {
+            this.faculty = this.faculty.filter(f => f.id !== id);
+            this.saveFaculty();
+            this.logAudit('Admin', 'Faculty Removed', `Removed ${target.name} from institutional registry`);
+            this.renderAdminModule();
+            this.showToast(`Removed faculty record: ${target.name}`);
+          });
+        }
+      });
+    });
+  }
+
+  handleNewFacultySubmit(e) {
+    e.preventDefault();
+    const name = document.getElementById('newFacultyName')?.value.trim();
+    const dept = document.getElementById('newFacultyDept')?.value;
+    const subjects = document.getElementById('newFacultySubjects')?.value.trim();
+    const cohorts = document.getElementById('newFacultyCohorts')?.value.trim();
+    const email = document.getElementById('newFacultyEmail')?.value.trim();
+    const status = document.getElementById('newFacultyStatus')?.value || 'Active';
+
+    if (!name || !subjects || !cohorts) {
+      alert('Please fill out all required faculty details.');
+      return;
+    }
+
+    const id = `FAC-${Math.floor(100 + Math.random() * 900)}`;
+    const newFaculty = { id, name, dept, subjects, cohorts, email, status };
+
+    this.faculty.unshift(newFaculty);
+    this.saveFaculty();
+    this.logAudit('Admin', 'Faculty Registered', `Added ${name} to ${dept} department`);
+
+    this.newFacultyModal?.close();
+    this.newFacultyForm?.reset();
+    this.showToast(`Registered new faculty member: ${name}`);
+    this.renderAdminModule();
+  }
+
+  renderAdminCohorts() {
+    if (!this.adminCohortGrid) return;
+    this.adminCohortGrid.innerHTML = '';
+
+    // Group students by class
+    const cohortNames = ['Grade 10-A', 'Grade 10-B', 'Grade 11-A'];
+    cohortNames.forEach(cohortName => {
+      const cohortStudents = this.students.filter(s => s.class === cohortName);
+      const count = cohortStudents.length;
+      const gpas = cohortStudents.map(s => this.calculateStudentAverages(s).gpa);
+      const meanGpa = gpas.length ? (gpas.reduce((a, b) => a + b, 0) / gpas.length).toFixed(2) : '3.85';
+      const advisor = cohortStudents[0]?.advisor || 'Dr. Marcus Sterling';
+
+      const totalAtt = cohortStudents.reduce((acc, s) => {
+        const d = s.attendance.totalDays || 90;
+        return acc + (s.attendance.present / d);
+      }, 0);
+      const avgAtt = cohortStudents.length ? ((totalAtt / cohortStudents.length) * 100).toFixed(1) : '97.2';
+
+      const card = document.createElement('div');
+      card.className = 'cohort-card';
+      card.innerHTML = `
+        <div class="cohort-card-header">
+          <h4 class="cohort-card-title">${cohortName}</h4>
+          <span class="badge badge-primary">${count} Students</span>
+        </div>
+        <div class="cohort-stats-row">
+          <span>Advisor: <strong>${advisor}</strong></span>
+          <span>Mean GPA: <strong class="text-accent">${meanGpa}</strong></span>
+          <span>Attendance: <strong class="text-success">${avgAtt}%</strong></span>
+        </div>
+        <div>
+          <span class="text-muted text-xs">Enrolled Members:</span>
+          <div style="margin-top: 0.35rem; display: flex; flex-wrap: wrap; gap: 0.3rem;">
+            ${cohortStudents.map(s => `<span class="badge badge-info" style="font-size: 0.72rem;">${s.name.split(' ')[0]}</span>`).join('')}
+          </div>
+        </div>
+      `;
+      this.adminCohortGrid.appendChild(card);
+    });
+  }
+
+  renderAdminUnivPipeline() {
+    if (!this.adminUnivPipelineTableBody) return;
+    this.adminUnivPipelineTableBody.innerHTML = '';
+
+    this.students.forEach(s => {
+      const avgs = this.calculateStudentAverages(s);
+      const targetUniv = s.targetUniversity || 'Indian Institute of Technology Bombay';
+      const univObj = window.IndianUniversitiesHub?.getByName(targetUniv);
+      const category = univObj?.category || 'Engineering / Multi-Disciplinary';
+
+      let readiness = 'Admissions Ready';
+      let readinessBadge = 'badge-success';
+      if (avgs.gpa < 3.5) {
+        readiness = 'In Progress';
+        readinessBadge = 'badge-warning';
+      } else if (avgs.gpa < 3.8) {
+        readiness = 'Competitive Candidate';
+        readinessBadge = 'badge-primary';
+      }
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>
+          <strong>${s.name}</strong><br>
+          <span class="text-muted text-xs">${s.id}</span>
+        </td>
+        <td>${s.class}</td>
+        <td>
+          <strong>${targetUniv}</strong><br>
+          <span class="text-muted text-xs">${univObj?.state ? univObj.city + ', ' + univObj.state : 'Top Tier Indian Institution'}</span>
+        </td>
+        <td><span class="badge badge-info">${category}</span></td>
+        <td class="text-center font-mono"><strong>${avgs.gpa.toFixed(2)}</strong></td>
+        <td class="text-center"><span class="badge ${readinessBadge}">${readiness}</span></td>
+      `;
+      this.adminUnivPipelineTableBody.appendChild(tr);
+    });
+  }
+
+  renderAdminAuditTable() {
+    if (!this.adminAuditTableBody) return;
+    this.adminAuditTableBody.innerHTML = '';
+
+    if (this.auditLogs.length === 0) {
+      this.adminAuditTableBody.innerHTML = `
+        <tr>
+          <td colspan="4" class="text-center text-muted" style="padding: 2rem;">
+            Audit log is currently empty.
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    this.auditLogs.slice(0, 50).forEach(log => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="font-mono text-xs">${log.timestamp}</td>
+        <td><span class="badge badge-info">${log.user}</span></td>
+        <td><strong>${log.action}</strong></td>
+        <td class="text-muted text-xs">${log.details}</td>
+      `;
+      this.adminAuditTableBody.appendChild(tr);
+    });
+  }
+
+  exportAuditCsv() {
+    let csv = 'Timestamp,User / Role,Action Executed,Operational Details\n';
+    this.auditLogs.forEach(l => {
+      csv += `"${l.timestamp}","${l.user}","${l.action}","${l.details.replace(/"/g, '""')}"\n`;
+    });
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `edumetrics-audit-log-${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    this.showToast('Audit log CSV exported successfully!');
+  }
+
+  // ==========================================================================
+  // TEACHER MODULE: CLASSROOM GRADEBOOK, ATTENDANCE & REMARKS
+  // ==========================================================================
+  renderTeacherModule() {
+    const student = this.getSelectedStudent();
+    if (!student) return;
+
+    // 1. Populate Instructor dropdown if not already populated
+    if (this.teacherProfileSelect && this.teacherProfileSelect.options.length === 0) {
+      this.teacherProfileSelect.innerHTML = this.faculty.map(f => 
+        `<option value="${f.name}">${f.name} (${f.dept})</option>`
+      ).join('');
+    }
+
+    // 2. Context active student labels
+    if (this.teacherActiveStudentName) this.teacherActiveStudentName.textContent = student.name;
+    if (this.teacherActiveStudentID) this.teacherActiveStudentID.textContent = student.id;
+
+    // 3. Render Gradebook matrix, attendance ledger, remarks, and metrics
+    this.renderTeacherGradebook();
+    this.renderTeacherAttendanceLedger();
+    this.renderTeacherRemarksHub();
+    this.renderTeacherClassroomMetrics();
+  }
+
+  renderTeacherGradebook() {
+    const student = this.getSelectedStudent();
+    if (!student || !this.teacherGradesTableBody) return;
+
+    this.teacherGradesTableBody.innerHTML = '';
+    student.courses.forEach((c, idx) => {
+      const weighted = this.calculateWeightedScore(c);
+      const converted = this.convertScore(weighted);
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>
+          <div class="course-title">${c.name}</div>
+          <div class="course-dept">${c.dept}</div>
+        </td>
+        <td><small class="text-muted">${c.teacher}</small></td>
+        <td class="text-center">
+          <input type="number" min="0" max="100" class="form-control input-score-sm teacher-cw" data-idx="${idx}" value="${c.coursework}" aria-label="${c.name} coursework score">
+        </td>
+        <td class="text-center">
+          <input type="number" min="0" max="100" class="form-control input-score-sm teacher-mt" data-idx="${idx}" value="${c.midterm}" aria-label="${c.name} midterm score">
+        </td>
+        <td class="text-center">
+          <input type="number" min="0" max="100" class="form-control input-score-sm teacher-ex" data-idx="${idx}" value="${c.exam}" aria-label="${c.name} final exam score">
+        </td>
+        <td class="text-center font-mono font-bold">
+          <span class="live-teacher-weighted" data-idx="${idx}">${weighted}%</span>
+        </td>
+        <td class="text-center">
+          <span class="score-badge ${converted.badgeClass} live-teacher-converted" data-idx="${idx}">${converted.display}</span>
+        </td>
+        <td>
+          <input type="text" class="form-control teacher-remark-inp" data-idx="${idx}" value="${c.remark || ''}" style="width: 100%; min-width: 220px;" placeholder="Teacher observation...">
+        </td>
+        <td class="text-center">
+          <button type="button" class="delete-row-btn teacher-delete-course-btn" data-idx="${idx}" title="Remove Subject" aria-label="Delete ${c.name}">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+          </button>
+        </td>
+      `;
+      this.teacherGradesTableBody.appendChild(tr);
+    });
+
+    // Real-time live recalculation
+    const updateTeacherRow = (idx) => {
+      const cw = Number(this.teacherGradesTableBody.querySelector(`.teacher-cw[data-idx="${idx}"]`)?.value) || 0;
+      const mt = Number(this.teacherGradesTableBody.querySelector(`.teacher-mt[data-idx="${idx}"]`)?.value) || 0;
+      const ex = Number(this.teacherGradesTableBody.querySelector(`.teacher-ex[data-idx="${idx}"]`)?.value) || 0;
+
+      const weighted = Math.round(((cw * 0.3) + (mt * 0.3) + (ex * 0.4)) * 10) / 10;
+      const converted = this.convertScore(weighted);
+
+      const weightEl = this.teacherGradesTableBody.querySelector(`.live-teacher-weighted[data-idx="${idx}"]`);
+      const convEl = this.teacherGradesTableBody.querySelector(`.live-teacher-converted[data-idx="${idx}"]`);
+      if (weightEl) weightEl.textContent = `${weighted}%`;
+      if (convEl) {
+        convEl.textContent = converted.display;
+        convEl.className = `score-badge ${converted.badgeClass} live-teacher-converted`;
+      }
+
+      // Sync to student model in real time
+      if (student.courses[idx]) {
+        student.courses[idx].coursework = cw;
+        student.courses[idx].midterm = mt;
+        student.courses[idx].exam = ex;
+      }
+    };
+
+    this.teacherGradesTableBody.querySelectorAll('.input-score-sm').forEach(inp => {
+      inp.addEventListener('input', (e) => {
+        updateTeacherRow(e.target.dataset.idx);
+      });
+    });
+
+    this.teacherGradesTableBody.querySelectorAll('.teacher-remark-inp').forEach(inp => {
+      inp.addEventListener('change', (e) => {
+        const idx = Number(e.target.dataset.idx);
+        if (student.courses[idx]) {
+          student.courses[idx].remark = e.target.value.trim();
+          this.saveStudents();
+        }
+      });
+    });
+
+    this.teacherGradesTableBody.querySelectorAll('.teacher-delete-course-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const idx = Number(e.currentTarget.dataset.idx);
+        const course = student.courses[idx];
+        if (course) {
+          this.promptConfirmDelete(`subject "${course.name}" for ${student.name}`, () => {
+            student.courses.splice(idx, 1);
+            this.saveStudents();
+            this.render();
+            this.showToast(`Removed subject ${course.name}`);
+          });
+        }
+      });
+    });
+  }
+
+  renderTeacherAttendanceLedger() {
+    if (!this.teacherAttendanceTableBody) return;
+    this.teacherAttendanceTableBody.innerHTML = '';
+
+    const selectedCohort = this.teacherCohortSelect?.value || 'Grade 10-A';
+    const cohortStudents = this.students.filter(s => s.class === selectedCohort);
+
+    cohortStudents.forEach(s => {
+      const totalDays = s.attendance.totalDays || 90;
+      const attRate = ((s.attendance.present / totalDays) * 100).toFixed(1);
+      const studentStatus = this.attendanceRecords[s.id] || 'P';
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><strong>${s.name}</strong></td>
+        <td class="font-mono text-xs">${s.id}</td>
+        <td>${s.class}</td>
+        <td>
+          <div class="att-toggle-group" data-student-id="${s.id}">
+            <button type="button" class="att-btn att-btn-p ${studentStatus === 'P' ? 'active' : ''}" data-val="P" title="Present">P</button>
+            <button type="button" class="att-btn att-btn-a ${studentStatus === 'A' ? 'active' : ''}" data-val="A" title="Absent">A</button>
+            <button type="button" class="att-btn att-btn-t ${studentStatus === 'T' ? 'active' : ''}" data-val="T" title="Tardy">T</button>
+            <button type="button" class="att-btn att-btn-e ${studentStatus === 'E' ? 'active' : ''}" data-val="E" title="Excused">E</button>
+          </div>
+        </td>
+        <td class="text-center font-mono">
+          <span class="badge ${parseFloat(attRate) >= 95 ? 'badge-success' : 'badge-primary'}">${attRate}%</span>
+        </td>
+      `;
+      this.teacherAttendanceTableBody.appendChild(tr);
+    });
+
+    // Toggle button click handlers
+    this.teacherAttendanceTableBody.querySelectorAll('.att-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const group = e.target.closest('.att-toggle-group');
+        const sId = group.dataset.studentId;
+        const val = e.target.dataset.val;
+
+        group.querySelectorAll('.att-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        this.attendanceRecords[sId] = val;
+
+        const targetStudent = this.students.find(s => s.id === sId);
+        if (targetStudent) {
+          if (val === 'A') targetStudent.attendance.unexcused++;
+          else if (val === 'T') targetStudent.attendance.tardy++;
+          else if (val === 'E') targetStudent.attendance.excused++;
+          this.saveStudents();
+          this.showToast(`Marked ${targetStudent.name} as ${val === 'P' ? 'Present' : (val === 'A' ? 'Absent' : (val === 'T' ? 'Tardy' : 'Excused'))}`);
+        }
+      });
+    });
+  }
+
+  markAllCohortPresent() {
+    const selectedCohort = this.teacherCohortSelect?.value || 'Grade 10-A';
+    const cohortStudents = this.students.filter(s => s.class === selectedCohort);
+    cohortStudents.forEach(s => {
+      this.attendanceRecords[s.id] = 'P';
+    });
+    this.renderTeacherAttendanceLedger();
+    this.logAudit('Teacher', 'Roll Call Completed', `Marked all students present in ${selectedCohort}`);
+    this.showToast(`Marked all ${cohortStudents.length} students in ${selectedCohort} as Present!`);
+  }
+
+  renderTeacherRemarksHub() {
+    if (!this.teacherRemarksStudentSelect) return;
+    
+    // Populate select if empty or mismatched
+    const selectedCohort = this.teacherCohortSelect?.value || 'Grade 10-A';
+    const cohortStudents = this.students.filter(s => s.class === selectedCohort);
+
+    this.teacherRemarksStudentSelect.innerHTML = cohortStudents.map(s => 
+      `<option value="${s.id}" ${s.id === this.selectedStudentId ? 'selected' : ''}>${s.name} (${s.id})</option>`
+    ).join('');
+
+    const student = this.getSelectedStudent();
+    if (student) {
+      if (this.teacherHonorBadgeSelect) this.teacherHonorBadgeSelect.value = student.honor || 'Honor Roll with Distinction';
+      if (this.teacherCounselorRemarksInput) this.teacherCounselorRemarksInput.value = student.counselorRemarks || '';
+    }
+  }
+
+  renderTeacherClassroomMetrics() {
+    if (!this.teacherCohortStatsGrid) return;
+    this.teacherCohortStatsGrid.innerHTML = '';
+
+    const selectedCohort = this.teacherCohortSelect?.value || 'Grade 10-A';
+    const cohortStudents = this.students.filter(s => s.class === selectedCohort);
+
+    const gpas = cohortStudents.map(s => this.calculateStudentAverages(s).gpa).sort((a, b) => a - b);
+    const medianGpa = gpas.length ? gpas[Math.floor(gpas.length / 2)].toFixed(2) : '3.88';
+    const highGpa = gpas.length ? gpas[gpas.length - 1].toFixed(2) : '4.00';
+    const honorsCount = cohortStudents.filter(s => (s.honor || '').includes('Honor Roll')).length;
+
+    const totalAtt = cohortStudents.reduce((acc, s) => {
+      const d = s.attendance.totalDays || 90;
+      return acc + (s.attendance.present / d);
+    }, 0);
+    const attPct = cohortStudents.length ? ((totalAtt / cohortStudents.length) * 100).toFixed(1) : '97.4';
+
+    this.teacherCohortStatsGrid.innerHTML = `
+      <div class="stat-metric-card">
+        <span class="metric-label">Cohort Median GPA</span>
+        <span class="metric-val text-primary">${medianGpa}</span>
+        <span class="metric-sub">${selectedCohort} Benchmark</span>
+      </div>
+      <div class="stat-metric-card">
+        <span class="metric-label">Highest Student GPA</span>
+        <span class="metric-val text-accent">${highGpa}</span>
+        <span class="metric-sub">Valedictorian Pace</span>
+      </div>
+      <div class="stat-metric-card">
+        <span class="metric-label">Honors Recipients</span>
+        <span class="metric-val text-success">${honorsCount} / ${cohortStudents.length}</span>
+        <span class="metric-sub">Academic Distinction</span>
+      </div>
+      <div class="stat-metric-card">
+        <span class="metric-label">Cohort Attendance</span>
+        <span class="metric-val text-info">${attPct}%</span>
+        <span class="metric-sub">Punctuality Average</span>
+      </div>
+    `;
+  }
+
+  // ==========================================================================
+  // PARENT MODULE: WARD OVERSIGHT, ATTENDANCE DIARY & CIRCULARS
+  // ==========================================================================
+  renderParentModule() {
+    const student = this.getSelectedStudent();
+    if (!student) return;
+
+    // 1. Populate Ward select if needed
+    if (this.parentWardSelect) {
+      this.parentWardSelect.innerHTML = this.students.map(s =>
+        `<option value="${s.id}" ${s.id === student.id ? 'selected' : ''}>${s.name} (${s.class})</option>`
+      ).join('');
+    }
+
+    // 2. Ward ribbon details
+    if (this.parentWardClassText) this.parentWardClassText.textContent = student.class;
+    if (this.parentWardAdvisorText) this.parentWardAdvisorText.textContent = student.advisor;
+
+    const isSigned = student.parentAckDate && student.parentAckDate !== 'Pending';
+    if (this.parentSignOffBadge) {
+      this.parentSignOffBadge.className = `badge ${isSigned ? 'badge-success' : 'badge-warning'}`;
+      this.parentSignOffBadge.textContent = isSigned ? `Acknowledged (${student.parentAckDate})` : 'Sign-Off Pending';
+    }
+
+    // 3. Render sub-panes
+    this.renderParentAcademicReport();
+    this.renderParentAttendanceDiary();
+    this.renderParentConferences();
+    this.renderParentCirculars();
+  }
+
+  renderParentAcademicReport() {
+    const student = this.getSelectedStudent();
+    if (!student || !this.parentGradesTableBody) return;
+
+    this.parentGradesTableBody.innerHTML = '';
+    student.courses.forEach(c => {
+      const weighted = this.calculateWeightedScore(c);
+      const converted = this.convertScore(weighted);
+      const diff = (weighted - c.classAvg).toFixed(1);
+      const isPositive = diff >= 0;
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>
+          <strong>${c.name}</strong><br>
+          <span class="text-muted text-xs">${c.dept} &bull; ${c.teacher}</span>
+        </td>
+        <td>1.0</td>
+        <td>
+          <span class="score-badge ${converted.badgeClass}">${converted.display}</span>
+        </td>
+        <td>
+          <span class="text-muted text-xs">Class Avg: ${c.classAvg}%</span><br>
+          <strong style="font-size: 0.75rem; color: ${isPositive ? 'var(--success)' : 'var(--warning)'};">
+            ${isPositive ? '+' : ''}${diff}% vs Class
+          </strong>
+        </td>
+        <td class="text-muted text-xs font-italic">
+          "${c.remark || 'Maintains attentive and consistent performance.'}"
+        </td>
+      `;
+      this.parentGradesTableBody.appendChild(tr);
+    });
+
+    // Parent Sign-Off Box
+    const isSigned = student.parentAckDate && student.parentAckDate !== 'Pending';
+    if (this.parentAckDetailedStatus) {
+      if (isSigned) {
+        this.parentAckDetailedStatus.innerHTML = `
+          <strong class="text-success">&#10003; Electronically Signed by ${student.parentName || 'Parent'}</strong> on ${student.parentAckDate}.<br>
+          <span class="text-muted text-xs">Official Verification Hash: <code>EDUMET-${student.id.replace('STU-', '')}-${student.class.replace(' ', '')}</code></span>
+        `;
+      } else {
+        this.parentAckDetailedStatus.textContent = `Sign-off pending for ${student.name} (${student.class}) for Term 2 evaluations.`;
+      }
+    }
+
+    if (this.parentSignOffBtn) {
+      this.parentSignOffBtn.disabled = isSigned;
+      this.parentSignOffBtn.textContent = isSigned ? 'Acknowledged Online' : 'Confirm & Electronically Sign';
+    }
+  }
+
+  handleParentDigitalSignOff() {
+    const student = this.getSelectedStudent();
+    if (!student) return;
+
+    const today = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    student.parentAckDate = today;
+    this.saveStudents();
+
+    this.logAudit('Parent', 'Digital Sign-Off', `Acknowledged official Term 2 transcript for ${student.name}`);
+    this.showToast(`Digitally signed transcript for ${student.name}!`);
+    this.render();
+  }
+
+  renderParentAttendanceDiary() {
+    const student = this.getSelectedStudent();
+    if (!student) return;
+
+    if (this.parentAttPresent) this.parentAttPresent.textContent = student.attendance.present;
+    if (this.parentAttExcused) this.parentAttExcused.textContent = student.attendance.excused;
+    if (this.parentAttUnexcused) this.parentAttUnexcused.textContent = student.attendance.unexcused;
+    if (this.parentAttTardy) this.parentAttTardy.textContent = student.attendance.tardy;
+
+    if (!this.parentLeaveTableBody) return;
+    this.parentLeaveTableBody.innerHTML = '';
+
+    const studentLeaves = this.leaveRequests.filter(lr => lr.studentId === student.id || lr.studentName === student.name);
+
+    if (studentLeaves.length === 0) {
+      this.parentLeaveTableBody.innerHTML = `
+        <tr>
+          <td colspan="4" class="text-center text-muted" style="padding: 1.5rem;">
+            No absence notes recorded for ${student.name}.
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    studentLeaves.forEach(lr => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="font-mono text-xs">${lr.date}</td>
+        <td><span class="badge badge-info">${lr.category}</span></td>
+        <td class="text-xs text-muted">${lr.reason}</td>
+        <td class="text-center">
+          <span class="badge ${lr.status === 'Approved' ? 'badge-success' : 'badge-warning'}">${lr.status}</span>
+        </td>
+      `;
+      this.parentLeaveTableBody.appendChild(tr);
+    });
+  }
+
+  openLeaveRequestModal() {
+    const student = this.getSelectedStudent();
+    const nameInp = document.getElementById('leaveStudentName');
+    if (nameInp && student) nameInp.value = `${student.name} (${student.id} • ${student.class})`;
+
+    const today = new Date().toISOString().split('T')[0];
+    const dateInp = document.getElementById('leaveDate');
+    if (dateInp) dateInp.value = today;
+
+    this.leaveRequestModal?.showModal();
+  }
+
+  handleLeaveRequestSubmit(e) {
+    e.preventDefault();
+    const student = this.getSelectedStudent();
+    if (!student) return;
+
+    const date = document.getElementById('leaveDate')?.value;
+    const category = document.getElementById('leaveCategory')?.value;
+    const reason = document.getElementById('leaveReason')?.value.trim();
+
+    if (!date || !category || !reason) {
+      alert('Please fill out all required leave request fields.');
+      return;
+    }
+
+    const id = `LR-${Math.floor(200 + Math.random() * 800)}`;
+    const newReq = {
+      id,
+      studentId: student.id,
+      studentName: student.name,
+      date,
+      category,
+      reason,
+      status: 'Pending Review'
+    };
+
+    this.leaveRequests.unshift(newReq);
+    this.saveLeaveRequests();
+    this.logAudit('Parent', 'Absence Note Submitted', `Submitted absence excuse for ${student.name} on ${date}`);
+
+    this.leaveRequestModal?.close();
+    this.leaveRequestForm?.reset();
+    this.showToast(`Submitted absence note for ${student.name}`);
+    this.renderParentAttendanceDiary();
+  }
+
+  renderParentConferences() {
+    if (!this.parentConferencesList) return;
+    this.parentConferencesList.innerHTML = '';
+
+    const student = this.getSelectedStudent();
+    const list = this.conferences.filter(c => !c.studentName || c.studentName === student.name);
+
+    if (list.length === 0) {
+      this.parentConferencesList.innerHTML = `
+        <div class="text-center text-muted" style="padding: 2rem;">
+          No conferences currently scheduled. Click "+ Book Conference" to request a consultation.
+        </div>
+      `;
+      return;
+    }
+
+    list.forEach(conf => {
+      const card = document.createElement('div');
+      card.className = 'conference-item-card';
+      card.innerHTML = `
+        <div class="conference-item-meta">
+          <h4>${conf.teacher}</h4>
+          <p><strong>${conf.date}</strong> &bull; ${conf.time} &bull; <em>${conf.format}</em></p>
+          <p class="text-xs text-muted" style="margin-top: 0.25rem;">Discussion: ${conf.topic}</p>
+        </div>
+        <div>
+          <span class="badge ${conf.status === 'Confirmed' ? 'badge-success' : 'badge-primary'}">${conf.status}</span>
+        </div>
+      `;
+      this.parentConferencesList.appendChild(card);
+    });
+  }
+
+  renderParentCirculars() {
+    if (!this.parentCircularsGrid) return;
+    this.parentCircularsGrid.innerHTML = '';
+
+    this.circulars.forEach(cir => {
+      const card = document.createElement('div');
+      card.className = 'circular-card';
+      card.innerHTML = `
+        <div class="circular-card-top">
+          <span class="badge badge-info">${cir.category}</span>
+          <span class="circular-date">${cir.date}</span>
+        </div>
+        <h4 class="circular-title">${cir.title}</h4>
+        <p class="text-muted text-xs">${cir.excerpt}</p>
+        <div style="margin-top: auto;">
+          <span class="badge ${cir.priority === 'High' ? 'badge-danger' : 'badge-primary'}" style="font-size: 0.7rem;">${cir.priority} Priority</span>
+        </div>
+      `;
+      this.parentCircularsGrid.appendChild(card);
+    });
   }
 
   updateInstitutionHeader() {
@@ -9364,22 +10494,30 @@ class EduMetricsApp {
     document.getElementById('verifyCodeText').textContent = `EDUMET-${student.id.replace('STU-', '')}-${avgs.rawAvg.toString().replace('.', '')}X`;
 
     // Portal greeting
-    document.getElementById('portalGreetingName').textContent = `${student.name.split(' ')[1] || student.name} Family`;
-    if (document.getElementById('parentNameInput') && student.parentName) {
-      document.getElementById('parentNameInput').value = student.parentName;
+    const portalGreeting = document.getElementById('portalGreetingName');
+    if (portalGreeting) {
+      portalGreeting.textContent = `${student.name.split(' ')[1] || student.name} Family`;
+    }
+    const parentNameInp = document.getElementById('parentNameInput');
+    if (parentNameInp && student.parentName) {
+      parentNameInp.value = student.parentName;
     }
   }
 
-  // --- View 2: Teacher Input Gradebook ---
+  // --- View 2: Teacher Input Gradebook (Legacy Safe Handler) ---
   renderTeacherInput() {
     const student = this.getSelectedStudent();
     if (!student) return;
 
-    document.getElementById('editorStudentName').textContent = student.name;
-    document.getElementById('editorStudentID').textContent = student.id;
-    document.getElementById('editorStudentClass').textContent = student.class;
+    const nameEl = document.getElementById('editorStudentName');
+    if (nameEl) nameEl.textContent = student.name;
+    const idEl = document.getElementById('editorStudentID');
+    if (idEl) idEl.textContent = student.id;
+    const classEl = document.getElementById('editorStudentClass');
+    if (classEl) classEl.textContent = student.class;
 
     const tbody = document.getElementById('editorGradesTableBody');
+    if (!tbody) return;
     tbody.innerHTML = '';
 
     student.courses.forEach((c, idx) => {
@@ -9471,15 +10609,16 @@ class EduMetricsApp {
     });
 
     // Attendance inputs
-    document.getElementById('inputDaysPresent').value = student.attendance.present;
-    document.getElementById('inputDaysExcused').value = student.attendance.excused;
-    document.getElementById('inputDaysUnexcused').value = student.attendance.unexcused;
-    document.getElementById('inputDaysTardy').value = student.attendance.tardy;
-    document.getElementById('inputAttNote').value = student.attendance.notes;
+    const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
+    setVal('inputDaysPresent', student.attendance.present);
+    setVal('inputDaysExcused', student.attendance.excused);
+    setVal('inputDaysUnexcused', student.attendance.unexcused);
+    setVal('inputDaysTardy', student.attendance.tardy);
+    setVal('inputAttNote', student.attendance.notes);
 
     // Counselor remarks & honor badge
-    document.getElementById('inputCounselorRemarks').value = student.counselorRemarks || '';
-    document.getElementById('inputHonorBadge').value = student.honor || 'Honor Roll with Distinction';
+    setVal('inputCounselorRemarks', student.counselorRemarks || '');
+    setVal('inputHonorBadge', student.honor || 'Honor Roll with Distinction');
   }
 
   handleSaveTeacherInput() {
@@ -9487,28 +10626,39 @@ class EduMetricsApp {
     if (!student) return;
 
     const tbody = document.getElementById('editorGradesTableBody');
-    student.courses.forEach((c, idx) => {
-      const cw = Number(tbody.querySelector(`.input-cw[data-idx="${idx}"]`)?.value);
-      const mt = Number(tbody.querySelector(`.input-mt[data-idx="${idx}"]`)?.value);
-      const ex = Number(tbody.querySelector(`.input-ex[data-idx="${idx}"]`)?.value);
-      const remark = tbody.querySelector(`.input-remark[data-idx="${idx}"]`)?.value;
+    if (tbody) {
+      student.courses.forEach((c, idx) => {
+        const cw = Number(tbody.querySelector(`.input-cw[data-idx="${idx}"]`)?.value);
+        const mt = Number(tbody.querySelector(`.input-mt[data-idx="${idx}"]`)?.value);
+        const ex = Number(tbody.querySelector(`.input-ex[data-idx="${idx}"]`)?.value);
+        const remark = tbody.querySelector(`.input-remark[data-idx="${idx}"]`)?.value;
 
-      c.coursework = isNaN(cw) ? c.coursework : Math.min(100, Math.max(0, cw));
-      c.midterm = isNaN(mt) ? c.midterm : Math.min(100, Math.max(0, mt));
-      c.exam = isNaN(ex) ? c.exam : Math.min(100, Math.max(0, ex));
-      if (remark !== undefined) c.remark = remark;
-    });
+        c.coursework = isNaN(cw) ? c.coursework : Math.min(100, Math.max(0, cw));
+        c.midterm = isNaN(mt) ? c.midterm : Math.min(100, Math.max(0, mt));
+        c.exam = isNaN(ex) ? c.exam : Math.min(100, Math.max(0, ex));
+        if (remark !== undefined) c.remark = remark;
+      });
+    }
+
+    const getNumVal = (id) => Number(document.getElementById(id)?.value) || 0;
+    const getTxtVal = (id) => document.getElementById(id)?.value || '';
 
     // Attendance
-    student.attendance.present = Number(document.getElementById('inputDaysPresent').value) || 0;
-    student.attendance.excused = Number(document.getElementById('inputDaysExcused').value) || 0;
-    student.attendance.unexcused = Number(document.getElementById('inputDaysUnexcused').value) || 0;
-    student.attendance.tardy = Number(document.getElementById('inputDaysTardy').value) || 0;
-    student.attendance.notes = document.getElementById('inputAttNote').value;
+    if (document.getElementById('inputDaysPresent')) {
+      student.attendance.present = getNumVal('inputDaysPresent');
+      student.attendance.excused = getNumVal('inputDaysExcused');
+      student.attendance.unexcused = getNumVal('inputDaysUnexcused');
+      student.attendance.tardy = getNumVal('inputDaysTardy');
+      student.attendance.notes = getTxtVal('inputAttNote');
+    }
 
     // Counselor & Honor
-    student.counselorRemarks = document.getElementById('inputCounselorRemarks').value;
-    student.honor = document.getElementById('inputHonorBadge').value;
+    if (document.getElementById('inputCounselorRemarks')) {
+      student.counselorRemarks = getTxtVal('inputCounselorRemarks');
+    }
+    if (document.getElementById('inputHonorBadge')) {
+      student.honor = getTxtVal('inputHonorBadge');
+    }
 
     // Update historical term 2 calculation
     const avgs = this.calculateStudentAverages(student);
@@ -9750,8 +10900,10 @@ class EduMetricsApp {
     const student = this.getSelectedStudent();
     if (!student) return;
 
-    const parentName = document.getElementById('parentNameInput').value.trim();
-    const relation = document.getElementById('parentRelationship').value;
+    const parentNameInp = document.getElementById('parentNameInput');
+    const relationInp = document.getElementById('parentRelationship');
+    const parentName = parentNameInp ? parentNameInp.value.trim() : (student.parentName || 'Parent / Guardian');
+    const relation = relationInp ? relationInp.value : (student.parentRelation || 'Parent');
     const today = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
     student.parentName = parentName;
@@ -9759,8 +10911,10 @@ class EduMetricsApp {
     student.parentAckDate = today;
     this.saveStudents();
 
-    this.parentAckConfirmationMsg.classList.remove('hidden');
-    setTimeout(() => this.parentAckConfirmationMsg.classList.add('hidden'), 4500);
+    if (this.parentAckConfirmationMsg) {
+      this.parentAckConfirmationMsg.classList.remove('hidden');
+      setTimeout(() => this.parentAckConfirmationMsg?.classList.add('hidden'), 4500);
+    }
     this.showToast('Guardian digital signature registered on official transcript!');
     this.renderReportCard();
   }
