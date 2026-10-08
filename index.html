@@ -316,14 +316,14 @@
                 <table class="report-table" id="academicScoresTable">
                   <thead>
                     <tr>
-                      <th style="width: 25%;">Course & Department</th>
-                      <th style="width: 15%;">Instructor</th>
-                      <th style="width: 10%; text-align: center;">Coursework (30%)</th>
-                      <th style="width: 10%; text-align: center;">Midterm (30%)</th>
-                      <th style="width: 10%; text-align: center;">Exam (40%)</th>
-                      <th style="width: 12%; text-align: center;" id="colScoreHeader">Final Evaluation</th>
-                      <th style="width: 9%; text-align: center;">Class Avg</th>
-                      <th style="width: 9%; text-align: center;">Delta</th>
+                      <th class="col-w-25">Course & Department</th>
+                      <th class="col-w-15">Instructor</th>
+                      <th class="col-w-10 text-center">Coursework (30%)</th>
+                      <th class="col-w-10 text-center">Midterm (30%)</th>
+                      <th class="col-w-10 text-center">Exam (40%)</th>
+                      <th class="col-w-12 text-center" id="colScoreHeader">Final Evaluation</th>
+                      <th class="col-w-9 text-center">Class Avg</th>
+                      <th class="col-w-9 text-center">Delta</th>
                     </tr>
                   </thead>
                   <tbody id="scoresTableBody">
@@ -351,7 +351,7 @@
                 <h5>III. Attendance & Punctuality Record</h5>
                 <div class="attendance-breakdown">
                   <div class="attendance-bar-wrapper">
-                    <div class="attendance-bar-fill" id="attendanceProgressFill" style="width: 98%;"></div>
+                    <div class="attendance-bar-fill" id="attendanceProgressFill"></div>
                   </div>
                   <div class="attendance-stats-row">
                     <div class="att-item">
@@ -434,8 +434,9 @@
                 Editing records for: <strong id="editorStudentName">Sophia Chen</strong> (<span id="editorStudentID">STU-10492</span>) &bull; <span id="editorStudentClass">Grade 10-A</span>
               </div>
               <div class="banner-term">
+                <label for="editorTermSelector" class="sr-only">Assessment Term</label>
                 Assessment Term: 
-                <select id="editorTermSelector" class="custom-select select-inline">
+                <select id="editorTermSelector" class="custom-select select-inline" title="Select Assessment Term for Grade Entry" aria-label="Assessment Term">
                   <option value="term2" selected>Term 2 (Spring 2026)</option>
                   <option value="midterm">Midterm Milestone (Winter 2026)</option>
                   <option value="term1">Term 1 (Fall 2025)</option>
@@ -450,13 +451,13 @@
                   <tr>
                     <th>Subject & Dept</th>
                     <th>Teacher</th>
-                    <th style="text-align: center;">Coursework (30%)</th>
-                    <th style="text-align: center;">Midterm (30%)</th>
-                    <th style="text-align: center;">Final Exam (40%)</th>
-                    <th style="text-align: center;">Weighted %</th>
-                    <th style="text-align: center;">Evaluation</th>
+                    <th class="text-center">Coursework (30%)</th>
+                    <th class="text-center">Midterm (30%)</th>
+                    <th class="text-center">Final Exam (40%)</th>
+                    <th class="text-center">Weighted %</th>
+                    <th class="text-center">Evaluation</th>
                     <th>Teacher Observation / Remark</th>
-                    <th style="text-align: center;">Action</th>
+                    <th class="text-center">Action</th>
                   </tr>
                 </thead>
                 <tbody id="editorGradesTableBody">
@@ -640,7 +641,7 @@
                 <div class="badge badge-primary" id="portalDiplomaPill">College Preparatory Track: 92% Complete</div>
               </div>
               <div class="progress-bar-container mt-2">
-                <div class="progress-bar-fill" id="portalDiplomaFill" style="width: 92%;"></div>
+                <div class="progress-bar-fill" id="portalDiplomaFill"></div>
               </div>
               <div class="credit-stats-grid mt-2">
                 <div class="credit-stat">
@@ -866,7 +867,7 @@
             <div class="form-row-grid mt-2">
               <div class="form-group">
                 <label for="editStudentID">Student ID *</label>
-                <input type="text" id="editStudentID" class="form-control" required readonly style="background: var(--neutral-100); opacity: 0.8;">
+                <input type="text" id="editStudentID" class="form-control form-control-readonly" required readonly>
               </div>
               <div class="form-group">
                 <label for="editStudentAdvisor">Academic Advisor</label>
@@ -903,7 +904,7 @@
             </div>
           </div>
           <footer class="dialog-footer">
-            <button type="button" id="deleteStudentBtn" class="btn btn-danger-outline" style="margin-right: auto;">
+            <button type="button" id="deleteStudentBtn" class="btn btn-danger-outline mr-auto">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
               Delete Student
             </button>
@@ -1282,7 +1283,7 @@
             <div class="univ-search-box">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
               <input type="text" id="univSearchInput" class="form-control" placeholder="Search by University name, acronym (e.g. IIT, NIT, AIIMS, DU, JNU), or city...">
-              <button id="clearUnivSearchBtn" class="btn btn-icon btn-sm" title="Clear Search" style="display: none;">&times;</button>
+              <button id="clearUnivSearchBtn" class="btn btn-icon btn-sm" title="Clear Search">&times;</button>
             </div>
 
             <div class="univ-filter-selects">
@@ -1331,7 +1332,7 @@
           </div>
 
           <!-- Empty State -->
-          <div class="univ-empty-state" id="univEmptyState" style="display: none;">
+          <div class="univ-empty-state" id="univEmptyState">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             <h4>No Universities Found</h4>
             <p>No universities match your current search and filter criteria. Try clearing search keywords or selecting "All States & UTs".</p>
