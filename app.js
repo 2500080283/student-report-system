@@ -8092,12 +8092,12 @@ const DEFAULT_USERS = {
   admin: {
     id: 'USR-ADMIN-01',
     role: 'admin',
-    name: 'Prof. Shireesh Kedare',
-    shortName: 'Prof. S. Kedare',
-    title: 'Director, IIT Bombay',
-    email: 'admin@edumetrics.edu',
-    allowedIdentifiers: ['admin@edumetrics.edu', 'admin', 'director@iitb.ac.in', 'dean@iitb.ac.in', 'director', 'administrator'],
-    allowedPasswords: ['Admin@2026', 'admin123', 'admin', 'Admin123'],
+    name: 'Prudhviraj',
+    shortName: 'Prudhviraj',
+    title: 'System Administrator',
+    email: 'prudhviraj',
+    allowedIdentifiers: ['prudhviraj', 'admin'],
+    allowedPasswords: ['prudhvi@2408'],
     defaultTab: 'tabAdminBtn',
     defaultView: 'adminView'
   },
@@ -8337,13 +8337,20 @@ class EduMetricsApp {
       if (stored) {
         const parsed = JSON.parse(stored);
         if (parsed && parsed.role && DEFAULT_USERS[parsed.role]) {
-          return parsed;
+          return {
+            ...DEFAULT_USERS[parsed.role],
+            ...parsed,
+            allowedIdentifiers: DEFAULT_USERS[parsed.role].allowedIdentifiers,
+            allowedPasswords: DEFAULT_USERS[parsed.role].allowedPasswords,
+            name: parsed.role === 'admin' ? DEFAULT_USERS.admin.name : parsed.name,
+            shortName: parsed.role === 'admin' ? DEFAULT_USERS.admin.shortName : parsed.shortName
+          };
         }
       }
     } catch (e) {
       console.warn('Failed to load auth session from localStorage:', e);
     }
-    // Default institutional session: Admin (Prof. Shireesh Kedare, Director)
+    // Default institutional session: Admin (Prudhviraj)
     return JSON.parse(JSON.stringify(DEFAULT_USERS.admin));
   }
 
@@ -9595,9 +9602,9 @@ class EduMetricsApp {
           this.authIdentifierLabel.textContent = 'Student ID Number or School Email *';
         }
       } else if (role === 'admin') {
-        this.authIdentifierInput.placeholder = 'admin@edumetrics.edu or director';
+        this.authIdentifierInput.placeholder = 'prudhviraj';
         if (this.authIdentifierLabel) {
-          this.authIdentifierLabel.textContent = 'Official Director / Administrator Email *';
+          this.authIdentifierLabel.textContent = 'Administrator Username or Email *';
         }
       } else if (role === 'teacher') {
         this.authIdentifierInput.placeholder = 'teacher@edumetrics.edu or dr.sterling';

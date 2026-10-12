@@ -16,7 +16,7 @@
     // Prevent theme Flash of Unstyled Content (FOUC)
     (function() {
       const savedTheme = localStorage.getItem('edumetrics_theme');
-      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      if (savedTheme === 'dark' || !savedTheme || window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.documentElement.setAttribute('data-theme', 'dark');
       } else {
         document.documentElement.setAttribute('data-theme', 'light');
@@ -149,7 +149,7 @@
             <button type="button" id="authTriggerBtn" class="auth-user-pill" title="Authentication & Session Profile" aria-label="Sign In or Switch Account">
               <span class="auth-status-dot online" id="authStatusDot"></span>
               <span class="auth-user-role-chip role-admin" id="authRoleChip">Admin</span>
-              <span class="auth-user-name" id="authUserName">Prof. S. Kedare</span>
+              <span class="auth-user-name" id="authUserName">Prudhviraj</span>
             </button>
             <button type="button" id="authSignOutBtn" class="btn btn-icon btn-sm auth-signout-btn" title="Sign Out of Session" aria-label="Sign Out">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
@@ -1868,7 +1868,7 @@
           <span class="quick-fill-label">Instant Demo Credentials (Click to fill):</span>
           <div class="quick-fill-chips">
             <button type="button" class="quick-fill-chip" data-quick-role="admin" title="Fill Administrator credentials">
-              <strong>👑 Admin:</strong> admin@edumetrics.edu
+              <strong>👑 Admin:</strong> prudhviraj
             </button>
             <button type="button" class="quick-fill-chip" data-quick-role="teacher" title="Fill Teacher credentials">
               <strong>🎓 Teacher:</strong> teacher@edumetrics.edu
@@ -1894,7 +1894,7 @@
               <label for="authIdentifierInput" id="authIdentifierLabel">Official Email Address or User ID *</label>
               <div class="auth-input-wrapper">
                 <svg class="auth-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                <input type="text" id="authIdentifierInput" class="form-control auth-input" placeholder="admin@edumetrics.edu" autocomplete="username" required>
+                <input type="text" id="authIdentifierInput" class="form-control auth-input" placeholder="prudhviraj" autocomplete="username" required>
               </div>
             </div>
 
