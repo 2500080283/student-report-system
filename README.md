@@ -1,61 +1,62 @@
 # EduMetrics Pro — Institutional Student Performance & Report Card Management System
 
-An enterprise-grade educational management, grading calculation, official transcript generation, and performance analytics platform designed for K-12 schools, academies, and collegiate preparatory institutions.
+An enterprise-grade educational management, grading calculation, official transcript generation, and performance analytics platform designed for K-12 schools, academies, and collegiate preparatory institutions. Built with a next-generation dark aesthetic inspired by [MotionSites AI](https://motionsites.ai/).
+
+---
+
+## 🔐 Default Access & Role Credentials
+
+The system includes a universal role-based authentication suite with quick-fill demo chips and active session persistence in `localStorage`.
+
+| Role | Name | Username / ID | Password | Access Level |
+| :--- | :--- | :--- | :--- | :--- |
+| 🛡️ **Admin** | **Prudhviraj** | `prudhviraj` (or `admin`) | `prudhvi@2408` | Full institutional control, audit logs, system settings, grading scale configuration |
+| 👨‍🏫 **Teacher** | Sarah Jenkins | `sarah.jenkins` (or `teacher`) | `teacher123` | Gradebook entry, curriculum CRUD, attendance logging, student observations |
+| 🎓 **Student** | Alex Rivera | `alex.rivera` (or `student`) | `student123` | Personal dashboard, honors badges, transcript review, graduation progress |
+| 👨‍👩‍👧 **Parent** | Carlos Rivera | `carlos.rivera` (or `parent`) | `parent123` | Guardian overview, digital transcript acknowledgment signature, conference booking |
 
 ---
 
 ## 🌟 Key Highlights & Capabilities
 
-### 1. 🎓 Official Academic Report Cards & Transcripts
-- **Institutional Identity & Customization**: Dynamic school title, accreditation subtitle, school crest, official verification seal (`★ VERIFIED ★`), and authorized signature blocks (Senior Academic Dean & Head of Institution).
+### 1. 🛡️ Role-Based Portals (Admin, Teacher, Student & Parent)
+- **Admin Portal**: Institutional branding, grading threshold scale configuration, system backup/restore, audit logs, and directory oversight.
+- **Teacher Gradebook**: Spreadsheet-style live entry with weighted grading logic:
+  $$\text{Final Course Grade} = (30\% \times \text{Coursework}) + (30\% \times \text{Midterm}) + (40\% \times \text{Final Exam})$$
+- **Student Portal**: Student-friendly dashboard highlighting honors badges, credit progress meter toward graduation, and faculty appraisals.
+- **Parent / Guardian Portal**: Attendance review, conference request system, and an **interactive digital acknowledgment signature form** generating official timestamped verification hashes on transcripts.
+
+### 2. 🎨 MotionSites AI-Inspired Visual Design System
+- **Dark Obsidian Canvas**: Atmospheric radial gradient glow mesh with vibrant purple (`#d0b2ff`) and energetic orange (`#e8400d`) accents.
+- **Floating Pill Segmented Controls**: Smooth tactile role switcher and sticky subnavigation bars.
+- **Glassmorphic Hero Banners & Cards**: Multi-layer 24px backdrop blur with iridescent border highlights.
+- **Interactive Prompt-Card Hover**: Spring-physics micro-interactions, elevated card tilts, and subtle keyframe shimmer effects.
+- **Strict Cross-Browser Compatibility**: Full vendor prefixing (`-webkit-backdrop-filter` preceding `backdrop-filter`) supporting Safari 9+, iOS Safari, Chrome, Edge, and Firefox.
+
+### 3. 🎓 Official Academic Report Cards & Transcripts
+- **Institutional Identity & Customization**: Dynamic school title, accreditation subtitle, school crest, verification seal (`★ VERIFIED ★`), and authorized signature blocks.
 - **Multi-Scale Evaluation Engine**: Live instant switching between 4 standard grading systems:
   - **Letter Grades**: A+ through F with color-coded badges
   - **Percentage**: 0.0% to 100.0% precision calculation
   - **4.0 GPA Standard**: Standard North American collegiate scale
   - **Standards-Based**: Level 4+ Exemplary down to Level 1 Novice
-- **Threshold & Scale Customizer**: Configure custom minimum percentage cutoffs, GPA points, standards labels, and badge hex colors with live recalculation.
-- **Official Print & PDF Export**: Highly tuned `@media print` transcript layout formatted for standard A4 portrait pages with page breaks, crisp monochrome/high-contrast styling, and no navigation clutter.
-- **Batch Class Printing**: 1-click batch generation of official consecutive report cards for an entire classroom or cohort separated by page breaks for bulk printing.
+- **Threshold & Scale Customizer**: Configure custom minimum cutoffs, GPA points, standards labels, and badge colors with live recalculation.
+- **Official Print & PDF Export**: Tuned `@media print` transcript layout formatted for standard A4 portrait pages with page breaks, crisp monochrome contrast, and zero navigation clutter.
+- **Batch Class Printing**: 1-click batch generation of official consecutive report cards for an entire classroom or cohort.
 
-### 2. 📝 Teacher Gradebook & Live Input Suite
-- **Weighted Assessment Logic**: Standard institutional formula:
-  $$\text{Final Course Grade} = (30\% \times \text{Coursework}) + (30\% \times \text{Midterm}) + (40\% \times \text{Final Exam})$$
-- **Live Spreadsheet-Style Entry**: Real-time validation and instant recalculation of weighted scores and grade badges as scores are typed.
-- **Curriculum & Subject Management (CRUD)**:
-  - Add custom subjects per student or class (STEM, Humanities, Arts, Languages, etc.)
-  - Delete or modify course instructors, department tags, and class averages
-- **Attendance & Punctuality Logging**: Tracks days present, excused absences, unexcused absences, tardies, and behavioral notes.
-- **Qualitative Faculty Remarks**: Individual course teacher observations and overall Dean/Counselor narrative appraisals.
-
-### 3. 📊 High-DPI Analytics & Longitudinal Charts
-- **Retina-Ready Native Canvas Engine**: Crisp rendering on 4K, OLED, and Retina displays via `window.devicePixelRatio` scaling with zero external chart library overhead.
-- **Interactive Floating Tooltips**: Hover over data points, subject bars, or distribution bins to view exact percentages, benchmarks, and student comparisons.
-- **Longitudinal Term Trajectory**: Multi-term line graph tracking historical progression across Fall Term 1, Midterm Milestone, and Spring Term 2 against cohort averages.
+### 4. 📊 High-DPI Analytics & Longitudinal Charts
+- **Retina-Ready Native Canvas Engine**: Crisp rendering on 4K, OLED, and Retina displays via `window.devicePixelRatio` scaling with zero external library bloat.
+- **Interactive Floating Tooltips**: Hover over data points, subject bars, or distribution bins to view exact percentages and cohort comparisons.
+- **Longitudinal Term Trajectory**: Multi-term line graph tracking progression across Fall Term 1, Midterm Milestone, and Spring Term 2 against cohort averages.
 - **Subject Proficiency vs. Cohort Benchmarks**: Side-by-side comparative bar chart analyzing individual competency against class averages.
-- **Cohort Grade Distribution**: Dynamic bell curve histogram grouping real student grades across `<70%`, `70-79%`, `80-89%`, `90-94%`, and `95-100%`.
+- **Cohort Grade Distribution**: Dynamic bell curve histogram grouping student grades across distribution tiers.
 - **Attendance vs. Academic Correlation**: Scatter plot with linear regression trendline correlating attendance percentage with final grade outcomes.
 
-### 4. 👥 Role-Based Portals (Teacher, Student & Parent)
-- **Teacher / Admin Portal**: Full unrestricted access to directory management, gradebook scoring, grading scale editor, institutional settings, and export hub.
-- **Student Portal**: Student-friendly dashboard highlighting academic honors, extracurricular achievement badges, graduation diploma progress meter (credits completed, core track), and faculty feedback.
-- **Parent / Guardian Portal**: Guardian dashboard with attendance overview, counselor feedback, and an **interactive digital acknowledgment signature form** that registers parent review date, relationship, and official verification hash on the transcript.
-- **Conference Request System**: Allows parents to schedule 1-on-1 virtual or in-person consultations with faculty directly from the portal.
-
 ### 5. 💾 Data Hub (CSV & JSON) & Institutional Profile
-- **Export Gradebook to CSV**: Generates download-ready CSV reports containing student IDs, names, classes, GPAs, percentages, ranks, attendance figures, and guardian details.
+- **Export Gradebook to CSV**: Generates download-ready CSV reports containing student IDs, names, classes, GPAs, percentages, ranks, and attendance records.
 - **Full Database Backup (JSON)**: Single-click export of complete student cohorts, courses, institution settings, and custom grading scales.
 - **Restore from Backup**: Upload previously exported JSON backup files to restore or migrate data seamlessly.
-- **Demo Cohort Loader**: Populates a realistic sample cohort of 8 students across Grade 10-A, 10-B, and 11-A.
-- **Institution Settings**: Configure school legal name, accreditation subtitle, academic year, dean name, principal name, and titles without modifying code.
-
-### 6. 🎨 Modern Design System & Accessibility
-- **Dark Mode & Light Mode**: Seamless dark theme with rich slate/indigo tones (`--bg-page: #0b0f19`), accessible contrast ratios, and persistence in `localStorage`.
-- **Mobile Responsive Drawer**: Collapsible student directory sidebar with smooth slide-in animation and backdrop dismissal on tablets and mobile devices.
-- **Keyboard Navigation**:
-  - `/` : Instantly focus student search input
-  - `Ctrl + P` / `Cmd + P` : Print active official report card
-  - `Esc` : Close open dialog modals
-- **Standards-Compliant Dialogs**: Native HTML5 `<dialog closedby="any">` with backdrop blur, light-dismiss fallbacks, and ARIA attributes.
+- **Demo Cohort Loader**: Populates a realistic sample cohort of students across Grade 10-A, 10-B, and 11-A.
 
 ---
 
@@ -79,7 +80,7 @@ Then navigate to `http://localhost:8080`.
 
 ## 🌐 Deploy to Vercel
 
-Zero configuration required — deploy directly to Vercel:
+The project is pre-configured with a production-ready `vercel.json` featuring SPA routing rewrites, security headers, and static asset caching.
 
 ### Via Vercel CLI
 ```bash
@@ -88,8 +89,8 @@ npx vercel
 
 ### Via GitHub & Vercel Dashboard
 1. Push this repository to GitHub.
-2. In Vercel, click **Add New Project** and import the repository.
-3. Keep default settings (Root directory `./`, Framework preset: Other).
+2. In Vercel, click **Add New Project** and import the repository: `student-report-system`.
+3. Keep default settings (Root directory `./`, Framework preset: **Other**).
 4. Click **Deploy**.
 
 ---
@@ -97,14 +98,23 @@ npx vercel
 ## 📂 Project Architecture
 
 ```
-36-student-report-system/
-├── index.html       # Semantic HTML5 architecture, dialogs, portals, and print templates
-├── style.css        # Modern design system, dark mode tokens, animations, and @media print
-├── app.js           # Core state management, CRUD, Retina Canvas chart engine, Data Hub
+student-report-system/
+├── index.html       # Semantic HTML5 architecture, dialogs, role portals, and print templates
+├── style.css        # MotionSites AI design system, glassmorphic tokens, and @media print
+├── app.js           # Core state management, auth sessions, CRUD, Canvas charts, Data Hub
 ├── package.json     # Project metadata and quick start scripts
-├── vercel.json      # Clean URL routing configuration
+├── vercel.json      # Vercel deployment configuration, SPA rewrites, and security headers
 └── README.md        # Comprehensive institutional documentation
 ```
+
+---
+
+## ⌨️ Accessibility & Shortcuts
+
+- `/` : Instantly focus student search input
+- `Ctrl + P` / `Cmd + P` : Print active official report card
+- `Esc` : Close open dialog modals
+- Full keyboard navigation with clear focus rings and WCAG AAA compliance.
 
 ---
 
