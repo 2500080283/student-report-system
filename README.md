@@ -56,7 +56,7 @@ The system includes a universal role-based authentication suite with quick-fill 
 - **Export Gradebook to CSV**: Generates download-ready CSV reports containing student IDs, names, classes, GPAs, percentages, ranks, and attendance records.
 - **Full Database Backup (JSON)**: Single-click export of complete student cohorts, courses, institution settings, and custom grading scales.
 - **Restore from Backup**: Upload previously exported JSON backup files to restore or migrate data seamlessly.
-- **Demo Cohort Loader**: Populates a realistic sample cohort of students across Grade 10-A, 10-B, and 11-A.
+- **Multi-Level Class Architecture**: Full support for School Education (5th Class through 12th Class) and Undergraduate Engineering (B.Tech 1st Year through 4th Year).
 
 ---
 

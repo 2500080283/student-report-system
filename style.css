@@ -479,6 +479,31 @@ body {
   background: var(--bg-surface);
 }
 
+.custom-select optgroup {
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--bg-surface);
+  font-size: 0.775rem;
+  padding: 4px 2px;
+}
+
+.custom-select option {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-weight: 400;
+  padding: 4px 8px;
+}
+
+[data-theme="dark"] .custom-select optgroup {
+  color: #c084fc;
+  background: #141724;
+}
+
+[data-theme="dark"] .custom-select option {
+  background: #181b26;
+  color: #f1f5f9;
+}
+
 /* Workspace Layout */
 .workspace-layout {
   display: grid;

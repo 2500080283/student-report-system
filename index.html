@@ -185,9 +185,27 @@
               <label for="classFilterSelect" class="sr-only">Filter by Class</label>
               <select id="classFilterSelect" class="custom-select select-sm">
                 <option value="all">All Classes</option>
-                <option value="Grade 10-A">Grade 10-A (STEM)</option>
-                <option value="Grade 10-B">Grade 10-B (Arts & Hum.)</option>
-                <option value="Grade 11-A">Grade 11-A (AP Prep)</option>
+                <optgroup label="School Education (5th – 12th Class)">
+                  <option value="5th Class">5th Class</option>
+                  <option value="6th Class">6th Class</option>
+                  <option value="7th Class">7th Class</option>
+                  <option value="8th Class">8th Class</option>
+                  <option value="9th Class">9th Class</option>
+                  <option value="10th Class">10th Class</option>
+                  <option value="11th Class">11th Class</option>
+                  <option value="12th Class">12th Class</option>
+                </optgroup>
+                <optgroup label="Undergraduate / Engineering (B.Tech)">
+                  <option value="B.Tech 1st Year">B.Tech 1st Year</option>
+                  <option value="B.Tech 2nd Year">B.Tech 2nd Year</option>
+                  <option value="B.Tech 3rd Year">B.Tech 3rd Year</option>
+                  <option value="B.Tech 4th Year">B.Tech 4th Year</option>
+                </optgroup>
+                <optgroup label="High School Sections">
+                  <option value="Grade 10-A">Grade 10-A (STEM)</option>
+                  <option value="Grade 10-B">Grade 10-B (Arts & Hum.)</option>
+                  <option value="Grade 11-A">Grade 11-A (AP Prep)</option>
+                </optgroup>
               </select>
             </div>
             <div class="filter-col">
@@ -210,15 +228,15 @@
         <div class="sidebar-stats-footer">
           <div class="stat-mini">
             <span class="stat-mini-label">Enrolled</span>
-            <span class="stat-mini-val" id="totalEnrolledCount">6</span>
+            <span class="stat-mini-val" id="totalEnrolledCount">0</span>
           </div>
           <div class="stat-mini">
             <span class="stat-mini-label">Class Avg</span>
-            <span class="stat-mini-val text-accent" id="classAvgVal">89.4%</span>
+            <span class="stat-mini-val text-accent" id="classAvgVal">—</span>
           </div>
           <div class="stat-mini">
             <span class="stat-mini-label">Avg Attend.</span>
-            <span class="stat-mini-val text-success" id="classAttendanceVal">96.8%</span>
+            <span class="stat-mini-val text-success" id="classAttendanceVal">—</span>
           </div>
         </div>
       </aside>
@@ -278,21 +296,21 @@
             <!-- Student Bio Profile Strip -->
             <div class="student-profile-strip" id="studentProfileHeader">
               <div class="student-avatar-box">
-                <div class="avatar-circle" id="studentAvatarInitials">SC</div>
+                <div class="avatar-circle" id="studentAvatarInitials">—</div>
               </div>
               <div class="student-core-details">
                 <div class="student-name-row">
-                  <h3 id="reportStudentName">Sophia Chen</h3>
-                  <span class="badge badge-honor" id="reportStudentHonor">Honor Roll with Distinction</span>
+                  <h3 id="reportStudentName">No Student Selected</h3>
+                  <span class="badge badge-honor" id="reportStudentHonor">Awaiting Evaluation</span>
                   <button id="editStudentQuickBtn" class="btn btn-sm btn-outline no-print" title="Edit Student Information">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                     Edit Profile
                   </button>
                 </div>
                 <div class="student-meta-grid">
-                  <div><strong>Student ID:</strong> <span id="reportStudentID">STU-10492</span></div>
-                  <div><strong>Class & Section:</strong> <span id="reportStudentClass">Grade 10-A</span></div>
-                  <div><strong>Academic Advisor:</strong> <span id="reportStudentAdvisor">Dr. Marcus Sterling</span></div>
+                  <div><strong>Student ID:</strong> <span id="reportStudentID">—</span></div>
+                  <div><strong>Class & Section:</strong> <span id="reportStudentClass">—</span></div>
+                  <div><strong>Academic Advisor:</strong> <span id="reportStudentAdvisor">—</span></div>
                   <div><strong>Target University:</strong> <span id="reportStudentTargetUniv" class="target-univ-badge">Not Assigned</span></div>
                   <div><strong>Assessment Session:</strong> 
                     <select id="reportTermSelector" class="custom-select select-inline" title="Switch Assessment Term for Report Card">
@@ -309,18 +327,18 @@
               <div class="student-quick-kpis">
                 <div class="kpi-card highlight">
                   <div class="kpi-label" id="reportScoreLabel">Overall Evaluation</div>
-                  <div class="kpi-value" id="reportScoreValue">3.92 GPA</div>
-                  <div class="kpi-sub" id="reportScoreSub">94.8% Raw Weighted</div>
+                  <div class="kpi-value" id="reportScoreValue">—</div>
+                  <div class="kpi-sub" id="reportScoreSub">No marks evaluated</div>
                 </div>
                 <div class="kpi-card">
                   <div class="kpi-label">Class Rank</div>
-                  <div class="kpi-value text-accent" id="reportClassRank">#1 <span class="kpi-sub-inline">of 6</span></div>
-                  <div class="kpi-sub" id="reportRankPercentile">Top 5th Percentile</div>
+                  <div class="kpi-value text-accent" id="reportClassRank">—</div>
+                  <div class="kpi-sub" id="reportRankPercentile">Pending Evaluations</div>
                 </div>
                 <div class="kpi-card">
                   <div class="kpi-label">Attendance</div>
-                  <div class="kpi-value text-success" id="reportAttendanceRate">98.5%</div>
-                  <div class="kpi-sub" id="reportAttendanceSub">88 of 90 Days Present</div>
+                  <div class="kpi-value text-success" id="reportAttendanceRate">—</div>
+                  <div class="kpi-sub" id="reportAttendanceSub">No attendance logged</div>
                 </div>
               </div>
             </div>
@@ -391,7 +409,7 @@
                       <span class="att-label">Tardy / Late</span>
                     </div>
                   </div>
-                  <p class="att-note" id="attSummaryText">Student displays exemplary commitment to attendance and prompt arrivals.</p>
+                  <p class="att-note" id="attSummaryText">Attendance record will appear once logged by teachers.</p>
                 </div>
               </div>
 
@@ -399,16 +417,16 @@
               <div class="doc-box">
                 <h5>IV. Counselor & Institutional Appraisal</h5>
                 <blockquote class="counselor-quote" id="counselorRemarks">
-                  "Sophia continues to demonstrate intellectual curiosity and academic rigor across all disciplines. Her leadership in collaborative laboratory projects and debate sessions is exemplary. Keep up the distinguished focus!"
+                  "No counselor or advisor appraisal entered yet."
                 </blockquote>
                 <div class="signature-block">
                   <div class="sig-line">
-                    <div class="sig-signature" id="advisorSigName">Dr. Marcus Sterling, Ph.D.</div>
-                    <div class="sig-title" id="advisorSigTitle">Senior Academic Dean</div>
+                    <div class="sig-signature" id="advisorSigName">Academic Advisor</div>
+                    <div class="sig-title" id="advisorSigTitle">Dean of Academic Programmes</div>
                   </div>
                   <div class="sig-line">
-                    <div class="sig-signature" id="principalSigName">Eleanor Vance, M.Ed.</div>
-                    <div class="sig-title" id="principalSigTitle">Head of Institution</div>
+                    <div class="sig-signature" id="principalSigName">Head of Institution</div>
+                    <div class="sig-title" id="principalSigTitle">Controller of Examinations</div>
                   </div>
                 </div>
               </div>
@@ -418,10 +436,10 @@
             <footer class="report-doc-footer">
               <div class="parent-ack-strip">
                 <div class="ack-status">
-                  <span class="status-indicator-dot online" id="ackStatusDot"></span>
-                  <span id="parentAckStatusText">Parent Acknowledged Online on March 18, 2026 by Arthur Chen</span>
+                  <span class="status-indicator-dot pending" id="ackStatusDot"></span>
+                  <span id="parentAckStatusText">Parent Digital Acknowledgment Pending</span>
                 </div>
-                <div class="doc-verify-code">Verification Hash: <code id="verifyCodeText">EDUMET-8942-A8F1</code></div>
+                <div class="doc-verify-code">Verification Hash: <code id="verifyCodeText">EDUMET-PENDING</code></div>
               </div>
             </footer>
           </div>
@@ -462,28 +480,28 @@
           <div class="module-kpi-grid">
             <div class="module-kpi-card">
               <span class="module-kpi-label">Total Enrollment</span>
-              <span class="module-kpi-val text-primary" id="adminTotalStudents">10</span>
-              <span class="module-kpi-sub">Active Students across 3 Cohorts</span>
+              <span class="module-kpi-val text-primary" id="adminTotalStudents">0</span>
+              <span class="module-kpi-sub">Enrolled Students across Cohorts</span>
             </div>
             <div class="module-kpi-card">
               <span class="module-kpi-label">Certified Faculty</span>
-              <span class="module-kpi-val text-success" id="adminTotalFaculty">8</span>
+              <span class="module-kpi-val text-success" id="adminTotalFaculty">0</span>
               <span class="module-kpi-sub">Advisors & Department Heads</span>
             </div>
             <div class="module-kpi-card">
               <span class="module-kpi-label">Campus Mean GPA</span>
-              <span class="module-kpi-val text-accent" id="adminCampusGpa">3.86</span>
+              <span class="module-kpi-val text-accent" id="adminCampusGpa">—</span>
               <span class="module-kpi-sub">Standard 4.0 Scale Evaluation</span>
             </div>
             <div class="module-kpi-card">
               <span class="module-kpi-label">Average Attendance</span>
-              <span class="module-kpi-val text-info" id="adminCampusAttendance">96.4%</span>
+              <span class="module-kpi-val text-info" id="adminCampusAttendance">—</span>
               <span class="module-kpi-sub">Campus Punctuality & Attendance</span>
             </div>
             <div class="module-kpi-card">
               <span class="module-kpi-label">University Mapped</span>
-              <span class="module-kpi-val text-warning" id="adminUnivMapped">100%</span>
-              <span class="module-kpi-sub">IITs / IISc / AIIMS Aspiration</span>
+              <span class="module-kpi-val text-warning" id="adminUnivMapped">0%</span>
+              <span class="module-kpi-sub">Indian University Aspiration</span>
             </div>
           </div>
 
@@ -522,6 +540,7 @@
                     <option value="all">All Departments</option>
                     <option value="Science">Science</option>
                     <option value="STEM & CS">STEM & Computer Science</option>
+                    <option value="Engineering & Technology">Engineering & Technology</option>
                     <option value="Mathematics">Mathematics</option>
                     <option value="Humanities">Humanities & Social Sciences</option>
                     <option value="Fine Arts">Fine Arts</option>
@@ -663,9 +682,27 @@
               &bull; Cohort:
               <label for="teacherCohortSelect" class="sr-only">Select Class Cohort</label>
               <select id="teacherCohortSelect" class="custom-select select-inline" title="Select Class Cohort" aria-label="Select Class Cohort">
-                <option value="Grade 10-A">Grade 10-A (STEM & Math)</option>
-                <option value="Grade 10-B">Grade 10-B (Arts & Humanities)</option>
-                <option value="Grade 11-A">Grade 11-A (Advanced Placement)</option>
+                <optgroup label="School Education (5th – 12th Class)">
+                  <option value="5th Class">5th Class</option>
+                  <option value="6th Class">6th Class</option>
+                  <option value="7th Class">7th Class</option>
+                  <option value="8th Class">8th Class</option>
+                  <option value="9th Class">9th Class</option>
+                  <option value="10th Class" selected>10th Class</option>
+                  <option value="11th Class">11th Class</option>
+                  <option value="12th Class">12th Class</option>
+                </optgroup>
+                <optgroup label="Undergraduate / Engineering (B.Tech)">
+                  <option value="B.Tech 1st Year">B.Tech 1st Year</option>
+                  <option value="B.Tech 2nd Year">B.Tech 2nd Year</option>
+                  <option value="B.Tech 3rd Year">B.Tech 3rd Year</option>
+                  <option value="B.Tech 4th Year">B.Tech 4th Year</option>
+                </optgroup>
+                <optgroup label="High School Sections">
+                  <option value="Grade 10-A">Grade 10-A (STEM & Math)</option>
+                  <option value="Grade 10-B">Grade 10-B (Arts & Humanities)</option>
+                  <option value="Grade 11-A">Grade 11-A (Advanced Placement)</option>
+                </optgroup>
               </select>
             </div>
             <div class="banner-term">
@@ -705,7 +742,7 @@
               <div class="panel-header-actions">
                 <div>
                   <h3>Interactive Course Assessment Matrix</h3>
-                  <p class="text-muted">Editing subjects and evaluation for: <strong id="teacherActiveStudentName">Sophia Chen</strong> (<span id="teacherActiveStudentID">STU-10492</span>)</p>
+                  <p class="text-muted">Editing subjects and evaluation for: <strong id="teacherActiveStudentName">No Student Selected</strong> (<span id="teacherActiveStudentID">—</span>)</p>
                 </div>
                 <div class="input-actions-group">
                   <button type="button" id="teacherAutofillClassAvgBtn" class="btn btn-outline btn-xs" title="Auto-fill Exam Class Averages">Fill Class Averages</button>
@@ -865,10 +902,10 @@
               <select id="parentWardSelect" class="custom-select select-inline" title="Select Ward / Child" aria-label="Select Ward / Child">
                 <!-- Populated dynamically -->
               </select>
-              &bull; <span id="parentWardClassText">Grade 10-A</span> &bull; Advisor: <span id="parentWardAdvisorText">Dr. Marcus Sterling</span>
+              &bull; <span id="parentWardClassText">—</span> &bull; Advisor: <span id="parentWardAdvisorText">—</span>
             </div>
             <div class="banner-term">
-              <span class="badge badge-success" id="parentSignOffBadge">Acknowledged Term 2</span>
+              <span class="badge badge-warning" id="parentSignOffBadge">No Ward Selected</span>
             </div>
           </div>
 
@@ -1036,23 +1073,23 @@
             <div class="analytics-kpi-grid">
               <div class="analytics-card">
                 <div class="card-title">Class Cohort Median</div>
-                <div class="card-big-num" id="analyticsClassMedian">87.6%</div>
-                <div class="card-trend positive" id="analyticsMedianTrend">&uarr; +2.4% vs Term 1</div>
+                <div class="card-big-num" id="analyticsClassMedian">—</div>
+                <div class="card-trend" id="analyticsMedianTrend">Awaiting evaluations</div>
               </div>
               <div class="analytics-card">
                 <div class="card-title">Selected Student vs Class Benchmark</div>
-                <div class="card-big-num text-accent" id="analyticsStudentDelta">+7.2%</div>
-                <div class="card-trend positive" id="analyticsDeltaTrend">Above Cohort Benchmark</div>
+                <div class="card-big-num text-muted" id="analyticsStudentDelta">—</div>
+                <div class="card-trend" id="analyticsDeltaTrend">No evaluation data</div>
               </div>
               <div class="analytics-card">
                 <div class="card-title">Strongest Competency</div>
-                <div class="card-big-num text-success" id="analyticsTopSubject">Computer Science (98%)</div>
-                <div class="card-sub" id="analyticsTopSub">Top 1% in Institution</div>
+                <div class="card-big-num text-success" id="analyticsTopSubject">None Recorded</div>
+                <div class="card-sub" id="analyticsTopSub">Add subjects to evaluate</div>
               </div>
               <div class="analytics-card">
                 <div class="card-title">Growth Opportunity</div>
-                <div class="card-big-num text-warning" id="analyticsGrowthSubject">World History (91%)</div>
-                <div class="card-sub" id="analyticsGrowthSub">Target for next milestone</div>
+                <div class="card-big-num text-warning" id="analyticsGrowthSubject">None Recorded</div>
+                <div class="card-sub" id="analyticsGrowthSub">Add subjects to evaluate</div>
               </div>
             </div>
 
@@ -1175,9 +1212,27 @@
               <div class="form-group">
                 <label for="newStudentGradeClass">Class & Section *</label>
                 <select id="newStudentGradeClass" class="custom-select" required>
-                  <option value="Grade 10-A">Grade 10-A (Science & Math)</option>
-                  <option value="Grade 10-B">Grade 10-B (Arts & Humanities)</option>
-                  <option value="Grade 11-A">Grade 11-A (Advanced Placement)</option>
+                  <optgroup label="School Education (5th – 12th Class)">
+                    <option value="5th Class">5th Class</option>
+                    <option value="6th Class">6th Class</option>
+                    <option value="7th Class">7th Class</option>
+                    <option value="8th Class">8th Class</option>
+                    <option value="9th Class">9th Class</option>
+                    <option value="10th Class" selected>10th Class</option>
+                    <option value="11th Class">11th Class</option>
+                    <option value="12th Class">12th Class</option>
+                  </optgroup>
+                  <optgroup label="Undergraduate / Engineering (B.Tech)">
+                    <option value="B.Tech 1st Year">B.Tech 1st Year</option>
+                    <option value="B.Tech 2nd Year">B.Tech 2nd Year</option>
+                    <option value="B.Tech 3rd Year">B.Tech 3rd Year</option>
+                    <option value="B.Tech 4th Year">B.Tech 4th Year</option>
+                  </optgroup>
+                  <optgroup label="High School Sections">
+                    <option value="Grade 10-A">Grade 10-A (Science & Math)</option>
+                    <option value="Grade 10-B">Grade 10-B (Arts & Humanities)</option>
+                    <option value="Grade 11-A">Grade 11-A (Advanced Placement)</option>
+                  </optgroup>
                 </select>
               </div>
             </div>
@@ -1188,7 +1243,7 @@
               </div>
               <div class="form-group">
                 <label for="newStudentAdvisor">Academic Advisor</label>
-                <input type="text" id="newStudentAdvisor" class="form-control" value="Dr. Marcus Sterling">
+                <input type="text" id="newStudentAdvisor" class="form-control" placeholder="e.g. Dr. Marcus Sterling">
               </div>
             </div>
             <div class="form-row-grid mt-2">
@@ -1235,9 +1290,27 @@
               <div class="form-group">
                 <label for="editStudentGradeClass">Class & Section *</label>
                 <select id="editStudentGradeClass" class="custom-select" required>
-                  <option value="Grade 10-A">Grade 10-A (Science & Math)</option>
-                  <option value="Grade 10-B">Grade 10-B (Arts & Humanities)</option>
-                  <option value="Grade 11-A">Grade 11-A (Advanced Placement)</option>
+                  <optgroup label="School Education (5th – 12th Class)">
+                    <option value="5th Class">5th Class</option>
+                    <option value="6th Class">6th Class</option>
+                    <option value="7th Class">7th Class</option>
+                    <option value="8th Class">8th Class</option>
+                    <option value="9th Class">9th Class</option>
+                    <option value="10th Class">10th Class</option>
+                    <option value="11th Class">11th Class</option>
+                    <option value="12th Class">12th Class</option>
+                  </optgroup>
+                  <optgroup label="Undergraduate / Engineering (B.Tech)">
+                    <option value="B.Tech 1st Year">B.Tech 1st Year</option>
+                    <option value="B.Tech 2nd Year">B.Tech 2nd Year</option>
+                    <option value="B.Tech 3rd Year">B.Tech 3rd Year</option>
+                    <option value="B.Tech 4th Year">B.Tech 4th Year</option>
+                  </optgroup>
+                  <optgroup label="High School Sections">
+                    <option value="Grade 10-A">Grade 10-A (Science & Math)</option>
+                    <option value="Grade 10-B">Grade 10-B (Arts & Humanities)</option>
+                    <option value="Grade 11-A">Grade 11-A (Advanced Placement)</option>
+                  </optgroup>
                 </select>
               </div>
             </div>
@@ -1310,6 +1383,7 @@
                 <label for="newSubjectDept">Department *</label>
                 <select id="newSubjectDept" class="custom-select" required>
                   <option value="STEM">STEM</option>
+                  <option value="Engineering & Technology">Engineering & Technology</option>
                   <option value="Mathematics">Mathematics</option>
                   <option value="Science">Science</option>
                   <option value="Humanities">Humanities</option>
@@ -1327,21 +1401,21 @@
               </div>
               <div class="form-group">
                 <label for="newSubjectClassAvg">Cohort Benchmark Avg (%)</label>
-                <input type="number" id="newSubjectClassAvg" min="0" max="100" class="form-control" value="85">
+                <input type="number" id="newSubjectClassAvg" min="0" max="100" class="form-control" placeholder="e.g. 80">
               </div>
             </div>
             <div class="form-row-grid mt-2">
               <div class="form-group">
                 <label for="newSubjectCw">Coursework Mark (30%)</label>
-                <input type="number" id="newSubjectCw" min="0" max="100" class="form-control" value="90">
+                <input type="number" id="newSubjectCw" min="0" max="100" class="form-control" placeholder="0">
               </div>
               <div class="form-group">
                 <label for="newSubjectMt">Midterm Mark (30%)</label>
-                <input type="number" id="newSubjectMt" min="0" max="100" class="form-control" value="88">
+                <input type="number" id="newSubjectMt" min="0" max="100" class="form-control" placeholder="0">
               </div>
               <div class="form-group">
                 <label for="newSubjectEx">Final Exam Mark (40%)</label>
-                <input type="number" id="newSubjectEx" min="0" max="100" class="form-control" value="92">
+                <input type="number" id="newSubjectEx" min="0" max="100" class="form-control" placeholder="0">
               </div>
             </div>
             <div class="form-group mt-2">
@@ -1471,14 +1545,14 @@
               </label>
             </div>
 
-            <!-- Sample Data Card -->
+            <!-- Reset Database Card -->
             <div class="data-hub-card">
               <div class="hub-icon amber">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
               </div>
-              <h4>Demo Sample Cohort</h4>
-              <p>Reset and populate the system with a balanced 8-student sample database across multiple grade classes.</p>
-              <button id="loadSampleDataBtn" class="btn btn-outline btn-sm mt-2">Populate Sample Cohort</button>
+              <h4>Clean Slate / Reset Database</h4>
+              <p>Clear all students, marks, evaluations, and logs to ensure the system is in a clean starting state.</p>
+              <button id="loadSampleDataBtn" class="btn btn-outline btn-sm mt-2">Clear All Records (Clean Slate)</button>
             </div>
 
             <!-- Indian Universities CSV Card -->
@@ -1512,9 +1586,27 @@
             <label for="batchClassSelect">Select Class to Print:</label>
             <select id="batchClassSelect" class="custom-select">
               <option value="all">All Enrolled Students (Full Institution)</option>
-              <option value="Grade 10-A">Grade 10-A (Science & Math)</option>
-              <option value="Grade 10-B">Grade 10-B (Arts & Humanities)</option>
-              <option value="Grade 11-A">Grade 11-A (Advanced Placement)</option>
+              <optgroup label="School Education (5th – 12th Class)">
+                <option value="5th Class">5th Class</option>
+                <option value="6th Class">6th Class</option>
+                <option value="7th Class">7th Class</option>
+                <option value="8th Class">8th Class</option>
+                <option value="9th Class">9th Class</option>
+                <option value="10th Class">10th Class</option>
+                <option value="11th Class">11th Class</option>
+                <option value="12th Class">12th Class</option>
+              </optgroup>
+              <optgroup label="Undergraduate / Engineering (B.Tech)">
+                <option value="B.Tech 1st Year">B.Tech 1st Year</option>
+                <option value="B.Tech 2nd Year">B.Tech 2nd Year</option>
+                <option value="B.Tech 3rd Year">B.Tech 3rd Year</option>
+                <option value="B.Tech 4th Year">B.Tech 4th Year</option>
+              </optgroup>
+              <optgroup label="High School Sections">
+                <option value="Grade 10-A">Grade 10-A (Science & Math)</option>
+                <option value="Grade 10-B">Grade 10-B (Arts & Humanities)</option>
+                <option value="Grade 11-A">Grade 11-A (Advanced Placement)</option>
+              </optgroup>
             </select>
           </div>
 
@@ -1547,12 +1639,7 @@
               <div class="form-group">
                 <label for="confTeacherSelect">Requested Faculty Member *</label>
                 <select id="confTeacherSelect" class="custom-select" required>
-                  <option value="Dr. Marcus Sterling (Academic Dean)">Dr. Marcus Sterling (Academic Dean)</option>
-                  <option value="Dr. Evelyn Reed (Mathematics)">Dr. Evelyn Reed (Mathematics)</option>
-                  <option value="Prof. David Lin (Computer Science)">Prof. David Lin (Computer Science)</option>
-                  <option value="Ms. Clara Oswald (World Literature)">Ms. Clara Oswald (World Literature)</option>
-                  <option value="Mr. Julian Vance (World History)">Mr. Julian Vance (World History)</option>
-                  <option value="Elena Rostova, MFA (Visual Design)">Elena Rostova, MFA (Visual Design)</option>
+                  <option value="Academic Advisor / Subject Teacher">Academic Advisor / Subject Teacher</option>
                 </select>
               </div>
               <div class="form-group">
@@ -1614,6 +1701,7 @@
                 <select id="newFacultyDept" class="custom-select" required>
                   <option value="Science">Science &amp; Laboratory Inquiries</option>
                   <option value="STEM &amp; CS">STEM &amp; Computer Science</option>
+                  <option value="Engineering &amp; Technology">Engineering &amp; Technology</option>
                   <option value="Mathematics">Mathematics &amp; Quantitative Logic</option>
                   <option value="Humanities">Humanities &amp; Social Sciences</option>
                   <option value="Fine Arts">Fine Arts &amp; Design</option>
@@ -1628,7 +1716,7 @@
               </div>
               <div class="form-group">
                 <label for="newFacultyCohorts">Assigned Cohorts *</label>
-                <input type="text" id="newFacultyCohorts" class="form-control" placeholder="e.g. Grade 10-A, Grade 11-A" required>
+                <input type="text" id="newFacultyCohorts" class="form-control" placeholder="e.g. 10th Class, B.Tech 1st Year, Grade 10-A" required>
               </div>
             </div>
             <div class="form-row-grid mt-2">
@@ -1877,7 +1965,7 @@
               <strong>👨‍👩‍👦 Parent:</strong> parent@edumetrics.edu
             </button>
             <button type="button" class="quick-fill-chip" data-quick-role="student" title="Fill Student credentials">
-              <strong>📋 Student:</strong> STU-10492
+              <strong>📋 Student:</strong> student@edumetrics.edu
             </button>
           </div>
         </div>

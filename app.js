@@ -7736,356 +7736,13 @@ const DEFAULT_SCALE_CONFIG = [
   { grade: 'F',  min: 0,  gpa: 0.0, standard: 'Novice / Unsatisfactory', color: '#991b1b' }
 ];
 
-// Rich Sample Cohort (8 Diverse Students across Grade 10-A, 10-B, and 11-A)
-const INITIAL_STUDENTS = [
-  {
-    id: 'STU-10492',
-    name: 'Sophia Chen',
-    class: 'Grade 10-A',
-    advisor: 'Dr. Marcus Sterling',
-    targetUniversity: 'Indian Institute of Technology Bombay',
-    honor: 'Honor Roll with Distinction',
-    parentName: 'Arthur Chen',
-    parentRelation: 'Father',
-    parentAckDate: 'March 18, 2026',
-    attendance: {
-      present: 88,
-      excused: 2,
-      unexcused: 0,
-      tardy: 1,
-      totalDays: 90,
-      notes: 'Student displays exemplary commitment to attendance and prompt arrivals.',
-      terms: {
-        term1: { present: 89, excused: 1, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Unbroken attendance record.' },
-        midterm: { present: 44, excused: 1, unexcused: 0, tardy: 1, totalDays: 45, notes: 'Consistently punctual.' },
-        term2: { present: 88, excused: 2, unexcused: 0, tardy: 1, totalDays: 90, notes: 'Student displays exemplary commitment to attendance and prompt arrivals.' }
-      }
-    },
-    counselorRemarks: 'Sophia continues to demonstrate intellectual curiosity and academic rigor across all disciplines. Her leadership in collaborative laboratory projects and debate sessions is exemplary. Keep up the distinguished focus!',
-    historicalTerms: {
-      term1: 93.4,
-      midterm: 94.1,
-      term2: 95.8
-    },
-    courses: [
-      { id: 'cs101', name: 'Advanced Computer Science', dept: 'STEM', teacher: 'Prof. David Lin', coursework: 98, midterm: 96, exam: 99, classAvg: 88, remark: 'Exceptional algorithm design skills and independent programming initiative.' },
-      { id: 'math102', name: 'AP Calculus BC', dept: 'Mathematics', teacher: 'Dr. Evelyn Reed', coursework: 96, midterm: 94, exam: 97, classAvg: 84, remark: 'Mastery of differential equations and rigorous analytical formulation.' },
-      { id: 'phys103', name: 'Honors Physics II', dept: 'Science', teacher: 'Dr. Marcus Sterling', coursework: 94, midterm: 92, exam: 95, classAvg: 81, remark: 'Strong conceptual comprehension of thermodynamics and lab execution.' },
-      { id: 'lit104', name: 'World Literature & Rhetoric', dept: 'Humanities', teacher: 'Ms. Clara Oswald', coursework: 92, midterm: 95, exam: 93, classAvg: 86, remark: 'Thoughtful essays with nuanced textual criticism and eloquent oral defense.' },
-      { id: 'hist105', name: 'AP World History: Modern', dept: 'Social Sciences', teacher: 'Mr. Julian Vance', coursework: 91, midterm: 90, exam: 92, classAvg: 83, remark: 'Consistent synthesis of primary historical sources and comparative essays.' },
-      { id: 'art106', name: 'Digital Media & Visual Design', dept: 'Fine Arts', teacher: 'Elena Rostova, MFA', coursework: 97, midterm: 95, exam: 98, classAvg: 90, remark: 'Innovative graphic compositions and outstanding creative storytelling.' }
-    ]
-  },
-  {
-    id: 'STU-10495',
-    name: 'Marcus Vance',
-    class: 'Grade 10-A',
-    advisor: 'Dr. Marcus Sterling',
-    targetUniversity: 'Indian Institute of Science Bangalore',
-    honor: 'Principal\'s Honor Roll',
-    parentName: 'Sarah Vance',
-    parentRelation: 'Mother',
-    parentAckDate: 'March 16, 2026',
-    attendance: {
-      present: 86,
-      excused: 3,
-      unexcused: 1,
-      tardy: 2,
-      totalDays: 90,
-      notes: 'Good attendance overall with active classroom contributions.',
-      terms: {
-        term1: { present: 85, excused: 3, unexcused: 2, tardy: 1, totalDays: 90, notes: 'Steady progress.' },
-        midterm: { present: 43, excused: 1, unexcused: 1, tardy: 1, totalDays: 45, notes: 'Participates actively.' },
-        term2: { present: 86, excused: 3, unexcused: 1, tardy: 2, totalDays: 90, notes: 'Good attendance overall with active classroom contributions.' }
-      }
-    },
-    counselorRemarks: 'Marcus shows great potential and natural problem-solving ability in physics and mathematics. Maintaining consistency in daily preparation will ensure top tier exam results.',
-    historicalTerms: {
-      term1: 88.2,
-      midterm: 89.5,
-      term2: 91.2
-    },
-    courses: [
-      { id: 'cs101', name: 'Advanced Computer Science', dept: 'STEM', teacher: 'Prof. David Lin', coursework: 92, midterm: 90, exam: 94, classAvg: 88, remark: 'Great debugging techniques and active participation in coding hackathons.' },
-      { id: 'math102', name: 'AP Calculus BC', dept: 'Mathematics', teacher: 'Dr. Evelyn Reed', coursework: 90, midterm: 88, exam: 92, classAvg: 84, remark: 'Sound grasp of integral concepts; recommended to double check calculation steps.' },
-      { id: 'phys103', name: 'Honors Physics II', dept: 'Science', teacher: 'Dr. Marcus Sterling', coursework: 93, midterm: 91, exam: 94, classAvg: 81, remark: 'Intuitive lab instincts and excellent experimental data logging.' },
-      { id: 'lit104', name: 'World Literature & Rhetoric', dept: 'Humanities', teacher: 'Ms. Clara Oswald', coursework: 86, midterm: 88, exam: 89, classAvg: 86, remark: 'Active participant in Socratic seminars with insightful viewpoints.' },
-      { id: 'hist105', name: 'AP World History: Modern', dept: 'Social Sciences', teacher: 'Mr. Julian Vance', coursework: 89, midterm: 87, exam: 90, classAvg: 83, remark: 'Solid grasp of chronological milestones and geopolitics.' },
-      { id: 'art106', name: 'Digital Media & Visual Design', dept: 'Fine Arts', teacher: 'Elena Rostova, MFA', coursework: 91, midterm: 92, exam: 93, classAvg: 90, remark: 'Creative video editing projects and strong presentation flair.' }
-    ]
-  },
-  {
-    id: 'STU-10499',
-    name: 'Maya Lin',
-    class: 'Grade 10-A',
-    advisor: 'Dr. Marcus Sterling',
-    targetUniversity: 'All India Institute of Medical Sciences New Delhi',
-    honor: 'Honor Roll with Distinction',
-    parentName: 'Daniel Lin',
-    parentRelation: 'Father',
-    parentAckDate: 'March 17, 2026',
-    attendance: {
-      present: 89,
-      excused: 1,
-      unexcused: 0,
-      tardy: 0,
-      totalDays: 90,
-      notes: 'Punctual and conscientious attendance record.',
-      terms: {
-        term1: { present: 88, excused: 2, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Very reliable.' },
-        midterm: { present: 45, excused: 0, unexcused: 0, tardy: 0, totalDays: 45, notes: 'Perfect record.' },
-        term2: { present: 89, excused: 1, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Punctual and conscientious attendance record.' }
-      }
-    },
-    counselorRemarks: 'Maya combines keen analytical curiosity with outstanding teamwork in collaborative research. An absolute asset to our STEM honors society.',
-    historicalTerms: {
-      term1: 94.2,
-      midterm: 95.0,
-      term2: 96.1
-    },
-    courses: [
-      { id: 'cs101', name: 'Advanced Computer Science', dept: 'STEM', teacher: 'Prof. David Lin', coursework: 97, midterm: 96, exam: 98, classAvg: 88, remark: 'Demonstrates elegant code architecture and clean documentation.' },
-      { id: 'math102', name: 'AP Calculus BC', dept: 'Mathematics', teacher: 'Dr. Evelyn Reed', coursework: 95, midterm: 97, exam: 96, classAvg: 84, remark: 'Superb problem-solving agility on advanced integration sets.' },
-      { id: 'phys103', name: 'Honors Physics II', dept: 'Science', teacher: 'Dr. Marcus Sterling', coursework: 96, midterm: 94, exam: 97, classAvg: 81, remark: 'Exemplary physics experimentation and precision error analysis.' },
-      { id: 'lit104', name: 'World Literature & Rhetoric', dept: 'Humanities', teacher: 'Ms. Clara Oswald', coursework: 94, midterm: 93, exam: 95, classAvg: 86, remark: 'Vivid and persuasive written discourse on classical tragedy.' },
-      { id: 'hist105', name: 'AP World History: Modern', dept: 'Social Sciences', teacher: 'Mr. Julian Vance', coursework: 93, midterm: 95, exam: 94, classAvg: 83, remark: 'In-depth historical cross-comparisons and eloquent arguments.' },
-      { id: 'art106', name: 'Digital Media & Visual Design', dept: 'Fine Arts', teacher: 'Elena Rostova, MFA', coursework: 96, midterm: 97, exam: 98, classAvg: 90, remark: 'Superior typography choice and polished responsive interface mockups.' }
-    ]
-  },
-  {
-    id: 'STU-10501',
-    name: 'Elena Rostova Jr.',
-    class: 'Grade 10-B',
-    advisor: 'Ms. Clara Oswald',
-    targetUniversity: 'University of Delhi',
-    honor: 'Academic Merit Award',
-    parentName: 'Dmitri Rostov',
-    parentRelation: 'Father',
-    parentAckDate: 'March 15, 2026',
-    attendance: {
-      present: 87,
-      excused: 2,
-      unexcused: 1,
-      tardy: 0,
-      totalDays: 90,
-      notes: 'Punctual and conscientious attendance record.',
-      terms: {
-        term1: { present: 86, excused: 3, unexcused: 1, tardy: 0, totalDays: 90, notes: 'Steady presence.' },
-        midterm: { present: 43, excused: 1, unexcused: 1, tardy: 0, totalDays: 45, notes: 'Active in class.' },
-        term2: { present: 87, excused: 2, unexcused: 1, tardy: 0, totalDays: 90, notes: 'Punctual and conscientious attendance record.' }
-      }
-    },
-    counselorRemarks: 'Elena is a phenomenal writer and critical thinker. Her historical essays have received inter-scholastic commendations.',
-    historicalTerms: {
-      term1: 89.0,
-      midterm: 91.0,
-      term2: 93.5
-    },
-    courses: [
-      { id: 'cs101', name: 'Advanced Computer Science', dept: 'STEM', teacher: 'Prof. David Lin', coursework: 88, midterm: 86, exam: 90, classAvg: 88, remark: 'Steadily advancing in data structures and logic algorithms.' },
-      { id: 'math102', name: 'AP Calculus BC', dept: 'Mathematics', teacher: 'Dr. Evelyn Reed', coursework: 86, midterm: 89, exam: 88, classAvg: 84, remark: 'Diligent effort in homework exercises with positive progress.' },
-      { id: 'phys103', name: 'Honors Physics II', dept: 'Science', teacher: 'Dr. Marcus Sterling', coursework: 89, midterm: 87, exam: 91, classAvg: 81, remark: 'Clear scientific summaries and active lab collaborator.' },
-      { id: 'lit104', name: 'World Literature & Rhetoric', dept: 'Humanities', teacher: 'Ms. Clara Oswald', coursework: 98, midterm: 96, exam: 99, classAvg: 86, remark: 'Exceptional literary analysis; essays demonstrate university-level critical depth.' },
-      { id: 'hist105', name: 'AP World History: Modern', dept: 'Social Sciences', teacher: 'Mr. Julian Vance', coursework: 96, midterm: 97, exam: 98, classAvg: 83, remark: 'Comprehensive knowledge of historical treatises and excellent debate skills.' },
-      { id: 'art106', name: 'Digital Media & Visual Design', dept: 'Fine Arts', teacher: 'Elena Rostova, MFA', coursework: 95, midterm: 96, exam: 97, classAvg: 90, remark: 'Refined aesthetic sensibility and mastery of digital layout principles.' }
-    ]
-  },
-  {
-    id: 'STU-10508',
-    name: 'David Kim',
-    class: 'Grade 10-B',
-    advisor: 'Ms. Clara Oswald',
-    targetUniversity: 'Indian Institute of Technology Delhi',
-    honor: 'Good Academic Standing',
-    parentName: 'Grace Kim',
-    parentRelation: 'Mother',
-    parentAckDate: 'March 17, 2026',
-    attendance: {
-      present: 84,
-      excused: 4,
-      unexcused: 2,
-      tardy: 3,
-      totalDays: 90,
-      notes: 'Attendance needs slight vigilance regarding morning punctuality.',
-      terms: {
-        term1: { present: 82, excused: 5, unexcused: 3, tardy: 4, totalDays: 90, notes: 'Monitoring attendance.' },
-        midterm: { present: 41, excused: 2, unexcused: 2, tardy: 2, totalDays: 45, notes: 'Showing improvement.' },
-        term2: { present: 84, excused: 4, unexcused: 2, tardy: 3, totalDays: 90, notes: 'Attendance needs slight vigilance regarding morning punctuality.' }
-      }
-    },
-    counselorRemarks: 'David brings energetic enthusiasm to technical subjects. Establishing a structured daily homework routine will elevate his humanities performance.',
-    historicalTerms: {
-      term1: 82.5,
-      midterm: 84.0,
-      term2: 86.4
-    },
-    courses: [
-      { id: 'cs101', name: 'Advanced Computer Science', dept: 'STEM', teacher: 'Prof. David Lin', coursework: 94, midterm: 91, exam: 95, classAvg: 88, remark: 'Brilliant software development acumen; built excellent class project.' },
-      { id: 'math102', name: 'AP Calculus BC', dept: 'Mathematics', teacher: 'Dr. Evelyn Reed', coursework: 85, midterm: 82, exam: 86, classAvg: 84, remark: 'Shows intuitive mathematical comprehension; needs more time on problem sets.' },
-      { id: 'phys103', name: 'Honors Physics II', dept: 'Science', teacher: 'Dr. Marcus Sterling', coursework: 88, midterm: 84, exam: 87, classAvg: 81, remark: 'Strong hands-on laboratory aptitude and mechanics grasp.' },
-      { id: 'lit104', name: 'World Literature & Rhetoric', dept: 'Humanities', teacher: 'Ms. Clara Oswald', coursework: 81, midterm: 83, exam: 82, classAvg: 86, remark: 'Contributes original perspectives during discussions.' },
-      { id: 'hist105', name: 'AP World History: Modern', dept: 'Social Sciences', teacher: 'Mr. Julian Vance', coursework: 82, midterm: 80, exam: 84, classAvg: 83, remark: 'Solid engagement with coursework; focus on essay synthesis.' },
-      { id: 'art106', name: 'Digital Media & Visual Design', dept: 'Fine Arts', teacher: 'Elena Rostova, MFA', coursework: 89, midterm: 90, exam: 91, classAvg: 90, remark: 'Clean visual concepts and great audio-video production work.' }
-    ]
-  },
-  {
-    id: 'STU-10515',
-    name: 'Aisha Patel',
-    class: 'Grade 11-A',
-    advisor: 'Dr. Evelyn Reed',
-    targetUniversity: 'National Law School of India University Bengaluru',
-    honor: 'Honor Roll with Distinction',
-    parentName: 'Rajesh Patel',
-    parentRelation: 'Father',
-    parentAckDate: 'March 14, 2026',
-    attendance: {
-      present: 89,
-      excused: 1,
-      unexcused: 0,
-      tardy: 0,
-      totalDays: 90,
-      notes: 'Exemplary punctuality and uninterrupted attendance.',
-      terms: {
-        term1: { present: 90, excused: 0, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Flawless attendance.' },
-        midterm: { present: 45, excused: 0, unexcused: 0, tardy: 0, totalDays: 45, notes: 'Always on time.' },
-        term2: { present: 89, excused: 1, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Exemplary punctuality and uninterrupted attendance.' }
-      }
-    },
-    counselorRemarks: 'Aisha exemplifies academic excellence, serving as mathematics study circle leader while actively captaining the robotics team.',
-    historicalTerms: {
-      term1: 96.0,
-      midterm: 96.8,
-      term2: 97.4
-    },
-    courses: [
-      { id: 'cs101', name: 'Advanced Computer Science', dept: 'STEM', teacher: 'Prof. David Lin', coursework: 99, midterm: 98, exam: 100, classAvg: 88, remark: 'Perfect score on final algorithmic capstone project. Brilliant coder.' },
-      { id: 'math102', name: 'AP Calculus BC', dept: 'Mathematics', teacher: 'Dr. Evelyn Reed', coursework: 98, midterm: 97, exam: 98, classAvg: 84, remark: 'Remarkable speed and analytical rigor. Top score in AP mock trials.' },
-      { id: 'phys103', name: 'Honors Physics II', dept: 'Science', teacher: 'Dr. Marcus Sterling', coursework: 97, midterm: 96, exam: 98, classAvg: 81, remark: 'Outstanding lab reports; models theoretical proofs with clarity.' },
-      { id: 'lit104', name: 'World Literature & Rhetoric', dept: 'Humanities', teacher: 'Ms. Clara Oswald', coursework: 94, midterm: 95, exam: 95, classAvg: 86, remark: 'Perceptive rhetorical arguments and thorough textual citations.' },
-      { id: 'hist105', name: 'AP World History: Modern', dept: 'Social Sciences', teacher: 'Mr. Julian Vance', coursework: 95, midterm: 94, exam: 96, classAvg: 83, remark: 'Thorough historiographical analysis and active participation.' },
-      { id: 'art106', name: 'Digital Media & Visual Design', dept: 'Fine Arts', teacher: 'Elena Rostova, MFA', coursework: 96, midterm: 95, exam: 97, classAvg: 90, remark: 'Vibrant digital portfolios combining computational art and UI design.' }
-    ]
-  },
-  {
-    id: 'STU-10522',
-    name: 'Lucas Martinez',
-    class: 'Grade 11-A',
-    advisor: 'Dr. Evelyn Reed',
-    targetUniversity: 'Birla Institute of Technology and Science Pilani',
-    honor: 'Academic Merit Award',
-    parentName: 'Maria Martinez',
-    parentRelation: 'Mother',
-    parentAckDate: 'March 12, 2026',
-    attendance: {
-      present: 85,
-      excused: 3,
-      unexcused: 2,
-      tardy: 1,
-      totalDays: 90,
-      notes: 'Steady attendance; active participant in laboratory practicums.',
-      terms: {
-        term1: { present: 84, excused: 4, unexcused: 2, tardy: 1, totalDays: 90, notes: 'Steady participant.' },
-        midterm: { present: 42, excused: 2, unexcused: 1, tardy: 1, totalDays: 45, notes: 'Good lab work.' },
-        term2: { present: 85, excused: 3, unexcused: 2, tardy: 1, totalDays: 90, notes: 'Steady attendance; active participant in laboratory practicums.' }
-      }
-    },
-    counselorRemarks: 'Lucas demonstrates strong spatial thinking and scientific curiosity. Continues to make substantial strides in analytical writing.',
-    historicalTerms: {
-      term1: 87.5,
-      midterm: 89.0,
-      term2: 90.6
-    },
-    courses: [
-      { id: 'cs101', name: 'Advanced Computer Science', dept: 'STEM', teacher: 'Prof. David Lin', coursework: 91, midterm: 89, exam: 93, classAvg: 88, remark: 'Enthusiastic and reliable collaborative teammate in lab projects.' },
-      { id: 'math102', name: 'AP Calculus BC', dept: 'Mathematics', teacher: 'Dr. Evelyn Reed', coursework: 89, midterm: 90, exam: 91, classAvg: 84, remark: 'Good analytical precision; confident in differentiation techniques.' },
-      { id: 'phys103', name: 'Honors Physics II', dept: 'Science', teacher: 'Dr. Marcus Sterling', coursework: 95, midterm: 93, exam: 96, classAvg: 81, remark: 'One of the strongest hands-on physics builders in the cohort.' },
-      { id: 'lit104', name: 'World Literature & Rhetoric', dept: 'Humanities', teacher: 'Ms. Clara Oswald', coursework: 86, midterm: 87, exam: 88, classAvg: 86, remark: 'Demonstrates clear thesis development in analytical essays.' },
-      { id: 'hist105', name: 'AP World History: Modern', dept: 'Social Sciences', teacher: 'Mr. Julian Vance', coursework: 88, midterm: 86, exam: 89, classAvg: 83, remark: 'Consistent understanding of global economic revolutions.' },
-      { id: 'art106', name: 'Digital Media & Visual Design', dept: 'Fine Arts', teacher: 'Elena Rostova, MFA', coursework: 94, midterm: 93, exam: 95, classAvg: 90, remark: 'Striking 3D modeling skills and architectural visualization rendering.' }
-    ]
-  },
-  {
-    id: 'STU-10528',
-    name: 'James Wilson',
-    class: 'Grade 11-A',
-    advisor: 'Dr. Evelyn Reed',
-    targetUniversity: 'Indian Institute of Management Ahmedabad',
-    honor: 'Principal\'s Honor Roll',
-    parentName: 'Robert Wilson',
-    parentRelation: 'Father',
-    parentAckDate: 'March 19, 2026',
-    attendance: {
-      present: 87,
-      excused: 2,
-      unexcused: 1,
-      tardy: 1,
-      totalDays: 90,
-      notes: 'Reliable and consistent attendance record.',
-      terms: {
-        term1: { present: 86, excused: 3, unexcused: 1, tardy: 1, totalDays: 90, notes: 'Solid attendance.' },
-        midterm: { present: 44, excused: 1, unexcused: 0, tardy: 1, totalDays: 45, notes: 'Very engaged.' },
-        term2: { present: 87, excused: 2, unexcused: 1, tardy: 1, totalDays: 90, notes: 'Reliable and consistent attendance record.' }
-      }
-    },
-    counselorRemarks: 'James exhibits commendable discipline in social sciences and advanced coding. His capstone work has demonstrated thorough research integrity.',
-    historicalTerms: {
-      term1: 91.0,
-      midterm: 92.5,
-      term2: 93.8
-    },
-    courses: [
-      { id: 'cs101', name: 'Advanced Computer Science', dept: 'STEM', teacher: 'Prof. David Lin', coursework: 95, midterm: 93, exam: 96, classAvg: 88, remark: 'Excellent algorithmic optimizations and network programming tests.' },
-      { id: 'math102', name: 'AP Calculus BC', dept: 'Mathematics', teacher: 'Dr. Evelyn Reed', coursework: 92, midterm: 91, exam: 93, classAvg: 84, remark: 'Strong analytical reasoning on series and sequences.' },
-      { id: 'phys103', name: 'Honors Physics II', dept: 'Science', teacher: 'Dr. Marcus Sterling', coursework: 93, midterm: 92, exam: 94, classAvg: 81, remark: 'Thoughtful lab write-ups with solid quantitative analysis.' },
-      { id: 'lit104', name: 'World Literature & Rhetoric', dept: 'Humanities', teacher: 'Ms. Clara Oswald', coursework: 90, midterm: 92, exam: 91, classAvg: 86, remark: 'Strong interpretive voice during Socratic roundtables.' },
-      { id: 'hist105', name: 'AP World History: Modern', dept: 'Social Sciences', teacher: 'Mr. Julian Vance', coursework: 96, midterm: 95, exam: 97, classAvg: 83, remark: 'Top analytical essay on comparative industrial revolutions.' },
-      { id: 'art106', name: 'Digital Media & Visual Design', dept: 'Fine Arts', teacher: 'Elena Rostova, MFA', coursework: 93, midterm: 94, exam: 95, classAvg: 90, remark: 'Creative motion graphics and clean layout balance.' }
-    ]
-  }
-];
-
-// Certified Institutional Faculty Directory
-const DEFAULT_FACULTY = [
-  { id: 'FAC-101', name: 'Dr. Marcus Sterling, Ph.D.', dept: 'Science', subjects: 'Honors Physics II, Quantum Mechanics', cohorts: 'Grade 10-A, Grade 11-A', email: 'm.sterling@stjude.edu', status: 'Active' },
-  { id: 'FAC-102', name: 'Dr. Evelyn Reed, Ph.D.', dept: 'Mathematics', subjects: 'AP Calculus BC, Linear Algebra', cohorts: 'Grade 10-A, Grade 10-B', email: 'e.reed@stjude.edu', status: 'Active' },
-  { id: 'FAC-103', name: 'Prof. David Lin, M.S.', dept: 'STEM & CS', subjects: 'Advanced Computer Science, Data Structures', cohorts: 'Grade 10-A, Grade 11-A', email: 'd.lin@stjude.edu', status: 'Active' },
-  { id: 'FAC-104', name: 'Ms. Clara Oswald, M.A.', dept: 'Humanities', subjects: 'World Literature & Rhetoric', cohorts: 'Grade 10-A, Grade 10-B', email: 'c.oswald@stjude.edu', status: 'Active' },
-  { id: 'FAC-105', name: 'Mr. Julian Vance, M.Ed.', dept: 'Humanities', subjects: 'AP World History: Modern, Economics', cohorts: 'Grade 10-B, Grade 11-A', email: 'j.vance@stjude.edu', status: 'Active' },
-  { id: 'FAC-106', name: 'Elena Rostova, MFA', dept: 'Fine Arts', subjects: 'Digital Media & Visual Design', cohorts: 'Grade 10-A, Grade 10-B, Grade 11-A', email: 'e.rostova@stjude.edu', status: 'Active' },
-  { id: 'FAC-107', name: 'Dr. Rajeshwar Sharma, Ph.D.', dept: 'Science', subjects: 'AP Chemistry, Molecular Biology', cohorts: 'Grade 10-B, Grade 11-A', email: 'r.sharma@stjude.edu', status: 'Active' },
-  { id: 'FAC-108', name: 'Dr. Priya Nair, Ed.D.', dept: 'Counseling', subjects: 'Academic Advising & University Admissions', cohorts: 'All Cohorts', email: 'p.nair@stjude.edu', status: 'Active' }
-];
-
-// Master System Audit Trail
-const DEFAULT_AUDIT_LOGS = [
-  { timestamp: '2026-03-24 10:15:32', user: 'Admin (System)', action: 'System Initialization', details: 'Initialized institutional database with 503 Indian Universities and 3 Class Cohorts.' },
-  { timestamp: '2026-03-24 11:42:19', user: 'Teacher (Dr. Evelyn Reed)', action: 'Gradebook Update', details: 'Published Midterm marks for Grade 10-A Mathematics.' },
-  { timestamp: '2026-03-24 14:05:08', user: 'Parent (Arthur Chen)', action: 'Term Sign-Off', details: "Digitally signed Sophia Chen's official Term 2 transcript." },
-  { timestamp: '2026-03-25 09:20:44', user: 'Admin (Dean Sterling)', action: 'Faculty Assignment', details: 'Assigned Prof. David Lin as lead instructor for Advanced Computer Science.' },
-  { timestamp: '2026-03-25 15:30:11', user: 'Teacher (Prof. David Lin)', action: 'Attendance Audit', details: 'Recorded daily attendance ledger for Grade 10-A STEM lab session.' }
-];
-
-// Student Absence & Leave Requests Log
-const DEFAULT_LEAVE_REQUESTS = [
-  { id: 'LR-201', studentId: 'STU-10492', studentName: 'Sophia Chen', date: '2026-03-20', category: 'Official Academic Competition', reason: 'Representing Academy at National Science Olympiad finals.', status: 'Approved' },
-  { id: 'LR-202', studentId: 'STU-10492', studentName: 'Sophia Chen', date: '2026-02-14', category: 'Medical Illness / Doctor Visit', reason: 'Dental appointment and orthodontic follow-up.', status: 'Approved' },
-  { id: 'LR-203', studentId: 'STU-10493', studentName: 'Marcus Aurelius Vance', date: '2026-03-12', category: 'Approved University Visit', reason: 'Attending IIT Bombay campus open house and lab tour.', status: 'Approved' },
-  { id: 'LR-204', studentId: 'STU-10494', studentName: 'Aaliyah Patel', date: '2026-04-02', category: 'Family Emergency / Urgent Event', reason: 'Attending family milestone gathering.', status: 'Pending Review' }
-];
-
-// Institutional Circulars & Notices
-const DEFAULT_CIRCULARS = [
-  { id: 'CIR-101', title: 'Schedule of Term 2 Comprehensive Examinations', category: 'Examination', date: 'March 25, 2026', excerpt: 'Final examination timetable, laboratory practical evaluations, and grading policies for Spring 2026.', priority: 'High' },
-  { id: 'CIR-102', title: 'National Higher Education & JEE/NEET Counseling Workshop', category: 'Admissions', date: 'March 22, 2026', excerpt: 'Informational session for Grade 10 & 11 parents regarding Indian University admissions and NIRF ranking insights.', priority: 'Normal' },
-  { id: 'CIR-103', title: 'Annual STEM & Innovation Science Expo 2026', category: 'Academic Event', date: 'March 18, 2026', excerpt: 'Student project submissions, robotics displays, and jury reviews scheduled at Main Auditorium.', priority: 'Normal' },
-  { id: 'CIR-104', title: 'Spring Holiday Recess & Campus Library Timings', category: 'Administrative', date: 'March 15, 2026', excerpt: 'Campus operations, administrative office hours, and digital library portal access during recess.', priority: 'Low' }
-];
-
-// Parent-Faculty Consultations & Conferences
-const DEFAULT_CONFERENCES = [
-  { id: 'CONF-301', studentName: 'Sophia Chen', teacher: 'Dr. Marcus Sterling (Academic Dean)', format: 'Virtual Video Call (Google Meet)', date: '2026-03-30', time: '02:30 PM - 03:00 PM', topic: 'Review AP Physics laboratory milestones and university preparation.', status: 'Confirmed' },
-  { id: 'CONF-302', studentName: 'Sophia Chen', teacher: 'Dr. Evelyn Reed (Mathematics)', format: 'In-Person Campus Meeting', date: '2026-04-05', time: '11:30 AM - 12:00 PM', topic: 'Discuss advanced calculus competition preparation.', status: 'Scheduled' }
-];
+// Initial Collections — Completely empty. All students, subjects, results, faculty, and records are added by teachers & administrators
+const INITIAL_STUDENTS = [];
+const DEFAULT_FACULTY = [];
+const DEFAULT_AUDIT_LOGS = [];
+const DEFAULT_LEAVE_REQUESTS = [];
+const DEFAULT_CIRCULARS = [];
+const DEFAULT_CONFERENCES = [];
 
 // Universal Authentication User Accounts (Admin, Teacher, Parent, Student)
 const DEFAULT_USERS = {
@@ -8104,11 +7761,11 @@ const DEFAULT_USERS = {
   teacher: {
     id: 'USR-FAC-01',
     role: 'teacher',
-    name: 'Dr. Marcus Sterling',
-    shortName: 'Dr. M. Sterling',
-    title: 'Senior Faculty & Dept Head',
+    name: 'Teacher / Faculty',
+    shortName: 'Faculty',
+    title: 'Teaching Staff',
     email: 'teacher@edumetrics.edu',
-    allowedIdentifiers: ['teacher@edumetrics.edu', 'teacher', 'dr.sterling@edumetrics.edu', 'faculty@edumetrics.edu', 'faculty', 'm.sterling'],
+    allowedIdentifiers: ['teacher@edumetrics.edu', 'teacher', 'faculty@edumetrics.edu', 'faculty'],
     allowedPasswords: ['Teacher@2026', 'teacher123', 'teacher', 'Teacher123'],
     defaultTab: 'tabTeacherBtn',
     defaultView: 'teacherView'
@@ -8116,23 +7773,23 @@ const DEFAULT_USERS = {
   parent: {
     id: 'USR-PRT-01',
     role: 'parent',
-    name: 'Arthur Chen',
-    shortName: 'Arthur Chen',
-    title: 'Guardian (Sophia Chen, Gr. 10-A)',
+    name: 'Parent / Guardian',
+    shortName: 'Parent',
+    title: 'Guardian Portal',
     email: 'parent@edumetrics.edu',
-    allowedIdentifiers: ['parent@edumetrics.edu', 'parent', 'chen.family@edumetrics.edu', 'arthur.chen@edumetrics.edu', 'guardian', 'chen'],
+    allowedIdentifiers: ['parent@edumetrics.edu', 'parent', 'guardian'],
     allowedPasswords: ['Parent@2026', 'parent123', 'parent', 'Parent123'],
     defaultTab: 'tabParentBtn',
     defaultView: 'parentView'
   },
   student: {
-    id: 'STU-10492',
+    id: 'USR-STU-01',
     role: 'student',
-    name: 'Sophia Chen',
-    shortName: 'Sophia Chen',
-    title: 'Scholar • Grade 10-A (Rank #1)',
-    email: 'sophia.chen@student.edumetrics.edu',
-    allowedIdentifiers: ['STU-10492', 'stu-10492', 'sophia.chen', 'student@edumetrics.edu', 'student'],
+    name: 'Student Portal',
+    shortName: 'Student',
+    title: 'Student Access',
+    email: 'student@edumetrics.edu',
+    allowedIdentifiers: ['student@edumetrics.edu', 'student'],
     allowedPasswords: ['Student@2026', 'student123', 'student', 'Student123'],
     defaultTab: 'tabReportBtn',
     defaultView: 'reportView'
@@ -8159,7 +7816,7 @@ class EduMetricsApp {
     this.currentAuthUser = this.loadAuthSession();
     this.currentRole = this.currentAuthUser ? this.currentAuthUser.role : 'admin';
 
-    this.selectedStudentId = this.students[0]?.id || 'STU-10492';
+    this.selectedStudentId = this.students[0]?.id || null;
     this.currentGradingFormat = localStorage.getItem('edumetrics_format') || 'letter';
     this.activeTab = this.currentAuthUser?.defaultView || 'adminView';
     this.activeReportTerm = 'term2'; // term2 | midterm | term1 | cumulative
@@ -8188,23 +7845,38 @@ class EduMetricsApp {
   // --- Persistence & Storage ---
   loadStudents() {
     try {
+      const DB_VERSION_KEY = 'edumetrics_db_version';
+      const CURRENT_DB_VERSION = '3.0.0-clean';
+      const storedVersion = localStorage.getItem(DB_VERSION_KEY);
+
+      if (storedVersion !== CURRENT_DB_VERSION) {
+        // Clear all legacy mock cohorts cached from earlier demo versions
+        localStorage.removeItem('edumetrics_students');
+        localStorage.removeItem('edumetrics_faculty');
+        localStorage.removeItem('edumetrics_audit_logs');
+        localStorage.removeItem('edumetrics_leave_requests');
+        localStorage.removeItem('edumetrics_conferences');
+        localStorage.setItem(DB_VERSION_KEY, CURRENT_DB_VERSION);
+        return [];
+      }
+
       const stored = localStorage.getItem('edumetrics_students');
       if (stored) {
         const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          // Fill targetUniversity for existing stored students if missing
-          parsed.forEach((s, idx) => {
-            if (!s.targetUniversity && INITIAL_STUDENTS[idx]?.targetUniversity) {
-              s.targetUniversity = INITIAL_STUDENTS[idx].targetUniversity;
-            }
-          });
+        if (Array.isArray(parsed)) {
+          // If legacy demo students (e.g. STU-10492 or Sophia Chen) exist, purge them
+          const hasLegacyMock = parsed.some(s => s.id === 'STU-10492' || s.name === 'Sophia Chen');
+          if (hasLegacyMock) {
+            localStorage.removeItem('edumetrics_students');
+            return [];
+          }
           return parsed;
         }
       }
-      return JSON.parse(JSON.stringify(INITIAL_STUDENTS));
+      return [];
     } catch (e) {
       console.warn('Failed to parse students from localStorage', e);
-      return JSON.parse(JSON.stringify(INITIAL_STUDENTS));
+      return [];
     }
   }
 
@@ -8253,9 +7925,20 @@ class EduMetricsApp {
   loadFaculty() {
     try {
       const stored = localStorage.getItem('edumetrics_faculty');
-      return stored ? JSON.parse(stored) : JSON.parse(JSON.stringify(DEFAULT_FACULTY));
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          const hasLegacy = parsed.some(f => f.id === 'FAC-01' || f.name === 'Dr. Marcus Sterling');
+          if (hasLegacy) {
+            localStorage.removeItem('edumetrics_faculty');
+            return [];
+          }
+          return parsed;
+        }
+      }
+      return [];
     } catch (e) {
-      return JSON.parse(JSON.stringify(DEFAULT_FACULTY));
+      return [];
     }
   }
 
@@ -8270,9 +7953,13 @@ class EduMetricsApp {
   loadAuditLogs() {
     try {
       const stored = localStorage.getItem('edumetrics_audit_logs');
-      return stored ? JSON.parse(stored) : JSON.parse(JSON.stringify(DEFAULT_AUDIT_LOGS));
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) return parsed;
+      }
+      return [];
     } catch (e) {
-      return JSON.parse(JSON.stringify(DEFAULT_AUDIT_LOGS));
+      return [];
     }
   }
 
@@ -8296,9 +7983,20 @@ class EduMetricsApp {
   loadLeaveRequests() {
     try {
       const stored = localStorage.getItem('edumetrics_leave_requests');
-      return stored ? JSON.parse(stored) : JSON.parse(JSON.stringify(DEFAULT_LEAVE_REQUESTS));
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          const hasLegacy = parsed.some(l => l.studentId === 'STU-10492' || l.studentName === 'Sophia Chen');
+          if (hasLegacy) {
+            localStorage.removeItem('edumetrics_leave_requests');
+            return [];
+          }
+          return parsed;
+        }
+      }
+      return [];
     } catch (e) {
-      return JSON.parse(JSON.stringify(DEFAULT_LEAVE_REQUESTS));
+      return [];
     }
   }
 
@@ -8311,15 +8009,43 @@ class EduMetricsApp {
   }
 
   loadCirculars() {
-    return JSON.parse(JSON.stringify(DEFAULT_CIRCULARS));
+    try {
+      const stored = localStorage.getItem('edumetrics_circulars');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) return parsed;
+      }
+      return [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  saveCirculars() {
+    try {
+      localStorage.setItem('edumetrics_circulars', JSON.stringify(this.circulars));
+    } catch (e) {
+      console.error('Failed to save circulars to localStorage', e);
+    }
   }
 
   loadConferences() {
     try {
       const stored = localStorage.getItem('edumetrics_conferences');
-      return stored ? JSON.parse(stored) : JSON.parse(JSON.stringify(DEFAULT_CONFERENCES));
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          const hasLegacy = parsed.some(c => c.studentName === 'Sophia Chen');
+          if (hasLegacy) {
+            localStorage.removeItem('edumetrics_conferences');
+            return [];
+          }
+          return parsed;
+        }
+      }
+      return [];
     } catch (e) {
-      return JSON.parse(JSON.stringify(DEFAULT_CONFERENCES));
+      return [];
     }
   }
 
@@ -9597,7 +9323,7 @@ class EduMetricsApp {
     const user = this.authUsers[role];
     if (this.authIdentifierInput && user) {
       if (role === 'student') {
-        this.authIdentifierInput.placeholder = 'Student ID (STU-10492) or email';
+        this.authIdentifierInput.placeholder = 'Student ID (e.g. STU-10530) or email';
         if (this.authIdentifierLabel) {
           this.authIdentifierLabel.textContent = 'Student ID Number or School Email *';
         }
@@ -9607,7 +9333,7 @@ class EduMetricsApp {
           this.authIdentifierLabel.textContent = 'Administrator Username or Email *';
         }
       } else if (role === 'teacher') {
-        this.authIdentifierInput.placeholder = 'teacher@edumetrics.edu or dr.sterling';
+        this.authIdentifierInput.placeholder = 'teacher@edumetrics.edu or faculty';
         if (this.authIdentifierLabel) {
           this.authIdentifierLabel.textContent = 'Faculty Academic Email Address *';
         }
@@ -9752,7 +9478,7 @@ class EduMetricsApp {
   }
 
   getSelectedStudent() {
-    return this.students.find(s => s.id === this.selectedStudentId) || this.students[0];
+    return this.students.find(s => s.id === this.selectedStudentId) || this.students[0] || null;
   }
 
   getFormatDisplayName() {
@@ -9825,7 +9551,7 @@ class EduMetricsApp {
 
   // Compute student weighted averages and GPA
   calculateStudentAverages(student) {
-    if (!student.courses || student.courses.length === 0) {
+    if (!student || !student.courses || student.courses.length === 0) {
       return { rawAvg: 0, gpa: 0, letter: 'N/A' };
     }
     const scores = student.courses.map(c => this.calculateWeightedScore(c));
@@ -9877,21 +9603,21 @@ class EduMetricsApp {
     if (this.adminTotalFaculty) this.adminTotalFaculty.textContent = this.faculty.length;
     
     // Mean GPA
-    const allGpas = this.students.map(s => this.calculateStudentAverages(s).gpa);
-    const avgGpa = allGpas.length ? (allGpas.reduce((a, b) => a + b, 0) / allGpas.length).toFixed(2) : '4.00';
+    const allGpas = this.students.map(s => this.calculateStudentAverages(s).gpa).filter(g => g > 0);
+    const avgGpa = allGpas.length ? (allGpas.reduce((a, b) => a + b, 0) / allGpas.length).toFixed(2) : '—';
     if (this.adminCampusGpa) this.adminCampusGpa.textContent = avgGpa;
 
     // Campus Attendance Rate
     const totalAtt = this.students.reduce((acc, s) => {
-      const days = s.attendance.totalDays || 90;
-      return acc + (s.attendance.present / days);
+      const days = s.attendance.totalDays || 0;
+      return acc + (days > 0 ? (s.attendance.present / days) : 0);
     }, 0);
-    const avgAtt = this.students.length ? ((totalAtt / this.students.length) * 100).toFixed(1) : '96.5';
-    if (this.adminCampusAttendance) this.adminCampusAttendance.textContent = `${avgAtt}%`;
+    const avgAtt = this.students.length ? ((totalAtt / this.students.length) * 100).toFixed(1) + '%' : '—';
+    if (this.adminCampusAttendance) this.adminCampusAttendance.textContent = avgAtt;
 
     // University Mapped %
     const mapped = this.students.filter(s => !!s.targetUniversity).length;
-    const mappedPct = this.students.length ? Math.round((mapped / this.students.length) * 100) : 100;
+    const mappedPct = this.students.length ? Math.round((mapped / this.students.length) * 100) : 0;
     if (this.adminUnivMapped) this.adminUnivMapped.textContent = `${mappedPct}%`;
   }
 
@@ -9999,19 +9725,26 @@ class EduMetricsApp {
     this.adminCohortGrid.innerHTML = '';
 
     // Group students by class
-    const cohortNames = ['Grade 10-A', 'Grade 10-B', 'Grade 11-A'];
+    const standardCohorts = [
+      '5th Class', '6th Class', '7th Class', '8th Class',
+      '9th Class', '10th Class', '11th Class', '12th Class',
+      'B.Tech 1st Year', 'B.Tech 2nd Year', 'B.Tech 3rd Year', 'B.Tech 4th Year',
+      'Grade 10-A', 'Grade 10-B', 'Grade 11-A'
+    ];
+    const studentCohorts = this.students.map(s => s.class).filter(Boolean);
+    const cohortNames = [...new Set([...standardCohorts, ...studentCohorts])];
     cohortNames.forEach(cohortName => {
       const cohortStudents = this.students.filter(s => s.class === cohortName);
       const count = cohortStudents.length;
-      const gpas = cohortStudents.map(s => this.calculateStudentAverages(s).gpa);
-      const meanGpa = gpas.length ? (gpas.reduce((a, b) => a + b, 0) / gpas.length).toFixed(2) : '3.85';
-      const advisor = cohortStudents[0]?.advisor || 'Dr. Marcus Sterling';
+      const gpas = cohortStudents.map(s => this.calculateStudentAverages(s).gpa).filter(g => g > 0);
+      const meanGpa = gpas.length ? (gpas.reduce((a, b) => a + b, 0) / gpas.length).toFixed(2) : '—';
+      const advisor = cohortStudents[0]?.advisor || 'Unassigned';
 
       const totalAtt = cohortStudents.reduce((acc, s) => {
-        const d = s.attendance.totalDays || 90;
-        return acc + (s.attendance.present / d);
+        const d = s.attendance.totalDays || 0;
+        return acc + (d > 0 ? (s.attendance.present / d) : 0);
       }, 0);
-      const avgAtt = cohortStudents.length ? ((totalAtt / cohortStudents.length) * 100).toFixed(1) : '97.2';
+      const avgAtt = cohortStudents.length ? ((totalAtt / cohortStudents.length) * 100).toFixed(1) + '%' : '—';
 
       const card = document.createElement('div');
       card.className = 'cohort-card';
@@ -10023,12 +9756,14 @@ class EduMetricsApp {
         <div class="cohort-stats-row">
           <span>Advisor: <strong>${advisor}</strong></span>
           <span>Mean GPA: <strong class="text-accent">${meanGpa}</strong></span>
-          <span>Attendance: <strong class="text-success">${avgAtt}%</strong></span>
+          <span>Attendance: <strong class="text-success">${avgAtt}</strong></span>
         </div>
         <div>
           <span class="text-muted text-xs">Enrolled Members:</span>
           <div style="margin-top: 0.35rem; display: flex; flex-wrap: wrap; gap: 0.3rem;">
-            ${cohortStudents.map(s => `<span class="badge badge-info" style="font-size: 0.72rem;">${s.name.split(' ')[0]}</span>`).join('')}
+            ${cohortStudents.length > 0 
+              ? cohortStudents.map(s => `<span class="badge badge-info" style="font-size: 0.72rem;">${s.name.split(' ')[0]}</span>`).join('')
+              : '<span class="text-muted text-xs">No students enrolled</span>'}
           </div>
         </div>
       `;
@@ -10040,18 +9775,29 @@ class EduMetricsApp {
     if (!this.adminUnivPipelineTableBody) return;
     this.adminUnivPipelineTableBody.innerHTML = '';
 
+    if (this.students.length === 0) {
+      this.adminUnivPipelineTableBody.innerHTML = `
+        <tr>
+          <td colspan="6" class="text-center text-muted" style="padding: 2rem;">
+            No enrolled students in the university pipeline yet.
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
     this.students.forEach(s => {
       const avgs = this.calculateStudentAverages(s);
-      const targetUniv = s.targetUniversity || 'Indian Institute of Technology Bombay';
+      const targetUniv = s.targetUniversity || 'Not Specified';
       const univObj = window.IndianUniversitiesHub?.getByName(targetUniv);
-      const category = univObj?.category || 'Engineering / Multi-Disciplinary';
+      const category = univObj?.category || (s.targetUniversity ? 'Higher Education' : 'Unassigned');
 
       let readiness = 'Admissions Ready';
       let readinessBadge = 'badge-success';
-      if (avgs.gpa < 3.5) {
+      if (avgs.gpa < 3.0) {
         readiness = 'In Progress';
         readinessBadge = 'badge-warning';
-      } else if (avgs.gpa < 3.8) {
+      } else if (avgs.gpa < 3.7) {
         readiness = 'Competitive Candidate';
         readinessBadge = 'badge-primary';
       }
@@ -10065,10 +9811,10 @@ class EduMetricsApp {
         <td>${s.class}</td>
         <td>
           <strong>${targetUniv}</strong><br>
-          <span class="text-muted text-xs">${univObj?.state ? univObj.city + ', ' + univObj.state : 'Top Tier Indian Institution'}</span>
+          <span class="text-muted text-xs">${univObj?.state ? univObj.city + ', ' + univObj.state : (s.targetUniversity ? 'Indian Institution' : 'No target selected')}</span>
         </td>
         <td><span class="badge badge-info">${category}</span></td>
-        <td class="text-center font-mono"><strong>${avgs.gpa.toFixed(2)}</strong></td>
+        <td class="text-center font-mono"><strong>${avgs.gpa > 0 ? avgs.gpa.toFixed(2) : '—'}</strong></td>
         <td class="text-center"><span class="badge ${readinessBadge}">${readiness}</span></td>
       `;
       this.adminUnivPipelineTableBody.appendChild(tr);
@@ -10124,18 +9870,17 @@ class EduMetricsApp {
   // ==========================================================================
   renderTeacherModule() {
     const student = this.getSelectedStudent();
-    if (!student) return;
 
-    // 1. Populate Instructor dropdown if not already populated
-    if (this.teacherProfileSelect && this.teacherProfileSelect.options.length === 0) {
-      this.teacherProfileSelect.innerHTML = this.faculty.map(f => 
-        `<option value="${f.name}">${f.name} (${f.dept})</option>`
-      ).join('');
+    // 1. Populate Instructor dropdown
+    if (this.teacherProfileSelect) {
+      this.teacherProfileSelect.innerHTML = this.faculty.length > 0 
+        ? this.faculty.map(f => `<option value="${f.name}">${f.name} (${f.dept})</option>`).join('')
+        : '<option value="">No registered faculty</option>';
     }
 
     // 2. Context active student labels
-    if (this.teacherActiveStudentName) this.teacherActiveStudentName.textContent = student.name;
-    if (this.teacherActiveStudentID) this.teacherActiveStudentID.textContent = student.id;
+    if (this.teacherActiveStudentName) this.teacherActiveStudentName.textContent = student ? student.name : 'No Student Selected';
+    if (this.teacherActiveStudentID) this.teacherActiveStudentID.textContent = student ? student.id : '—';
 
     // 3. Render Gradebook matrix, attendance ledger, remarks, and metrics
     this.renderTeacherGradebook();
@@ -10146,9 +9891,31 @@ class EduMetricsApp {
 
   renderTeacherGradebook() {
     const student = this.getSelectedStudent();
-    if (!student || !this.teacherGradesTableBody) return;
+    if (!this.teacherGradesTableBody) return;
+
+    if (!student) {
+      this.teacherGradesTableBody.innerHTML = `
+        <tr>
+          <td colspan="9" class="text-center text-muted" style="padding: 2.5rem;">
+            No students enrolled yet. Teachers or administrators can enroll a student to record grades.
+          </td>
+        </tr>
+      `;
+      return;
+    }
 
     this.teacherGradesTableBody.innerHTML = '';
+    if (!student.courses || student.courses.length === 0) {
+      this.teacherGradesTableBody.innerHTML = `
+        <tr>
+          <td colspan="9" class="text-center text-muted" style="padding: 2.5rem;">
+            No subjects added yet for ${student.name}. Click <strong>+ Add Subject</strong> to add curriculum items.
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
     student.courses.forEach((c, idx) => {
       const weighted = this.calculateWeightedScore(c);
       const converted = this.convertScore(weighted);
@@ -10248,12 +10015,23 @@ class EduMetricsApp {
     if (!this.teacherAttendanceTableBody) return;
     this.teacherAttendanceTableBody.innerHTML = '';
 
-    const selectedCohort = this.teacherCohortSelect?.value || 'Grade 10-A';
+    const selectedCohort = this.teacherCohortSelect?.value || '10th Class';
     const cohortStudents = this.students.filter(s => s.class === selectedCohort);
 
+    if (cohortStudents.length === 0) {
+      this.teacherAttendanceTableBody.innerHTML = `
+        <tr>
+          <td colspan="5" class="text-center text-muted" style="padding: 2rem;">
+            No enrolled students in ${selectedCohort}.
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
     cohortStudents.forEach(s => {
-      const totalDays = s.attendance.totalDays || 90;
-      const attRate = ((s.attendance.present / totalDays) * 100).toFixed(1);
+      const totalDays = s.attendance.totalDays || 0;
+      const attRate = totalDays > 0 ? ((s.attendance.present / totalDays) * 100).toFixed(1) : '0.0';
       const studentStatus = this.attendanceRecords[s.id] || 'P';
 
       const tr = document.createElement('tr');
@@ -10300,8 +10078,12 @@ class EduMetricsApp {
   }
 
   markAllCohortPresent() {
-    const selectedCohort = this.teacherCohortSelect?.value || 'Grade 10-A';
+    const selectedCohort = this.teacherCohortSelect?.value || '10th Class';
     const cohortStudents = this.students.filter(s => s.class === selectedCohort);
+    if (cohortStudents.length === 0) {
+      this.showToast(`No students enrolled in ${selectedCohort}.`);
+      return;
+    }
     cohortStudents.forEach(s => {
       this.attendanceRecords[s.id] = 'P';
     });
@@ -10314,8 +10096,15 @@ class EduMetricsApp {
     if (!this.teacherRemarksStudentSelect) return;
     
     // Populate select if empty or mismatched
-    const selectedCohort = this.teacherCohortSelect?.value || 'Grade 10-A';
+    const selectedCohort = this.teacherCohortSelect?.value || '10th Class';
     const cohortStudents = this.students.filter(s => s.class === selectedCohort);
+
+    if (cohortStudents.length === 0) {
+      this.teacherRemarksStudentSelect.innerHTML = '<option value="">No students in cohort</option>';
+      if (this.teacherHonorBadgeSelect) this.teacherHonorBadgeSelect.value = 'Good Academic Standing';
+      if (this.teacherCounselorRemarksInput) this.teacherCounselorRemarksInput.value = '';
+      return;
+    }
 
     this.teacherRemarksStudentSelect.innerHTML = cohortStudents.map(s => 
       `<option value="${s.id}" ${s.id === this.selectedStudentId ? 'selected' : ''}>${s.name} (${s.id})</option>`
@@ -10323,7 +10112,7 @@ class EduMetricsApp {
 
     const student = this.getSelectedStudent();
     if (student) {
-      if (this.teacherHonorBadgeSelect) this.teacherHonorBadgeSelect.value = student.honor || 'Honor Roll with Distinction';
+      if (this.teacherHonorBadgeSelect) this.teacherHonorBadgeSelect.value = student.honor || 'Good Academic Standing';
       if (this.teacherCounselorRemarksInput) this.teacherCounselorRemarksInput.value = student.counselorRemarks || '';
     }
   }
@@ -10332,19 +10121,19 @@ class EduMetricsApp {
     if (!this.teacherCohortStatsGrid) return;
     this.teacherCohortStatsGrid.innerHTML = '';
 
-    const selectedCohort = this.teacherCohortSelect?.value || 'Grade 10-A';
+    const selectedCohort = this.teacherCohortSelect?.value || '10th Class';
     const cohortStudents = this.students.filter(s => s.class === selectedCohort);
 
-    const gpas = cohortStudents.map(s => this.calculateStudentAverages(s).gpa).sort((a, b) => a - b);
-    const medianGpa = gpas.length ? gpas[Math.floor(gpas.length / 2)].toFixed(2) : '3.88';
-    const highGpa = gpas.length ? gpas[gpas.length - 1].toFixed(2) : '4.00';
+    const gpas = cohortStudents.map(s => this.calculateStudentAverages(s).gpa).filter(g => g > 0).sort((a, b) => a - b);
+    const medianGpa = gpas.length ? gpas[Math.floor(gpas.length / 2)].toFixed(2) : '—';
+    const highGpa = gpas.length ? gpas[gpas.length - 1].toFixed(2) : '—';
     const honorsCount = cohortStudents.filter(s => (s.honor || '').includes('Honor Roll')).length;
 
     const totalAtt = cohortStudents.reduce((acc, s) => {
-      const d = s.attendance.totalDays || 90;
-      return acc + (s.attendance.present / d);
+      const d = s.attendance.totalDays || 0;
+      return acc + (d > 0 ? (s.attendance.present / d) : 0);
     }, 0);
-    const attPct = cohortStudents.length ? ((totalAtt / cohortStudents.length) * 100).toFixed(1) : '97.4';
+    const attPct = cohortStudents.length ? ((totalAtt / cohortStudents.length) * 100).toFixed(1) + '%' : '—';
 
     this.teacherCohortStatsGrid.innerHTML = `
       <div class="stat-metric-card">
@@ -10355,7 +10144,7 @@ class EduMetricsApp {
       <div class="stat-metric-card">
         <span class="metric-label">Highest Student GPA</span>
         <span class="metric-val text-accent">${highGpa}</span>
-        <span class="metric-sub">Valedictorian Pace</span>
+        <span class="metric-sub">Cohort Benchmark</span>
       </div>
       <div class="stat-metric-card">
         <span class="metric-label">Honors Recipients</span>
@@ -10364,7 +10153,7 @@ class EduMetricsApp {
       </div>
       <div class="stat-metric-card">
         <span class="metric-label">Cohort Attendance</span>
-        <span class="metric-val text-info">${attPct}%</span>
+        <span class="metric-val text-info">${attPct}</span>
         <span class="metric-sub">Punctuality Average</span>
       </div>
     `;
@@ -10633,20 +10422,26 @@ class EduMetricsApp {
 
     let totalCohortRaw = 0;
     let totalCohortAtt = 0;
+    let studentsWithGrades = 0;
 
     this.students.forEach(s => {
       const avgs = this.calculateStudentAverages(s);
-      totalCohortRaw += avgs.rawAvg;
-      const totalDays = s.attendance.totalDays || 90;
-      const attRate = (s.attendance.present / totalDays) * 100;
-      totalCohortAtt += attRate;
+      if (avgs.rawAvg > 0) {
+        totalCohortRaw += avgs.rawAvg;
+        studentsWithGrades++;
+      }
+      const totalDays = s.attendance?.totalDays || 0;
+      if (totalDays > 0) {
+        const attRate = (s.attendance.present / totalDays) * 100;
+        totalCohortAtt += attRate;
+      }
     });
 
-    const cohortAvg = this.students.length ? (totalCohortRaw / this.students.length).toFixed(1) : '0.0';
-    const cohortAtt = this.students.length ? (totalCohortAtt / this.students.length).toFixed(1) : '0.0';
+    const cohortAvg = studentsWithGrades ? (totalCohortRaw / studentsWithGrades).toFixed(1) + '%' : '—';
+    const cohortAtt = this.students.length && totalCohortAtt > 0 ? (totalCohortAtt / this.students.length).toFixed(1) + '%' : '—';
 
-    this.classAvgVal.textContent = `${cohortAvg}%`;
-    this.classAttendanceVal.textContent = `${cohortAtt}%`;
+    this.classAvgVal.textContent = cohortAvg;
+    this.classAttendanceVal.textContent = cohortAtt;
   }
 
   renderStudentList() {
@@ -10668,14 +10463,24 @@ class EduMetricsApp {
         return this.calculateStudentAverages(b).rawAvg - this.calculateStudentAverages(a).rawAvg;
       }
       if (this.sortMode === 'att-desc') {
-        const rateA = (a.attendance.present / (a.attendance.totalDays || 90));
-        const rateB = (b.attendance.present / (b.attendance.totalDays || 90));
+        const rateA = (a.attendance?.totalDays ? a.attendance.present / a.attendance.totalDays : 0);
+        const rateB = (b.attendance?.totalDays ? b.attendance.present / b.attendance.totalDays : 0);
         return rateB - rateA;
       }
       return 0;
     });
 
     this.studentsListContainer.innerHTML = '';
+
+    if (this.students.length === 0) {
+      this.studentsListContainer.innerHTML = `
+        <li style="padding: 2rem 1rem; color: var(--text-muted); text-align: center; font-size: 0.85rem; line-height: 1.5;">
+          No students enrolled yet.<br>
+          <button class="btn btn-primary btn-sm mt-2" onclick="document.getElementById('addStudentModalBtn')?.click()">+ Enroll Student</button>
+        </li>
+      `;
+      return;
+    }
 
     if (filtered.length === 0) {
       this.studentsListContainer.innerHTML = `<li style="padding: 1.25rem 0.5rem; color: var(--text-muted); text-align: center; font-size: 0.8rem;">No students found matching filters</li>`;
@@ -10704,7 +10509,7 @@ class EduMetricsApp {
           </div>
         </div>
         <div class="student-item-badge">
-          ${this.currentGradingFormat === 'gpa' ? avgs.gpa.toFixed(2) + ' GPA' : (this.currentGradingFormat === 'percentage' ? avgs.rawAvg + '%' : avgs.letter)}
+          ${this.currentGradingFormat === 'gpa' ? (avgs.gpa > 0 ? avgs.gpa.toFixed(2) + ' GPA' : 'N/A') : (this.currentGradingFormat === 'percentage' ? (avgs.rawAvg > 0 ? avgs.rawAvg + '%' : 'N/A') : avgs.letter)}
         </div>
         <div class="student-item-actions">
           <button class="student-quick-action-btn edit-act-btn" title="Edit Profile" aria-label="Edit Student Profile">
@@ -10739,7 +10544,31 @@ class EduMetricsApp {
   // --- View 1: Report Card Rendering ---
   renderReportCard() {
     const student = this.getSelectedStudent();
-    if (!student) return;
+    const doc = document.querySelector('.report-document');
+    let emptyNotice = document.getElementById('reportCardEmptyNotice');
+
+    if (!student) {
+      if (!emptyNotice && doc && doc.parentNode) {
+        emptyNotice = document.createElement('div');
+        emptyNotice.id = 'reportCardEmptyNotice';
+        emptyNotice.className = 'empty-state-notice';
+        emptyNotice.innerHTML = `
+          <div style="text-align: center; padding: 4rem 2rem; background: var(--bg-surface); border: 1px dashed var(--border-color); border-radius: var(--radius-lg); margin: 2rem 0;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--text-muted); margin-bottom: 1rem;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <h3 style="margin-bottom: 0.5rem; color: var(--text-main);">No Enrolled Students</h3>
+            <p style="color: var(--text-muted); max-width: 480px; margin: 0 auto 1.5rem;">All default records have been cleared. Teachers and administrators can enroll students and enter academic evaluation marks.</p>
+            <button class="btn btn-primary" onclick="document.getElementById('addStudentModalBtn')?.click()">+ Enroll Student</button>
+          </div>
+        `;
+        doc.parentNode.insertBefore(emptyNotice, doc);
+      }
+      if (emptyNotice) emptyNotice.style.display = 'block';
+      if (doc) doc.style.display = 'none';
+      return;
+    }
+
+    if (emptyNotice) emptyNotice.style.display = 'none';
+    if (doc) doc.style.display = 'block';
 
     const avgs = this.calculateStudentAverages(student);
     const initials = student.name.split(' ').map(p => p[0]).join('').substring(0, 2);
@@ -10766,21 +10595,21 @@ class EduMetricsApp {
 
     if (this.currentGradingFormat === 'gpa') {
       scoreLabelEl.textContent = 'Cumulative GPA';
-      scoreValEl.textContent = `${avgs.gpa.toFixed(2)} / 4.0`;
-      scoreSubEl.textContent = `${avgs.rawAvg}% Raw Weighted`;
+      scoreValEl.textContent = avgs.gpa > 0 ? `${avgs.gpa.toFixed(2)} / 4.0` : '— / 4.0';
+      scoreSubEl.textContent = avgs.rawAvg > 0 ? `${avgs.rawAvg}% Raw Weighted` : 'No marks entered';
     } else if (this.currentGradingFormat === 'percentage') {
       scoreLabelEl.textContent = 'Overall Percentage';
-      scoreValEl.textContent = `${avgs.rawAvg.toFixed(1)}%`;
-      scoreSubEl.textContent = `Grade Equivalent: ${avgs.letter}`;
+      scoreValEl.textContent = avgs.rawAvg > 0 ? `${avgs.rawAvg.toFixed(1)}%` : '—';
+      scoreSubEl.textContent = avgs.rawAvg > 0 ? `Grade Equivalent: ${avgs.letter}` : 'No marks entered';
     } else if (this.currentGradingFormat === 'standards') {
       const match = this.scaleConfig.find(sc => avgs.rawAvg >= sc.min) || this.scaleConfig[this.scaleConfig.length - 1];
       scoreLabelEl.textContent = 'Standards Assessment';
-      scoreValEl.textContent = match.standard.split(' ')[0];
-      scoreSubEl.textContent = `${match.standard} (${avgs.rawAvg}%)`;
+      scoreValEl.textContent = avgs.rawAvg > 0 ? match.standard.split(' ')[0] : 'N/A';
+      scoreSubEl.textContent = avgs.rawAvg > 0 ? `${match.standard} (${avgs.rawAvg}%)` : 'No marks entered';
     } else {
       scoreLabelEl.textContent = 'Overall Letter Evaluation';
-      scoreValEl.textContent = `${avgs.letter} Grade`;
-      scoreSubEl.textContent = `${avgs.rawAvg}% Raw (${avgs.gpa.toFixed(2)} GPA)`;
+      scoreValEl.textContent = avgs.rawAvg > 0 ? `${avgs.letter} Grade` : 'N/A';
+      scoreSubEl.textContent = avgs.rawAvg > 0 ? `${avgs.rawAvg}% Raw (${avgs.gpa.toFixed(2)} GPA)` : 'No marks entered';
     }
 
     // Rank calculation within cohort
@@ -10789,49 +10618,61 @@ class EduMetricsApp {
       avg: this.calculateStudentAverages(s).rawAvg
     })).sort((a, b) => b.avg - a.avg);
     const myRank = allRanks.findIndex(r => r.id === student.id) + 1;
-    document.getElementById('reportClassRank').innerHTML = `#${myRank} <span class="kpi-sub-inline">of ${this.students.length}</span>`;
+    document.getElementById('reportClassRank').innerHTML = this.students.length > 0 
+      ? `#${myRank} <span class="kpi-sub-inline">of ${this.students.length}</span>`
+      : `— <span class="kpi-sub-inline">0 enrolled</span>`;
     
-    const percentile = Math.max(1, Math.round((myRank / this.students.length) * 100));
-    document.getElementById('reportRankPercentile').textContent = `Top ${percentile}% of Cohort`;
+    const percentile = this.students.length > 0 ? Math.max(1, Math.round((myRank / this.students.length) * 100)) : 0;
+    document.getElementById('reportRankPercentile').textContent = this.students.length > 0 ? `Top ${percentile}% of Cohort` : 'No Cohort Data';
 
     // Attendance KPI
-    const totalDays = student.attendance.totalDays || 90;
-    const attPercent = ((student.attendance.present / totalDays) * 100).toFixed(1);
-    document.getElementById('reportAttendanceRate').textContent = `${attPercent}%`;
-    document.getElementById('reportAttendanceSub').textContent = `${student.attendance.present} of ${totalDays} Days Present`;
+    const totalDays = student.attendance?.totalDays || 0;
+    const attPercent = totalDays > 0 ? ((student.attendance.present / totalDays) * 100).toFixed(1) : '0.0';
+    document.getElementById('reportAttendanceRate').textContent = totalDays > 0 ? `${attPercent}%` : '—';
+    document.getElementById('reportAttendanceSub').textContent = totalDays > 0 ? `${student.attendance.present} of ${totalDays} Days Present` : 'No attendance recorded';
 
     // Academic Scores Table Body
     const tbody = document.getElementById('scoresTableBody');
     tbody.innerHTML = '';
 
-    student.courses.forEach(c => {
-      const weighted = this.calculateWeightedScore(c);
-      const converted = this.convertScore(weighted);
-      const diff = (weighted - c.classAvg).toFixed(1);
-      const isPositive = diff >= 0;
-
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>
-          <div class="course-title">${c.name}</div>
-          <div class="course-dept">${c.dept}</div>
-        </td>
-        <td>${c.teacher}</td>
-        <td style="text-align: center; font-family: var(--font-mono);">${c.coursework}%</td>
-        <td style="text-align: center; font-family: var(--font-mono);">${c.midterm}%</td>
-        <td style="text-align: center; font-family: var(--font-mono);">${c.exam}%</td>
-        <td style="text-align: center;">
-          <span class="score-badge ${converted.badgeClass}">${converted.display}</span>
-        </td>
-        <td style="text-align: center; font-family: var(--font-mono); color: var(--text-muted);">${c.classAvg}%</td>
-        <td style="text-align: center;">
-          <span style="font-size: 0.75rem; font-weight: 700; color: ${isPositive ? 'var(--success)' : 'var(--warning)'};">
-            ${isPositive ? '+' : ''}${diff}%
-          </span>
-        </td>
+    if (!student.courses || student.courses.length === 0) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="8" class="text-center text-muted" style="padding: 2.5rem;">
+            No subjects or marks recorded yet for ${student.name}. Teacher or Admin can add subjects via the Teacher Gradebook or "+ Add Subject".
+          </td>
+        </tr>
       `;
-      tbody.appendChild(tr);
-    });
+    } else {
+      student.courses.forEach(c => {
+        const weighted = this.calculateWeightedScore(c);
+        const converted = this.convertScore(weighted);
+        const diff = (weighted - c.classAvg).toFixed(1);
+        const isPositive = diff >= 0;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>
+            <div class="course-title">${c.name}</div>
+            <div class="course-dept">${c.dept}</div>
+          </td>
+          <td>${c.teacher}</td>
+          <td style="text-align: center; font-family: var(--font-mono);">${c.coursework}%</td>
+          <td style="text-align: center; font-family: var(--font-mono);">${c.midterm}%</td>
+          <td style="text-align: center; font-family: var(--font-mono);">${c.exam}%</td>
+          <td style="text-align: center;">
+            <span class="score-badge ${converted.badgeClass}">${converted.display}</span>
+          </td>
+          <td style="text-align: center; font-family: var(--font-mono); color: var(--text-muted);">${c.classAvg}%</td>
+          <td style="text-align: center;">
+            <span style="font-size: 0.75rem; font-weight: 700; color: ${isPositive ? 'var(--success)' : 'var(--warning)'};">
+              ${isPositive ? '+' : ''}${diff}%
+            </span>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
 
     // Summary Foot Row
     const tfoot = document.getElementById('scoresTableFoot');
@@ -10843,10 +10684,10 @@ class EduMetricsApp {
           <td style="text-align: center; font-family: var(--font-mono);">30% Wtd</td>
           <td style="text-align: center; font-family: var(--font-mono);">40% Wtd</td>
           <td style="text-align: center;">
-            <strong style="color: var(--primary);">${this.currentGradingFormat === 'gpa' ? avgs.gpa.toFixed(2) + ' GPA' : (this.currentGradingFormat === 'percentage' ? avgs.rawAvg + '%' : avgs.letter)}</strong>
+            <strong style="color: var(--primary);">${this.currentGradingFormat === 'gpa' ? (avgs.gpa > 0 ? avgs.gpa.toFixed(2) + ' GPA' : 'N/A') : (this.currentGradingFormat === 'percentage' ? (avgs.rawAvg > 0 ? avgs.rawAvg + '%' : 'N/A') : avgs.letter)}</strong>
           </td>
-          <td style="text-align: center; font-family: var(--font-mono); color: var(--text-muted);">${this.classAvgVal.textContent}</td>
-          <td style="text-align: center; color: var(--success); font-weight: 700;">Good</td>
+          <td style="text-align: center; font-family: var(--font-mono); color: var(--text-muted);">${this.classAvgVal.textContent || '—'}</td>
+          <td style="text-align: center; color: var(--success); font-weight: 700;">${avgs.rawAvg > 0 ? 'Good' : '—'}</td>
         </tr>
       `;
     }
@@ -10854,29 +10695,37 @@ class EduMetricsApp {
     // Faculty Remarks Cards
     const remarksGrid = document.getElementById('subjectRemarksList');
     remarksGrid.innerHTML = '';
-    student.courses.forEach(c => {
-      const card = document.createElement('div');
-      card.className = 'subject-remark-card';
-      card.innerHTML = `
-        <div class="remark-card-header">
-          <span class="remark-course-name">${c.name}</span>
-          <span class="remark-teacher">${c.teacher}</span>
+    if (!student.courses || student.courses.length === 0) {
+      remarksGrid.innerHTML = `
+        <div class="text-center text-muted" style="padding: 1.5rem; grid-column: 1 / -1;">
+          No subject remarks recorded yet.
         </div>
-        <div class="remark-card-body">"${c.remark || 'Demonstrates attentive engagement and steady course performance.'}"</div>
       `;
-      remarksGrid.appendChild(card);
-    });
+    } else {
+      student.courses.forEach(c => {
+        const card = document.createElement('div');
+        card.className = 'subject-remark-card';
+        card.innerHTML = `
+          <div class="remark-card-header">
+            <span class="remark-course-name">${c.name}</span>
+            <span class="remark-teacher">${c.teacher}</span>
+          </div>
+          <div class="remark-card-body">"${c.remark || 'Maintains steady participation in coursework.'}"</div>
+        `;
+        remarksGrid.appendChild(card);
+      });
+    }
 
     // Attendance Breakdown Box
     document.getElementById('attendanceProgressFill').style.width = `${attPercent}%`;
-    document.getElementById('attPresent').textContent = student.attendance.present;
-    document.getElementById('attExcused').textContent = student.attendance.excused;
-    document.getElementById('attUnexcused').textContent = student.attendance.unexcused;
-    document.getElementById('attTardy').textContent = student.attendance.tardy;
-    document.getElementById('attSummaryText').textContent = student.attendance.notes;
+    document.getElementById('attPresent').textContent = student.attendance?.present ?? 0;
+    document.getElementById('attExcused').textContent = student.attendance?.excused ?? 0;
+    document.getElementById('attUnexcused').textContent = student.attendance?.unexcused ?? 0;
+    document.getElementById('attTardy').textContent = student.attendance?.tardy ?? 0;
+    document.getElementById('attSummaryText').textContent = student.attendance?.notes || 'No attendance notes recorded.';
 
     // Counselor Remarks Box
-    document.getElementById('counselorRemarks').textContent = `"${student.counselorRemarks}"`;
+    document.getElementById('counselorRemarks').textContent = student.counselorRemarks ? `"${student.counselorRemarks}"` : '"No faculty appraisal recorded yet."';
 
     // Parent Acknowledgment Footer & Portal
     const ackDate = student.parentAckDate || 'Pending Guardian Sign-Off';
@@ -10907,18 +10756,44 @@ class EduMetricsApp {
   // --- View 2: Teacher Input Gradebook (Legacy Safe Handler) ---
   renderTeacherInput() {
     const student = this.getSelectedStudent();
-    if (!student) return;
-
     const nameEl = document.getElementById('editorStudentName');
-    if (nameEl) nameEl.textContent = student.name;
     const idEl = document.getElementById('editorStudentID');
-    if (idEl) idEl.textContent = student.id;
     const classEl = document.getElementById('editorStudentClass');
+    const tbody = document.getElementById('editorGradesTableBody');
+
+    if (!student) {
+      if (nameEl) nameEl.textContent = 'No Student Selected';
+      if (idEl) idEl.textContent = '—';
+      if (classEl) classEl.textContent = '—';
+      if (tbody) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="9" class="text-center text-muted" style="padding: 2.5rem;">
+              No students enrolled yet. Enroll a student to input grades.
+            </td>
+          </tr>
+        `;
+      }
+      return;
+    }
+
+    if (nameEl) nameEl.textContent = student.name;
+    if (idEl) idEl.textContent = student.id;
     if (classEl) classEl.textContent = student.class;
 
-    const tbody = document.getElementById('editorGradesTableBody');
     if (!tbody) return;
     tbody.innerHTML = '';
+
+    if (!student.courses || student.courses.length === 0) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="9" class="text-center text-muted" style="padding: 2.5rem;">
+            No subjects added yet for ${student.name}. Click <strong>+ Add Subject</strong> to add curriculum items.
+          </td>
+        </tr>
+      `;
+      return;
+    }
 
     student.courses.forEach((c, idx) => {
       const weighted = this.calculateWeightedScore(c);
@@ -11010,15 +10885,15 @@ class EduMetricsApp {
 
     // Attendance inputs
     const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
-    setVal('inputDaysPresent', student.attendance.present);
-    setVal('inputDaysExcused', student.attendance.excused);
-    setVal('inputDaysUnexcused', student.attendance.unexcused);
-    setVal('inputDaysTardy', student.attendance.tardy);
-    setVal('inputAttNote', student.attendance.notes);
+    setVal('inputDaysPresent', student.attendance?.present ?? 0);
+    setVal('inputDaysExcused', student.attendance?.excused ?? 0);
+    setVal('inputDaysUnexcused', student.attendance?.unexcused ?? 0);
+    setVal('inputDaysTardy', student.attendance?.tardy ?? 0);
+    setVal('inputAttNote', student.attendance?.notes ?? '');
 
     // Counselor remarks & honor badge
     setVal('inputCounselorRemarks', student.counselorRemarks || '');
-    setVal('inputHonorBadge', student.honor || 'Honor Roll with Distinction');
+    setVal('inputHonorBadge', student.honor || 'Good Academic Standing');
   }
 
   handleSaveTeacherInput() {
@@ -11026,7 +10901,7 @@ class EduMetricsApp {
     if (!student) return;
 
     const tbody = document.getElementById('editorGradesTableBody');
-    if (tbody) {
+    if (tbody && student.courses) {
       student.courses.forEach((c, idx) => {
         const cw = Number(tbody.querySelector(`.input-cw[data-idx="${idx}"]`)?.value);
         const mt = Number(tbody.querySelector(`.input-mt[data-idx="${idx}"]`)?.value);
@@ -11045,11 +10920,13 @@ class EduMetricsApp {
 
     // Attendance
     if (document.getElementById('inputDaysPresent')) {
+      if (!student.attendance) student.attendance = {};
       student.attendance.present = getNumVal('inputDaysPresent');
       student.attendance.excused = getNumVal('inputDaysExcused');
       student.attendance.unexcused = getNumVal('inputDaysUnexcused');
       student.attendance.tardy = getNumVal('inputDaysTardy');
       student.attendance.notes = getTxtVal('inputAttNote');
+      student.attendance.totalDays = student.attendance.present + student.attendance.excused + student.attendance.unexcused;
     }
 
     // Counselor & Honor
@@ -11062,7 +10939,7 @@ class EduMetricsApp {
 
     // Update historical term 2 calculation
     const avgs = this.calculateStudentAverages(student);
-    if (!student.historicalTerms) student.historicalTerms = { term1: 88, midterm: 90, term2: 92 };
+    if (!student.historicalTerms) student.historicalTerms = { term1: 0, midterm: 0, term2: 0 };
     student.historicalTerms.term2 = avgs.rawAvg;
 
     this.saveStudents();
@@ -11076,7 +10953,7 @@ class EduMetricsApp {
     const name = document.getElementById('newStudentFullName').value.trim();
     const id = document.getElementById('newStudentID').value.trim();
     const gradeClass = document.getElementById('newStudentGradeClass').value;
-    const advisor = document.getElementById('newStudentAdvisor').value.trim() || this.institution.deanName;
+    const advisor = document.getElementById('newStudentAdvisor').value.trim() || 'Unassigned';
     const parentName = document.getElementById('newStudentParentName').value.trim() || 'Parent of ' + name;
     const parentRelation = document.getElementById('newStudentParentRelation').value;
     const targetUniversity = document.getElementById('newStudentTargetUniv')?.value.trim() || '';
@@ -11103,27 +10980,20 @@ class EduMetricsApp {
       parentRelation,
       parentAckDate: 'Pending',
       attendance: {
-        present: 86,
-        excused: 2,
-        unexcused: 1,
-        tardy: 1,
-        totalDays: 90,
-        notes: 'Newly enrolled student in current academic term.'
+        present: 0,
+        excused: 0,
+        unexcused: 0,
+        tardy: 0,
+        totalDays: 0,
+        notes: ''
       },
-      counselorRemarks: 'New student enrolled with satisfactory placement evaluation.',
+      counselorRemarks: '',
       historicalTerms: {
-        term1: 86.0,
-        midterm: 88.0,
-        term2: 89.5
+        term1: 0,
+        midterm: 0,
+        term2: 0
       },
-      courses: [
-        { id: 'cs101', name: 'Advanced Computer Science', dept: 'STEM', teacher: 'Prof. David Lin', coursework: 90, midterm: 88, exam: 91, classAvg: 88, remark: 'Active engagement in introductory coding modules.' },
-        { id: 'math102', name: 'AP Calculus BC', dept: 'Mathematics', teacher: 'Dr. Evelyn Reed', coursework: 86, midterm: 85, exam: 87, classAvg: 84, remark: 'Shows solid groundwork in algebraic manipulation.' },
-        { id: 'phys103', name: 'Honors Physics II', dept: 'Science', teacher: 'Dr. Marcus Sterling', coursework: 88, midterm: 86, exam: 89, classAvg: 81, remark: 'Attentive and constructive lab partner.' },
-        { id: 'lit104', name: 'World Literature & Rhetoric', dept: 'Humanities', teacher: 'Ms. Clara Oswald', coursework: 87, midterm: 88, exam: 89, classAvg: 86, remark: 'Clear argumentative formulation in essays.' },
-        { id: 'hist105', name: 'AP World History: Modern', dept: 'Social Sciences', teacher: 'Mr. Julian Vance', coursework: 86, midterm: 84, exam: 87, classAvg: 83, remark: 'Good analytical engagement with textbook material.' },
-        { id: 'art106', name: 'Digital Media & Visual Design', dept: 'Fine Arts', teacher: 'Elena Rostova, MFA', coursework: 91, midterm: 92, exam: 93, classAvg: 90, remark: 'Creative concepts and enthusiastic participation.' }
-      ]
+      courses: []
     };
 
     this.students.unshift(newStudent);
@@ -11180,9 +11050,7 @@ class EduMetricsApp {
     if (idx !== -1) {
       const deletedName = student.name;
       this.students.splice(idx, 1);
-      if (this.students.length > 0) {
-        this.selectedStudentId = this.students[0].id;
-      }
+      this.selectedStudentId = this.students.length > 0 ? this.students[0].id : null;
       this.saveStudents();
       this.editStudentModal.close();
       this.showToast(`Removed student record: ${deletedName}`);
@@ -11198,12 +11066,12 @@ class EduMetricsApp {
 
     const name = document.getElementById('newSubjectName').value.trim();
     const dept = document.getElementById('newSubjectDept').value;
-    const teacher = document.getElementById('newSubjectTeacher').value.trim();
-    const classAvg = Number(document.getElementById('newSubjectClassAvg').value) || 85;
-    const cw = Number(document.getElementById('newSubjectCw').value) || 90;
-    const mt = Number(document.getElementById('newSubjectMt').value) || 88;
-    const ex = Number(document.getElementById('newSubjectEx').value) || 90;
-    const remark = document.getElementById('newSubjectRemark').value.trim() || 'Active participation in coursework.';
+    const teacher = document.getElementById('newSubjectTeacher').value.trim() || 'Subject Teacher';
+    const classAvg = Number(document.getElementById('newSubjectClassAvg').value) || 0;
+    const cw = Number(document.getElementById('newSubjectCw').value) || 0;
+    const mt = Number(document.getElementById('newSubjectMt').value) || 0;
+    const ex = Number(document.getElementById('newSubjectEx').value) || 0;
+    const remark = document.getElementById('newSubjectRemark').value.trim() || '';
 
     const newCourse = {
       id: 'sub_' + Date.now(),
@@ -11217,6 +11085,7 @@ class EduMetricsApp {
       remark
     };
 
+    if (!student.courses) student.courses = [];
     student.courses.push(newCourse);
     this.saveStudents();
     this.addSubjectModal.close();
@@ -11577,7 +11446,7 @@ class EduMetricsApp {
           this.saveStudents();
           this.saveScaleConfig();
           this.saveInstitution();
-          this.selectedStudentId = this.students[0]?.id || 'STU-10492';
+          this.selectedStudentId = this.students[0]?.id || null;
           this.dataCenterModal.close();
           this.showToast('Database successfully restored from JSON backup!');
           this.render();
@@ -11592,16 +11461,26 @@ class EduMetricsApp {
   }
 
   restoreSampleCohort() {
-    this.promptConfirmDelete('all current records and restore default 8-student sample cohort', () => {
-      this.students = JSON.parse(JSON.stringify(INITIAL_STUDENTS));
+    this.promptConfirmDelete('all current records and reset the system to a clean slate', () => {
+      this.students = [];
+      this.faculty = [];
+      this.auditLogs = [];
+      this.leaveRequests = [];
+      this.conferences = [];
+      this.circulars = [];
       this.scaleConfig = JSON.parse(JSON.stringify(DEFAULT_SCALE_CONFIG));
       this.institution = { ...DEFAULT_INSTITUTION };
+      this.selectedStudentId = null;
       this.saveStudents();
+      this.saveFaculty();
+      this.saveAuditLogs();
+      this.saveLeaveRequests();
+      this.saveConferences();
+      this.saveCirculars();
       this.saveScaleConfig();
       this.saveInstitution();
-      this.selectedStudentId = this.students[0].id;
-      this.dataCenterModal.close();
-      this.showToast('Populated realistic 8-student sample cohort!');
+      this.dataCenterModal?.close();
+      this.showToast('Database reset to clean slate. All records cleared!');
       this.render();
     });
   }
@@ -11609,21 +11488,60 @@ class EduMetricsApp {
   // ==========================================================================
   // RETINA HIGH-DPI CANVAS CHARTS ENGINE WITH INTERACTIVE TOOLTIPS
   // ==========================================================================
+  drawEmptyChartNotice(ctx, width, height, isDark, message = 'No data available to plot') {
+    ctx.clearRect(0, 0, width, height);
+    ctx.font = '500 13px Plus Jakarta Sans, sans-serif';
+    ctx.fillStyle = isDark ? '#64748b' : '#94a3b8';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(message, width / 2, height / 2);
+  }
+
   renderCharts() {
     const student = this.getSelectedStudent();
-    if (!student) return;
+
+    if (!student || this.students.length === 0) {
+      const medianEl = document.getElementById('analyticsClassMedian');
+      if (medianEl) medianEl.textContent = '—';
+      const deltaEl = document.getElementById('analyticsStudentDelta');
+      const deltaTrend = document.getElementById('analyticsDeltaTrend');
+      if (deltaEl) {
+        deltaEl.textContent = '—';
+        deltaEl.className = 'card-big-num text-muted';
+      }
+      if (deltaTrend) {
+        deltaTrend.textContent = 'No cohort data available';
+        deltaTrend.className = 'card-trend';
+      }
+      const topSubEl = document.getElementById('analyticsTopSubject');
+      const topDeptEl = document.getElementById('analyticsTopSub');
+      if (topSubEl) topSubEl.textContent = 'None Recorded';
+      if (topDeptEl) topDeptEl.textContent = 'Add subjects to analyze';
+      const lowSubEl = document.getElementById('analyticsGrowthSubject');
+      const lowBenchEl = document.getElementById('analyticsGrowthSub');
+      if (lowSubEl) lowSubEl.textContent = 'None Recorded';
+      if (lowBenchEl) lowBenchEl.textContent = 'Add subjects to analyze';
+      const histBadge = document.getElementById('histogramTotalCountBadge');
+      if (histBadge) histBadge.textContent = 'Total Students: 0';
+
+      this.drawTrajectoryLineChart(null);
+      this.drawSubjectBarChart(null);
+      this.drawDistributionHistogram();
+      this.drawCorrelationScatter();
+      return;
+    }
 
     const avgs = this.calculateStudentAverages(student);
 
     // Median KPI
     const allAvgs = this.students.map(s => this.calculateStudentAverages(s).rawAvg).sort((a, b) => a - b);
     const mid = Math.floor(allAvgs.length / 2);
-    const median = allAvgs.length % 2 !== 0 ? allAvgs[mid] : ((allAvgs[mid - 1] + allAvgs[mid]) / 2);
+    const median = allAvgs.length === 0 ? 0 : (allAvgs.length % 2 !== 0 ? allAvgs[mid] : ((allAvgs[mid - 1] + allAvgs[mid]) / 2));
     const medianEl = document.getElementById('analyticsClassMedian');
     if (medianEl) medianEl.textContent = `${median.toFixed(1)}%`;
 
     // Student vs Cohort Delta
-    const classAvgNum = parseFloat(this.classAvgVal.textContent) || 88.0;
+    const classAvgNum = allAvgs.length > 0 ? (allAvgs.reduce((a, b) => a + b, 0) / allAvgs.length) : 0;
     const delta = (avgs.rawAvg - classAvgNum).toFixed(1);
     const deltaEl = document.getElementById('analyticsStudentDelta');
     const deltaTrend = document.getElementById('analyticsDeltaTrend');
@@ -11637,17 +11555,27 @@ class EduMetricsApp {
     }
 
     // Top Competency & Growth Subject
-    const sortedCourses = [...student.courses].sort((a, b) => this.calculateWeightedScore(b) - this.calculateWeightedScore(a));
+    const courses = student.courses || [];
+    const sortedCourses = [...courses].sort((a, b) => this.calculateWeightedScore(b) - this.calculateWeightedScore(a));
     const topCourse = sortedCourses[0];
     const lowCourse = sortedCourses[sortedCourses.length - 1];
 
     if (topCourse) {
       document.getElementById('analyticsTopSubject').textContent = `${topCourse.name} (${this.calculateWeightedScore(topCourse)}%)`;
-      document.getElementById('analyticsTopSub').textContent = `${topCourse.dept} Department`;
+      document.getElementById('analyticsTopSub').textContent = `${topCourse.dept || 'General'} Department`;
+    } else {
+      document.getElementById('analyticsTopSubject').textContent = 'None Recorded';
+      document.getElementById('analyticsTopSub').textContent = 'No subjects added yet';
     }
-    if (lowCourse) {
+    if (lowCourse && lowCourse !== topCourse) {
       document.getElementById('analyticsGrowthSubject').textContent = `${lowCourse.name} (${this.calculateWeightedScore(lowCourse)}%)`;
-      document.getElementById('analyticsGrowthSub').textContent = `Benchmark is ${lowCourse.classAvg}%`;
+      document.getElementById('analyticsGrowthSub').textContent = `Benchmark is ${lowCourse.classAvg || 0}%`;
+    } else if (lowCourse) {
+      document.getElementById('analyticsGrowthSubject').textContent = `${lowCourse.name} (${this.calculateWeightedScore(lowCourse)}%)`;
+      document.getElementById('analyticsGrowthSub').textContent = `Single subject enrolled`;
+    } else {
+      document.getElementById('analyticsGrowthSubject').textContent = 'None Recorded';
+      document.getElementById('analyticsGrowthSub').textContent = 'No subjects added yet';
     }
 
     const histBadge = document.getElementById('histogramTotalCountBadge');
@@ -11682,9 +11610,16 @@ class EduMetricsApp {
     const canvas = document.getElementById('termTrendCanvas');
     if (!canvas) return;
     const { ctx, width, height } = this.setupCanvas(canvas);
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+    if (!student || this.students.length === 0) {
+      this.drawEmptyChartNotice(ctx, width, height, isDark, 'No longitudinal student performance records found');
+      if (!this.chartTargets) this.chartTargets = {};
+      this.chartTargets.trajectory = [];
+      return;
+    }
 
     ctx.clearRect(0, 0, width, height);
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
     const padding = { top: 30, right: 35, bottom: 40, left: 45 };
     const chartW = width - padding.left - padding.right;
@@ -11692,18 +11627,19 @@ class EduMetricsApp {
 
     const labels = ['Fall Term 1', 'Midterm Milestone', 'Spring Term 2'];
     const studentVals = [
-      student.historicalTerms?.term1 || 91.0,
-      student.historicalTerms?.midterm || 92.5,
-      student.historicalTerms?.term2 || 94.0
+      Number(student.historicalTerms?.term1 || 0),
+      Number(student.historicalTerms?.midterm || 0),
+      Number(student.historicalTerms?.term2 || 0)
     ];
 
     // Compute actual cohort averages for all 3 periods
-    const avgT1 = this.students.reduce((acc, s) => acc + (s.historicalTerms?.term1 || 88), 0) / this.students.length;
-    const avgMid = this.students.reduce((acc, s) => acc + (s.historicalTerms?.midterm || 89), 0) / this.students.length;
-    const avgT2 = this.students.reduce((acc, s) => acc + (s.historicalTerms?.term2 || 91), 0) / this.students.length;
+    const studentCount = this.students.length || 1;
+    const avgT1 = this.students.reduce((acc, s) => acc + (Number(s.historicalTerms?.term1) || 0), 0) / studentCount;
+    const avgMid = this.students.reduce((acc, s) => acc + (Number(s.historicalTerms?.midterm) || 0), 0) / studentCount;
+    const avgT2 = this.students.reduce((acc, s) => acc + (Number(s.historicalTerms?.term2) || 0), 0) / studentCount;
     const classVals = [avgT1, avgMid, avgT2];
 
-    const minY = 75;
+    const minY = 0;
     const maxY = 100;
     const getY = (val) => padding.top + chartH - ((val - minY) / (maxY - minY)) * chartH;
     const getX = (i) => padding.left + (i / (labels.length - 1)) * chartW;
@@ -11714,7 +11650,7 @@ class EduMetricsApp {
     ctx.font = '11px Plus Jakarta Sans, sans-serif';
     ctx.fillStyle = isDark ? '#94a3b8' : '#64748b';
 
-    for (let yVal = 80; yVal <= 100; yVal += 5) {
+    for (let yVal = 0; yVal <= 100; yVal += 20) {
       const y = getY(yVal);
       ctx.beginPath();
       ctx.moveTo(padding.left, y);
@@ -11810,16 +11746,22 @@ class EduMetricsApp {
     const canvas = document.getElementById('subjectBarCanvas');
     if (!canvas) return;
     const { ctx, width, height } = this.setupCanvas(canvas);
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+    if (!student || !student.courses || student.courses.length === 0) {
+      this.drawEmptyChartNotice(ctx, width, height, isDark, 'No subjects or course assessments recorded yet');
+      if (!this.chartTargets) this.chartTargets = {};
+      this.chartTargets.subjectBars = [];
+      return;
+    }
 
     ctx.clearRect(0, 0, width, height);
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
     const padding = { top: 25, right: 25, bottom: 45, left: 45 };
     const chartW = width - padding.left - padding.right;
     const chartH = height - padding.top - padding.bottom;
 
     const courses = student.courses;
-    if (courses.length === 0) return;
 
     if (!this.chartTargets) this.chartTargets = {};
     this.chartTargets.subjectBars = [];
@@ -11833,11 +11775,11 @@ class EduMetricsApp {
     ctx.fillStyle = isDark ? '#94a3b8' : '#64748b';
     ctx.font = '10px Plus Jakarta Sans, sans-serif';
 
-    const minY = 60;
+    const minY = 0;
     const maxY = 100;
     const getY = (val) => padding.top + chartH - ((val - minY) / (maxY - minY)) * chartH;
 
-    for (let yVal = 70; yVal <= 100; yVal += 10) {
+    for (let yVal = 0; yVal <= 100; yVal += 20) {
       const y = getY(yVal);
       ctx.beginPath();
       ctx.moveTo(padding.left, y);
@@ -11848,7 +11790,7 @@ class EduMetricsApp {
 
     courses.forEach((c, i) => {
       const studentScore = this.calculateWeightedScore(c);
-      const classAvg = c.classAvg;
+      const classAvg = c.classAvg || 0;
       const groupCenterX = padding.left + (i * barGroupWidth) + (barGroupWidth / 2);
 
       // Student Bar
@@ -11901,7 +11843,7 @@ class EduMetricsApp {
       ctx.font = '10px Plus Jakarta Sans, sans-serif';
       ctx.fillStyle = isDark ? '#cbd5e1' : '#475569';
       ctx.textAlign = 'center';
-      const shortName = c.name.split(' ')[0];
+      const shortName = (c.name || 'Subject').split(' ')[0];
       ctx.fillText(shortName, groupCenterX, height - 15);
     });
   }
@@ -11911,9 +11853,16 @@ class EduMetricsApp {
     const canvas = document.getElementById('distributionCanvas');
     if (!canvas) return;
     const { ctx, width, height } = this.setupCanvas(canvas);
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+    if (!this.students || this.students.length === 0) {
+      this.drawEmptyChartNotice(ctx, width, height, isDark, 'No enrolled students in database');
+      if (!this.chartTargets) this.chartTargets = {};
+      this.chartTargets.histogram = [];
+      return;
+    }
 
     ctx.clearRect(0, 0, width, height);
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
     const padding = { top: 25, right: 25, bottom: 35, left: 35 };
     const chartW = width - padding.left - padding.right;
@@ -11982,9 +11931,16 @@ class EduMetricsApp {
     const canvas = document.getElementById('correlationCanvas');
     if (!canvas) return;
     const { ctx, width, height } = this.setupCanvas(canvas);
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+    if (!this.students || this.students.length === 0) {
+      this.drawEmptyChartNotice(ctx, width, height, isDark, 'No student attendance records recorded yet');
+      if (!this.chartTargets) this.chartTargets = {};
+      this.chartTargets.correlation = [];
+      return;
+    }
 
     ctx.clearRect(0, 0, width, height);
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
     const padding = { top: 25, right: 30, bottom: 40, left: 45 };
     const chartW = width - padding.left - padding.right;
@@ -12010,14 +11966,14 @@ class EduMetricsApp {
     this.chartTargets.correlation = [];
 
     this.students.forEach(s => {
-      const totalDays = s.attendance.totalDays || 90;
-      const attRate = (s.attendance.present / totalDays) * 100;
+      const totalDays = s.attendance?.totalDays || 1;
+      const attRate = ((s.attendance?.present || 0) / totalDays) * 100;
       const score = this.calculateStudentAverages(s).rawAvg;
       const isSelected = s.id === this.selectedStudentId;
 
-      // Dynamic scale
-      const x = padding.left + Math.max(0, Math.min(1, (attRate - 78) / 22)) * chartW;
-      const y = (height - padding.bottom) - Math.max(0, Math.min(1, (score - 72) / 28)) * chartH;
+      // Full 0-100% scale
+      const x = padding.left + Math.max(0, Math.min(1, attRate / 100)) * chartW;
+      const y = (height - padding.bottom) - Math.max(0, Math.min(1, score / 100)) * chartH;
 
       this.chartTargets.correlation.push({
         type: 'circle',
@@ -12041,7 +11997,7 @@ class EduMetricsApp {
         ctx.fillStyle = isDark ? '#ffffff' : '#1e1b4b';
         ctx.font = 'bold 10px Plus Jakarta Sans, sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText(s.name.split(' ')[0], x, y - 11);
+        ctx.fillText(s.name ? s.name.split(' ')[0] : 'Student', x, y - 11);
       }
     });
 
