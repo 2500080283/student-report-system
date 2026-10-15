@@ -7736,13 +7736,653 @@ const DEFAULT_SCALE_CONFIG = [
   { grade: 'F',  min: 0,  gpa: 0.0, standard: 'Novice / Unsatisfactory', color: '#991b1b' }
 ];
 
-// Initial Collections — Completely empty. All students, subjects, results, faculty, and records are added by teachers & administrators
-const INITIAL_STUDENTS = [];
-const DEFAULT_FACULTY = [];
-const DEFAULT_AUDIT_LOGS = [];
-const DEFAULT_LEAVE_REQUESTS = [];
-const DEFAULT_CIRCULARS = [];
-const DEFAULT_CONFERENCES = [];
+// Comprehensive Institutional Cohort Collections across 5th–12th Class and B.Tech 1st–4th Year
+const INITIAL_STUDENTS = [
+  // 1. School Education: 5th Class
+  {
+    id: 'STU-0501',
+    name: 'Rohan Sharma',
+    class: '5th Class',
+    advisor: 'Mrs. Lakshmi Narayanan, M.Sc.',
+    targetUniversity: 'Jawaharlal Nehru University',
+    honor: 'Junior Academic Excellence Award',
+    parentName: 'Rajesh Sharma',
+    parentRelation: 'Father',
+    parentAckDate: 'October 12, 2026',
+    attendance: {
+      present: 88,
+      excused: 2,
+      unexcused: 0,
+      tardy: 1,
+      totalDays: 90,
+      notes: 'Active participant in environmental projects and arithmetic competitions.',
+      terms: {
+        term1: { present: 89, excused: 1, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Consistent attendance.' },
+        midterm: { present: 45, excused: 0, unexcused: 0, tardy: 0, totalDays: 45, notes: 'Always punctual.' },
+        term2: { present: 88, excused: 2, unexcused: 0, tardy: 1, totalDays: 90, notes: 'Exemplary classroom focus.' }
+      }
+    },
+    counselorRemarks: 'Rohan demonstrates remarkable intellectual curiosity, rapid arithmetic calculation, and exceptional collaboration in group science exhibitions.',
+    historicalTerms: {
+      term1: 89.5,
+      midterm: 91.2,
+      term2: 93.6
+    },
+    courses: [
+      { id: 'math501', name: 'Primary Mathematics & Arithmetic', dept: 'STEM', teacher: 'Mrs. Lakshmi Narayanan, M.Sc.', coursework: 92, midterm: 90, exam: 95, classAvg: 83, remark: 'Quick mental math, accurate long division, and solid fractions mastery.' },
+      { id: 'sci502', name: 'General Science Foundations', dept: 'Science', teacher: 'Mrs. Lakshmi Narayanan, M.Sc.', coursework: 94, midterm: 92, exam: 96, classAvg: 81, remark: 'Outstanding curiosity and clear documentation during botanical experiments.' },
+      { id: 'eng503', name: 'English Language & Reading Comprehension', dept: 'Humanities', teacher: 'Ms. Clara Oswald, M.A.', coursework: 88, midterm: 90, exam: 89, classAvg: 80, remark: 'Fluent reading expression and growing vocabulary in narrative essays.' },
+      { id: 'evs504', name: 'Environmental Studies (EVS)', dept: 'Social Sciences', teacher: 'Dr. Amitav Ghosh, Ph.D.', coursework: 95, midterm: 93, exam: 96, classAvg: 84, remark: 'Passionate about biodiversity conservation and community recycling.' },
+      { id: 'soc505', name: 'Social Studies & Indian Heritage', dept: 'Social Sciences', teacher: 'Mr. Julian Vance, M.Ed.', coursework: 86, midterm: 88, exam: 90, classAvg: 79, remark: 'Eager reader of historical narratives and accurate topographical mapping.' },
+      { id: 'cs506', name: 'Computer Literacy & Scratch Coding', dept: 'STEM', teacher: 'Prof. David Lin, M.Tech, Ph.D.', coursework: 98, midterm: 96, exam: 98, classAvg: 86, remark: 'Programmed creative interactive story animations with sound triggers.' }
+    ]
+  },
+
+  // 2. School Education: 6th Class
+  {
+    id: 'STU-0601',
+    name: 'Ananya Verma',
+    class: '6th Class',
+    advisor: 'Mrs. Lakshmi Narayanan, M.Sc.',
+    targetUniversity: 'Banaras Hindu University',
+    honor: 'Merit Scholar in Biological Sciences',
+    parentName: 'Sunita Verma',
+    parentRelation: 'Mother',
+    parentAckDate: 'October 11, 2026',
+    attendance: {
+      present: 89,
+      excused: 1,
+      unexcused: 0,
+      tardy: 0,
+      totalDays: 90,
+      notes: 'Exceptional punctuality, respectful deportment, and high classroom engagement.',
+      terms: {
+        term1: { present: 90, excused: 0, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Flawless attendance.' },
+        midterm: { present: 44, excused: 1, unexcused: 0, tardy: 0, totalDays: 45, notes: 'Regular attendance.' },
+        term2: { present: 89, excused: 1, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Diligent attendance record.' }
+      }
+    },
+    counselorRemarks: 'Ananya is an analytical, conscientious student who demonstrates deep insight in natural sciences and eloquent written composition.',
+    historicalTerms: {
+      term1: 91.0,
+      midterm: 92.4,
+      term2: 94.2
+    },
+    courses: [
+      { id: 'math601', name: 'Mathematics (Geometry & Integers)', dept: 'STEM', teacher: 'Dr. Evelyn Reed, Ph.D.', coursework: 91, midterm: 92, exam: 94, classAvg: 82, remark: 'Strong geometric construction skills and accurate integer operations.' },
+      { id: 'sci602', name: 'General Science (Physics & Chemistry)', dept: 'Science', teacher: 'Dr. Marcus Sterling, Ph.D.', coursework: 93, midterm: 90, exam: 95, classAvg: 80, remark: 'Methodical scientific inquiry and clear hypothesis testing.' },
+      { id: 'soc603', name: 'Social Science (Ancient Civilizations)', dept: 'Social Sciences', teacher: 'Mr. Julian Vance, M.Ed.', coursework: 89, midterm: 91, exam: 92, classAvg: 81, remark: 'Well-researched presentation on Indus Valley archaeological sites.' },
+      { id: 'eng604', name: 'English Literature & Creative Writing', dept: 'Humanities', teacher: 'Ms. Clara Oswald, M.A.', coursework: 94, midterm: 92, exam: 96, classAvg: 83, remark: 'Eloquent vocabulary choices and imaginative descriptive passages.' },
+      { id: 'lang605', name: 'Second Language (Hindi Core)', dept: 'Humanities', teacher: 'Mrs. Lakshmi Narayanan, M.Sc.', coursework: 88, midterm: 89, exam: 91, classAvg: 82, remark: 'Consistent grammatical accuracy and expressive reading comprehension.' },
+      { id: 'cs606', name: 'Computational Logic & Algorithms', dept: 'STEM', teacher: 'Prof. David Lin, M.Tech, Ph.D.', coursework: 96, midterm: 95, exam: 98, classAvg: 85, remark: 'Understands conditional loops and structured flowchart formulation.' }
+    ]
+  },
+
+  // 3. School Education: 7th Class
+  {
+    id: 'STU-0701',
+    name: 'Ishaan Patel',
+    class: '7th Class',
+    advisor: 'Mr. Julian Vance, M.Ed.',
+    targetUniversity: 'Gujarat University',
+    honor: 'Dean\'s Junior Honor List',
+    parentName: 'Ketan Patel',
+    parentRelation: 'Father',
+    parentAckDate: 'October 10, 2026',
+    attendance: {
+      present: 87,
+      excused: 3,
+      unexcused: 0,
+      tardy: 1,
+      totalDays: 90,
+      notes: 'Dependable student who takes initiative in school debating and sports teams.',
+      terms: {
+        term1: { present: 88, excused: 2, unexcused: 0, tardy: 1, totalDays: 90, notes: 'Solid attendance.' },
+        midterm: { present: 43, excused: 2, unexcused: 0, tardy: 0, totalDays: 45, notes: 'Excused track meet.' },
+        term2: { present: 87, excused: 3, unexcused: 0, tardy: 1, totalDays: 90, notes: 'Dependable and enthusiastic.' }
+      }
+    },
+    counselorRemarks: 'Ishaan displays remarkable leadership in classroom discussions and shows strong problem-solving skills in science and mathematics.',
+    historicalTerms: {
+      term1: 88.0,
+      midterm: 89.8,
+      term2: 91.5
+    },
+    courses: [
+      { id: 'math701', name: 'Integrated Mathematics & Algebra', dept: 'STEM', teacher: 'Dr. Evelyn Reed, Ph.D.', coursework: 89, midterm: 90, exam: 92, classAvg: 81, remark: 'Strong problem solving in algebraic equations and proportional ratios.' },
+      { id: 'sci702', name: 'Physical & Life Sciences', dept: 'Science', teacher: 'Dr. Rajeshwar Sharma, Ph.D.', coursework: 91, midterm: 88, exam: 94, classAvg: 80, remark: 'Excellent understanding of cellular biology and chemical reactions.' },
+      { id: 'geo703', name: 'Earth Systems & World Geography', dept: 'Social Sciences', teacher: 'Dr. Amitav Ghosh, Ph.D.', coursework: 86, midterm: 89, exam: 90, classAvg: 78, remark: 'Detail-oriented study of atmospheric dynamics and resource allocation.' },
+      { id: 'eng704', name: 'English Language & Public Speaking', dept: 'Humanities', teacher: 'Ms. Clara Oswald, M.A.', coursework: 90, midterm: 92, exam: 93, classAvg: 82, remark: 'Articulate public speaker who formulates persuasive arguments.' },
+      { id: 'cs705', name: 'Web Design & HTML/CSS Basics', dept: 'STEM', teacher: 'Prof. David Lin, M.Tech, Ph.D.', coursework: 94, midterm: 91, exam: 96, classAvg: 84, remark: 'Designed clean, responsive web pages with semantic HTML elements.' },
+      { id: 'art706', name: 'Visual Arts & Creative Design', dept: 'Fine Arts', teacher: 'Elena Rostova, MFA', coursework: 92, midterm: 95, exam: 94, classAvg: 87, remark: 'Sophisticated mastery of perspective drawing and color wheel harmony.' }
+    ]
+  },
+
+  // 4. School Education: 8th Class
+  {
+    id: 'STU-0801',
+    name: 'Tanvi Kulkarni',
+    class: '8th Class',
+    advisor: 'Dr. Evelyn Reed, Ph.D.',
+    targetUniversity: 'Savitribai Phule Pune University',
+    honor: 'Distinction in Mathematics & Scientific Modeling',
+    parentName: 'Deepak Kulkarni',
+    parentRelation: 'Father',
+    parentAckDate: 'October 13, 2026',
+    attendance: {
+      present: 89,
+      excused: 1,
+      unexcused: 0,
+      tardy: 0,
+      totalDays: 90,
+      notes: 'Consistently punctual and dedicated to academic excellence.',
+      terms: {
+        term1: { present: 89, excused: 1, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Regular attendance.' },
+        midterm: { present: 45, excused: 0, unexcused: 0, tardy: 0, totalDays: 45, notes: 'Punctual.' },
+        term2: { present: 89, excused: 1, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Dedicated.' }
+      }
+    },
+    counselorRemarks: 'Tanvi is a high-achieving student with keen mathematical intuition and outstanding performance across inter-school science quizzes.',
+    historicalTerms: {
+      term1: 92.5,
+      midterm: 94.0,
+      term2: 95.8
+    },
+    courses: [
+      { id: 'math801', name: 'Algebra, Geometry & Mensuration', dept: 'STEM', teacher: 'Dr. Evelyn Reed, Ph.D.', coursework: 95, midterm: 93, exam: 97, classAvg: 83, remark: 'Exceptional skill in polynomial factorization and geometric theorems.' },
+      { id: 'sci802', name: 'Physics & Physical Chemistry', dept: 'Science', teacher: 'Dr. Marcus Sterling, Ph.D.', coursework: 93, midterm: 91, exam: 96, classAvg: 80, remark: 'Solid grasp of thermodynamics, pressure dynamics, and stoichiometry.' },
+      { id: 'bio803', name: 'Biological Diversity & Ecology', dept: 'Science', teacher: 'Dr. Rajeshwar Sharma, Ph.D.', coursework: 92, midterm: 94, exam: 95, classAvg: 82, remark: 'Accurate microscopic specimens analysis and neat physiological sketches.' },
+      { id: 'soc804', name: 'Social Sciences & Constitutional Law', dept: 'Social Sciences', teacher: 'Mr. Julian Vance, M.Ed.', coursework: 89, midterm: 90, exam: 92, classAvg: 80, remark: 'Insightful understanding of parliamentary procedures and fundamental rights.' },
+      { id: 'eng805', name: 'English Literature & Rhetoric', dept: 'Humanities', teacher: 'Ms. Clara Oswald, M.A.', coursework: 91, midterm: 93, exam: 94, classAvg: 84, remark: 'Perceptive textual critique and sophisticated essay structuring.' },
+      { id: 'cs806', name: 'Python Programming Foundations', dept: 'STEM', teacher: 'Prof. David Lin, M.Tech, Ph.D.', coursework: 98, midterm: 96, exam: 99, classAvg: 86, remark: 'Authored clean modular functions, dictionary mappings, and data filters.' }
+    ]
+  },
+
+  // 5. School Education: 9th Class
+  {
+    id: 'STU-0901',
+    name: 'Aditya Rao',
+    class: '9th Class',
+    advisor: 'Dr. Marcus Sterling, Ph.D.',
+    targetUniversity: 'Indian Institute of Technology Madras',
+    honor: 'State Science Olympiad Distinction',
+    parentName: 'Suresh Rao',
+    parentRelation: 'Father',
+    parentAckDate: 'October 12, 2026',
+    attendance: {
+      present: 88,
+      excused: 2,
+      unexcused: 0,
+      tardy: 1,
+      totalDays: 90,
+      notes: 'Displays high academic commitment and active participation in laboratory sessions.',
+      terms: {
+        term1: { present: 89, excused: 1, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Excellent attendance.' },
+        midterm: { present: 44, excused: 1, unexcused: 0, tardy: 1, totalDays: 45, notes: 'Reliable.' },
+        term2: { present: 88, excused: 2, unexcused: 0, tardy: 1, totalDays: 90, notes: 'Steady presence.' }
+      }
+    },
+    counselorRemarks: 'Aditya is an analytical powerhouse with deep passion for theoretical physics and engineering mechanics. Strong candidate for premier competitive exams.',
+    historicalTerms: {
+      term1: 93.0,
+      midterm: 94.6,
+      term2: 96.1
+    },
+    courses: [
+      { id: 'math901', name: 'Coordinate Geometry & Quadratic Equations', dept: 'STEM', teacher: 'Dr. Evelyn Reed, Ph.D.', coursework: 96, midterm: 95, exam: 98, classAvg: 82, remark: 'Rapid problem solving in analytical geometry and algebraic roots.' },
+      { id: 'phys902', name: 'Physics (Kinematics & Newton\'s Laws)', dept: 'Science', teacher: 'Dr. Marcus Sterling, Ph.D.', coursework: 95, midterm: 93, exam: 97, classAvg: 80, remark: 'Top score in mechanics problem sets and free-body diagram derivations.' },
+      { id: 'chem903', name: 'Chemistry (Atomic Structure & Bonding)', dept: 'Science', teacher: 'Dr. Rajeshwar Sharma, Ph.D.', coursework: 93, midterm: 94, exam: 95, classAvg: 79, remark: 'Accurate stoichiometric calculations and molecular orbital modeling.' },
+      { id: 'bio904', name: 'Biology (Cell Biology & Genetics)', dept: 'Science', teacher: 'Dr. Rajeshwar Sharma, Ph.D.', coursework: 91, midterm: 92, exam: 94, classAvg: 81, remark: 'Thorough comprehension of mitosis, meiosis, and DNA replication.' },
+      { id: 'soc905', name: 'Social Science (Democratic Politics & Economy)', dept: 'Social Sciences', teacher: 'Mr. Julian Vance, M.Ed.', coursework: 88, midterm: 90, exam: 91, classAvg: 79, remark: 'Comprehensive analysis of fiscal policies and democratic institutions.' },
+      { id: 'cs906', name: 'Artificial Intelligence Foundations', dept: 'STEM', teacher: 'Prof. Sneha Mukherjee, Ph.D.', coursework: 97, midterm: 96, exam: 99, classAvg: 85, remark: 'Trained regression algorithms and implemented computer vision pipelines.' }
+    ]
+  },
+
+  // 6. School Education: 10th Class (Alex Rivera - matches README login!)
+  {
+    id: 'STU-1001',
+    name: 'Alex Rivera',
+    class: '10th Class',
+    advisor: 'Dr. Marcus Sterling, Ph.D.',
+    targetUniversity: 'Indian Institute of Technology Bombay',
+    honor: 'Valedictorian Candidate & National Merit Scholar',
+    parentName: 'Carlos Rivera',
+    parentRelation: 'Father',
+    parentAckDate: 'October 14, 2026',
+    attendance: {
+      present: 89,
+      excused: 1,
+      unexcused: 0,
+      tardy: 0,
+      totalDays: 90,
+      notes: 'Exemplary attendance, punctuality, and active laboratory participation.',
+      terms: {
+        term1: { present: 90, excused: 0, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Unbroken attendance record.' },
+        midterm: { present: 45, excused: 0, unexcused: 0, tardy: 0, totalDays: 45, notes: 'Always punctual.' },
+        term2: { present: 89, excused: 1, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Outstanding dedication.' }
+      }
+    },
+    counselorRemarks: 'Alex continues to set the benchmark for academic excellence across both STEM and humanities. Demonstrates rare maturity and extraordinary analytical formulation.',
+    historicalTerms: {
+      term1: 94.8,
+      midterm: 96.0,
+      term2: 97.6
+    },
+    courses: [
+      { id: 'math1001', name: 'Mathematics (Trigonometry & Calculus Prep)', dept: 'STEM', teacher: 'Dr. Evelyn Reed, Ph.D.', coursework: 98, midterm: 96, exam: 99, classAvg: 84, remark: 'Consistent perfection in trigonometric identities, proofs, and sequence limits.' },
+      { id: 'phys1002', name: 'Physics (Optics & Electromagnetism)', dept: 'Science', teacher: 'Dr. Marcus Sterling, Ph.D.', coursework: 96, midterm: 95, exam: 98, classAvg: 81, remark: 'Superb circuit analysis, ray tracing, and Maxwell formulation fundamentals.' },
+      { id: 'chem1003', name: 'Chemistry (Chemical Reactions & Metallurgy)', dept: 'Science', teacher: 'Dr. Rajeshwar Sharma, Ph.D.', coursework: 94, midterm: 93, exam: 96, classAvg: 80, remark: 'Precise titration laboratory measurements and organic isomer classification.' },
+      { id: 'bio1004', name: 'Biology (Heredity & Evolution)', dept: 'Science', teacher: 'Dr. Rajeshwar Sharma, Ph.D.', coursework: 92, midterm: 94, exam: 95, classAvg: 82, remark: 'Outstanding comprehension of Mendelian genetics and ecological adaptations.' },
+      { id: 'soc1005', name: 'Social Science & Indian Governance', dept: 'Social Sciences', teacher: 'Mr. Julian Vance, M.Ed.', coursework: 90, midterm: 91, exam: 93, classAvg: 83, remark: 'Eloquent presentation on constitutional balance of power and economic policies.' },
+      { id: 'cs1006', name: 'Computer Applications & Data Architecture', dept: 'STEM', teacher: 'Prof. David Lin, M.Tech, Ph.D.', coursework: 99, midterm: 97, exam: 100, classAvg: 87, remark: 'Exceptional mastery of relational databases, sorting algorithms, and system design.' }
+    ]
+  },
+
+  // 7. School Education: 11th Class
+  {
+    id: 'STU-1101',
+    name: 'Meera Sundaram',
+    class: '11th Class',
+    advisor: 'Dr. Rajeshwar Sharma, Ph.D.',
+    targetUniversity: 'Indian Institute of Technology Delhi',
+    honor: 'Science Fellowship Scholar & Olympiad Medalist',
+    parentName: 'Sundaram Krishnamurthy',
+    parentRelation: 'Father',
+    parentAckDate: 'October 11, 2026',
+    attendance: {
+      present: 88,
+      excused: 2,
+      unexcused: 0,
+      tardy: 0,
+      totalDays: 90,
+      notes: 'Highly focused student who devotes significant hours to laboratory research.',
+      terms: {
+        term1: { present: 89, excused: 1, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Steady presence.' },
+        midterm: { present: 44, excused: 1, unexcused: 0, tardy: 0, totalDays: 45, notes: 'Punctual.' },
+        term2: { present: 88, excused: 2, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Committed researcher.' }
+      }
+    },
+    counselorRemarks: 'Meera has performed exceptionally in advanced physical chemistry and mechanics. Her research papers have won state-level youth science acclaim.',
+    historicalTerms: {
+      term1: 93.2,
+      midterm: 94.5,
+      term2: 95.8
+    },
+    courses: [
+      { id: 'phys1101', name: 'Physics (Mechanics & Thermodynamics)', dept: 'Science', teacher: 'Dr. Marcus Sterling, Ph.D.', coursework: 94, midterm: 92, exam: 96, classAvg: 80, remark: 'Rigorous derivation of rotational kinematics and thermodynamic cycles.' },
+      { id: 'chem1102', name: 'Physical & Organic Chemistry', dept: 'Science', teacher: 'Dr. Rajeshwar Sharma, Ph.D.', coursework: 96, midterm: 95, exam: 97, classAvg: 81, remark: 'Deep understanding of chemical equilibrium kinetics and aromatic reactions.' },
+      { id: 'math1103', name: 'Advanced Mathematics (Calculus & Vectors)', dept: 'STEM', teacher: 'Dr. Evelyn Reed, Ph.D.', coursework: 92, midterm: 93, exam: 95, classAvg: 79, remark: 'Strong foundation in differential calculus, limits, and vector algebra.' },
+      { id: 'bio1104', name: 'Human Physiology & Biomolecules', dept: 'Science', teacher: 'Dr. Priya Nair, Ed.D.', coursework: 97, midterm: 95, exam: 98, classAvg: 83, remark: 'National-level score in biochemistry assessments and organ systems.' },
+      { id: 'eng1105', name: 'English Core & Academic Discourse', dept: 'Humanities', teacher: 'Ms. Clara Oswald, M.A.', coursework: 90, midterm: 92, exam: 93, classAvg: 83, remark: 'Nuanced textual criticism, debate defense, and eloquent prose synthesis.' },
+      { id: 'cs1106', name: 'Computer Science (Python & Database Management)', dept: 'STEM', teacher: 'Prof. David Lin, M.Tech, Ph.D.', coursework: 95, midterm: 94, exam: 96, classAvg: 85, remark: 'Engineered relational schema with foreign key constraints and recursive routines.' }
+    ]
+  },
+
+  // 8. School Education: 12th Class
+  {
+    id: 'STU-1201',
+    name: 'Kabir Sengupta',
+    class: '12th Class',
+    advisor: 'Dr. Evelyn Reed, Ph.D.',
+    targetUniversity: 'Indian Institute of Technology Kharagpur',
+    honor: 'Presidential Academic Gold Medalist',
+    parentName: 'Arundhati Sengupta',
+    parentRelation: 'Mother',
+    parentAckDate: 'October 13, 2026',
+    attendance: {
+      present: 89,
+      excused: 1,
+      unexcused: 0,
+      tardy: 0,
+      totalDays: 90,
+      notes: 'Exceptional laboratory and lecture attendance throughout graduation year.',
+      terms: {
+        term1: { present: 90, excused: 0, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Perfect record.' },
+        midterm: { present: 45, excused: 0, unexcused: 0, tardy: 0, totalDays: 45, notes: 'On schedule.' },
+        term2: { present: 89, excused: 1, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Exemplary focus.' }
+      }
+    },
+    counselorRemarks: 'Kabir is an outstanding collegiate candidate with deep aptitude for mathematical physics, algorithmic computation, and mechanical design.',
+    historicalTerms: {
+      term1: 95.0,
+      midterm: 96.4,
+      term2: 98.0
+    },
+    courses: [
+      { id: 'math1201', name: 'Advanced Calculus & 3D Vector Geometry', dept: 'STEM', teacher: 'Dr. Evelyn Reed, Ph.D.', coursework: 98, midterm: 97, exam: 99, classAvg: 82, remark: 'Exemplary integration techniques, differential equations, and 3D plane vectors.' },
+      { id: 'phys1202', name: 'Electrodynamics, Wave Optics & Modern Physics', dept: 'Science', teacher: 'Dr. Marcus Sterling, Ph.D.', coursework: 97, midterm: 95, exam: 98, classAvg: 81, remark: 'Flawless analysis of quantum phenomena, wave interference, and semiconductors.' },
+      { id: 'chem1203', name: 'Coordination Chemistry & Electrochemistry', dept: 'Science', teacher: 'Dr. Rajeshwar Sharma, Ph.D.', coursework: 95, midterm: 94, exam: 97, classAvg: 80, remark: 'Mastery of organic synthesis mechanisms, crystal field theory, and galvanic cells.' },
+      { id: 'cs1204', name: 'Advanced Data Structures in C++', dept: 'STEM', teacher: 'Prof. David Lin, M.Tech, Ph.D.', coursework: 99, midterm: 98, exam: 100, classAvg: 84, remark: 'Implemented self-balancing AVL trees, Dijkstra shortest paths, and dynamic programming.' },
+      { id: 'eng1205', name: 'English Core & Technical Writing', dept: 'Humanities', teacher: 'Ms. Clara Oswald, M.A.', coursework: 92, midterm: 93, exam: 95, classAvg: 84, remark: 'Eloquent formal dissertation thesis defense and technical documentation.' },
+      { id: 'engg1206', name: 'Applied Engineering Mechanics & CAD', dept: 'Engineering', teacher: 'Dr. K. Venkatraman, Ph.D.', coursework: 96, midterm: 95, exam: 98, classAvg: 82, remark: 'Outstanding finite stress-strain modeling and 3D CAD mechanical assembly.' }
+    ]
+  },
+
+  // 9. Undergraduate / Engineering: B.Tech 1st Year (Prudhviraj K - matches Admin persona!)
+  {
+    id: 'STU-BT101',
+    name: 'Prudhviraj K',
+    class: 'B.Tech 1st Year',
+    advisor: 'Prof. David Lin, M.Tech, Ph.D.',
+    targetUniversity: 'Indian Institute of Technology Hyderabad',
+    honor: 'Dean\'s Freshman Honors & Coding Cup Winner',
+    parentName: 'K. Venkat Rao',
+    parentRelation: 'Father',
+    parentAckDate: 'October 13, 2026',
+    attendance: {
+      present: 90,
+      excused: 0,
+      unexcused: 0,
+      tardy: 0,
+      totalDays: 90,
+      notes: 'Flawless 100% attendance across all university lectures and laboratory practica.',
+      terms: {
+        term1: { present: 90, excused: 0, unexcused: 0, tardy: 0, totalDays: 90, notes: '100% attendance.' },
+        midterm: { present: 45, excused: 0, unexcused: 0, tardy: 0, totalDays: 45, notes: 'Perfect record.' },
+        term2: { present: 90, excused: 0, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Flawless commitment.' }
+      }
+    },
+    counselorRemarks: 'Prudhviraj displays rare mastery in programming algorithms, linear algebra, and semiconductor devices. Ranked top of freshman engineering batch with zero memory leaks in systems coding.',
+    historicalTerms: {
+      term1: 95.4,
+      midterm: 96.8,
+      term2: 98.4
+    },
+    courses: [
+      { id: 'bt101', name: 'Engineering Mathematics-I (Calculus & Linear Algebra)', dept: 'Engineering & Tech', teacher: 'Dr. Evelyn Reed, Ph.D.', coursework: 98, midterm: 96, exam: 99, classAvg: 81, remark: 'Exceptional mastery of eigen decomposition, Taylor series, and multivariable calculus.' },
+      { id: 'bt102', name: 'Engineering Physics & Quantum Mechanics', dept: 'Science', teacher: 'Dr. Marcus Sterling, Ph.D.', coursework: 95, midterm: 94, exam: 97, classAvg: 79, remark: 'Rigorous laboratory analysis in laser diffraction, optical fibers, and band gap physics.' },
+      { id: 'bt103', name: 'Programming for Problem Solving (C & Python)', dept: 'Computer Science', teacher: 'Prof. David Lin, M.Tech, Ph.D.', coursework: 100, midterm: 98, exam: 100, classAvg: 83, remark: 'Ranked #1 in university sandbox; outstanding memory management and pointer logic.' },
+      { id: 'bt104', name: 'Basic Electrical & Electronics Engineering (BEEE)', dept: 'Electrical Eng', teacher: 'Dr. K. Venkatraman, Ph.D.', coursework: 94, midterm: 92, exam: 96, classAvg: 78, remark: 'Superb circuit analysis with Kirchhoff laws, Thevenin theorems, and operational amplifiers.' },
+      { id: 'bt105', name: 'Engineering Graphics & Computer Aided Design (CAD)', dept: 'Mechanical Eng', teacher: 'Elena Rostova, MFA', coursework: 92, midterm: 95, exam: 94, classAvg: 82, remark: 'Accurate 3D solid parametric modeling and multi-view orthographic projections.' },
+      { id: 'bt106', name: 'Environmental Science & Sustainable Tech', dept: 'Civil & Envr', teacher: 'Dr. Amitav Ghosh, Ph.D.', coursework: 91, midterm: 93, exam: 95, classAvg: 80, remark: 'Researched solar microgrid efficiency and industrial wastewater treatment benchmarks.' }
+    ]
+  },
+
+  // 10. Undergraduate / Engineering: B.Tech 2nd Year
+  {
+    id: 'STU-BT201',
+    name: 'Vikramaditya Joshi',
+    class: 'B.Tech 2nd Year',
+    advisor: 'Prof. Sneha Mukherjee, Ph.D.',
+    targetUniversity: 'Birla Institute of Technology and Science Pilani',
+    honor: 'ACM ICPC Collegiate Finalist',
+    parentName: 'Manoj Joshi',
+    parentRelation: 'Father',
+    parentAckDate: 'October 12, 2026',
+    attendance: {
+      present: 87,
+      excused: 3,
+      unexcused: 0,
+      tardy: 0,
+      totalDays: 90,
+      notes: 'High commitment to laboratory experimentation and hackathon research.',
+      terms: {
+        term1: { present: 88, excused: 2, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Steady attendance.' },
+        midterm: { present: 43, excused: 2, unexcused: 0, tardy: 0, totalDays: 45, notes: 'Hackathon leave approved.' },
+        term2: { present: 87, excused: 3, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Dedicated student.' }
+      }
+    },
+    counselorRemarks: 'Vikramaditya exhibits deep intuition for algorithmic complexity and system software. A stellar performer in distributed databases and computer architecture.',
+    historicalTerms: {
+      term1: 91.8,
+      midterm: 93.5,
+      term2: 95.2
+    },
+    courses: [
+      { id: 'bt201', name: 'Data Structures & Algorithms (DSA)', dept: 'Computer Science', teacher: 'Prof. David Lin, M.Tech, Ph.D.', coursework: 96, midterm: 94, exam: 98, classAvg: 80, remark: 'Designed optimal red-black tree structures, priority heaps, and amortized algorithms.' },
+      { id: 'bt202', name: 'Object Oriented Programming with Java', dept: 'Computer Science', teacher: 'Prof. Sneha Mukherjee, Ph.D.', coursework: 97, midterm: 95, exam: 98, classAvg: 82, remark: 'Exemplary multithreading, concurrent hash maps, and Gang of Four design patterns.' },
+      { id: 'bt203', name: 'Discrete Mathematics & Graph Theory', dept: 'Mathematics', teacher: 'Dr. Evelyn Reed, Ph.D.', coursework: 92, midterm: 90, exam: 95, classAvg: 78, remark: 'Rigorous proof techniques in graph isomorphisms, recurrence relations, and combinatorics.' },
+      { id: 'bt204', name: 'Computer Organization & Architecture (COA)', dept: 'Computer Science', teacher: 'Dr. K. Venkatraman, Ph.D.', coursework: 90, midterm: 92, exam: 93, classAvg: 77, remark: 'Clear comprehension of pipeline hazard resolution, cache memory, and branch prediction.' },
+      { id: 'bt205', name: 'Digital Logic & Microprocessors (ARM/8086)', dept: 'Electrical Eng', teacher: 'Dr. K. Venkatraman, Ph.D.', coursework: 93, midterm: 91, exam: 95, classAvg: 79, remark: 'Engineered breadboard microprocessor arithmetic units with assembly interrupts.' },
+      { id: 'bt206', name: 'Database Management Systems (DBMS & NoSQL)', dept: 'Computer Science', teacher: 'Prof. Sneha Mukherjee, Ph.D.', coursework: 95, midterm: 94, exam: 97, classAvg: 81, remark: 'Constructed normalized BCNF relational databases and high-throughput MongoDB clusters.' }
+    ]
+  },
+
+  // 11. Undergraduate / Engineering: B.Tech 3rd Year
+  {
+    id: 'STU-BT301',
+    name: 'Divya Chawla',
+    class: 'B.Tech 3rd Year',
+    advisor: 'Prof. David Lin, M.Tech, Ph.D.',
+    targetUniversity: 'Indian Institute of Technology Delhi',
+    honor: 'Google Women Techmakers & Research Fellow',
+    parentName: 'Harpreet Chawla',
+    parentRelation: 'Father',
+    parentAckDate: 'October 14, 2026',
+    attendance: {
+      present: 89,
+      excused: 1,
+      unexcused: 0,
+      tardy: 0,
+      totalDays: 90,
+      notes: 'Active laboratory leader with flawless technical documentation.',
+      terms: {
+        term1: { present: 90, excused: 0, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Consistent attendance.' },
+        midterm: { present: 44, excused: 1, unexcused: 0, tardy: 0, totalDays: 45, notes: 'On schedule.' },
+        term2: { present: 89, excused: 1, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Committed researcher.' }
+      }
+    },
+    counselorRemarks: 'Divya has published remarkable research on deep neural network optimization and network security. High placement and graduate research readiness.',
+    historicalTerms: {
+      term1: 94.0,
+      midterm: 95.2,
+      term2: 97.0
+    },
+    courses: [
+      { id: 'bt301', name: 'Design & Analysis of Algorithms (DAA)', dept: 'Computer Science', teacher: 'Prof. David Lin, M.Tech, Ph.D.', coursework: 97, midterm: 95, exam: 99, classAvg: 81, remark: 'Mastery of dynamic programming, network flow algorithms, and NP-complete reductions.' },
+      { id: 'bt302', name: 'Operating Systems & Kernel Architecture', dept: 'Computer Science', teacher: 'Prof. David Lin, M.Tech, Ph.D.', coursework: 94, midterm: 93, exam: 96, classAvg: 79, remark: 'Implemented custom Linux kernel modules, POSIX virtual memory, and process schedulers.' },
+      { id: 'bt303', name: 'Computer Networks & TCP/IP Protocols', dept: 'Computer Science', teacher: 'Dr. K. Venkatraman, Ph.D.', coursework: 95, midterm: 94, exam: 97, classAvg: 80, remark: 'Comprehensive network packet analysis in Wireshark and resilient socket implementations.' },
+      { id: 'bt304', name: 'Artificial Intelligence & Machine Learning (AI/ML)', dept: 'Computer Science', teacher: 'Prof. Sneha Mukherjee, Ph.D.', coursework: 98, midterm: 96, exam: 99, classAvg: 82, remark: 'Engineered PyTorch neural architectures with 98.4% validation accuracy on CIFAR-100.' },
+      { id: 'bt305', name: 'Full Stack Web Technologies & Microservices', dept: 'Computer Science', teacher: 'Prof. Sneha Mukherjee, Ph.D.', coursework: 96, midterm: 97, exam: 98, classAvg: 84, remark: 'Architected scalable Dockerized microservices with Node.js, Express, and Redis caching.' },
+      { id: 'bt306', name: 'Formal Languages & Compiler Design', dept: 'Computer Science', teacher: 'Dr. Evelyn Reed, Ph.D.', coursework: 91, midterm: 93, exam: 94, classAvg: 77, remark: 'Constructed robust Lex/Yacc lexers and deterministic finite state parsers.' }
+    ]
+  },
+
+  // 12. Undergraduate / Engineering: B.Tech 4th Year
+  {
+    id: 'STU-BT401',
+    name: 'Siddharth Menon',
+    class: 'B.Tech 4th Year',
+    advisor: 'Prof. Sneha Mukherjee, Ph.D.',
+    targetUniversity: 'Indian Institute of Technology Bombay',
+    honor: 'Institute Gold Medalist & Best Senior Capstone Project',
+    parentName: 'Radhika Menon',
+    parentRelation: 'Mother',
+    parentAckDate: 'October 13, 2026',
+    attendance: {
+      present: 90,
+      excused: 0,
+      unexcused: 0,
+      tardy: 0,
+      totalDays: 90,
+      notes: 'Exceptional senior attendance record across capstone defense and research seminars.',
+      terms: {
+        term1: { present: 90, excused: 0, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Flawless presence.' },
+        midterm: { present: 45, excused: 0, unexcused: 0, tardy: 0, totalDays: 45, notes: 'Always on time.' },
+        term2: { present: 90, excused: 0, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Distinguished scholar.' }
+      }
+    },
+    counselorRemarks: 'Siddharth has achieved top academic standing with an industry-grade distributed systems capstone. Has secured multiple premier engineering fellowship offers.',
+    historicalTerms: {
+      term1: 96.5,
+      midterm: 97.6,
+      term2: 99.0
+    },
+    courses: [
+      { id: 'bt401', name: 'Cloud Computing & Distributed Systems', dept: 'Computer Science', teacher: 'Prof. David Lin, M.Tech, Ph.D.', coursework: 99, midterm: 97, exam: 100, classAvg: 83, remark: 'Deployed multi-region Kubernetes clusters with Raft consensus and automated load balancers.' },
+      { id: 'bt402', name: 'Deep Learning & Natural Language Processing', dept: 'Computer Science', teacher: 'Prof. Sneha Mukherjee, Ph.D.', coursework: 98, midterm: 96, exam: 99, classAvg: 82, remark: 'Fine-tuned Transformer language models with attention visualization and low perplexity.' },
+      { id: 'bt403', name: 'Cryptography & Network Security Engineering', dept: 'Computer Science', teacher: 'Prof. David Lin, M.Tech, Ph.D.', coursework: 95, midterm: 94, exam: 97, classAvg: 80, remark: 'Implemented zero-knowledge proofs, elliptic curve cryptography, and SHA-3 verification.' },
+      { id: 'bt404', name: 'Big Data Analytics & High Performance Computing', dept: 'Computer Science', teacher: 'Prof. Sneha Mukherjee, Ph.D.', coursework: 96, midterm: 95, exam: 98, classAvg: 81, remark: 'Executed massive real-time streaming ETL pipelines using Apache Spark and Kafka.' },
+      { id: 'bt405', name: 'Senior Capstone Major Project (Autonomous Agent)', dept: 'Engineering & Tech', teacher: 'Prof. Sneha Mukherjee, Ph.D.', coursework: 100, midterm: 98, exam: 100, classAvg: 88, remark: 'Jury Award Winner: Built high-throughput agentic platform with peer-reviewed preprint.' },
+      { id: 'bt406', name: 'Engineering Economics & Tech Entrepreneurship', dept: 'Management', teacher: 'Dr. Priya Nair, Ed.D.', coursework: 93, midterm: 94, exam: 96, classAvg: 83, remark: 'Drafted thorough venture capital pitch, unit economics, and intellectual property patent filing.' }
+    ]
+  },
+
+  // 13. High School Sections: Grade 10-A (Sophia Chen)
+  {
+    id: 'STU-10492',
+    name: 'Sophia Chen',
+    class: 'Grade 10-A',
+    advisor: 'Dr. Marcus Sterling, Ph.D.',
+    targetUniversity: 'Indian Institute of Technology Bombay',
+    honor: 'Honor Roll with Distinction',
+    parentName: 'Arthur Chen',
+    parentRelation: 'Father',
+    parentAckDate: 'October 12, 2026',
+    attendance: {
+      present: 88,
+      excused: 2,
+      unexcused: 0,
+      tardy: 1,
+      totalDays: 90,
+      notes: 'Student displays exemplary commitment to attendance and prompt arrivals.',
+      terms: {
+        term1: { present: 89, excused: 1, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Unbroken attendance record.' },
+        midterm: { present: 44, excused: 1, unexcused: 0, tardy: 1, totalDays: 45, notes: 'Consistently punctual.' },
+        term2: { present: 88, excused: 2, unexcused: 0, tardy: 1, totalDays: 90, notes: 'Student displays exemplary commitment.' }
+      }
+    },
+    counselorRemarks: 'Sophia continues to demonstrate intellectual curiosity and academic rigor across all disciplines. Her leadership in collaborative laboratory projects and debate sessions is exemplary.',
+    historicalTerms: {
+      term1: 93.4,
+      midterm: 94.1,
+      term2: 95.8
+    },
+    courses: [
+      { id: 'cs101', name: 'Advanced Computer Science', dept: 'STEM', teacher: 'Prof. David Lin, M.Tech, Ph.D.', coursework: 98, midterm: 96, exam: 99, classAvg: 88, remark: 'Exceptional algorithm design skills and independent programming initiative.' },
+      { id: 'math102', name: 'AP Calculus BC', dept: 'Mathematics', teacher: 'Dr. Evelyn Reed, Ph.D.', coursework: 96, midterm: 94, exam: 97, classAvg: 84, remark: 'Mastery of differential equations and rigorous analytical formulation.' },
+      { id: 'phys103', name: 'Honors Physics II', dept: 'Science', teacher: 'Dr. Marcus Sterling, Ph.D.', coursework: 94, midterm: 92, exam: 95, classAvg: 81, remark: 'Strong conceptual comprehension of thermodynamics and lab execution.' },
+      { id: 'lit104', name: 'World Literature & Rhetoric', dept: 'Humanities', teacher: 'Ms. Clara Oswald, M.A.', coursework: 92, midterm: 95, exam: 93, classAvg: 86, remark: 'Thoughtful essays with nuanced textual criticism and eloquent oral defense.' },
+      { id: 'hist105', name: 'AP World History: Modern', dept: 'Social Sciences', teacher: 'Mr. Julian Vance, M.Ed.', coursework: 91, midterm: 90, exam: 92, classAvg: 83, remark: 'Consistent synthesis of primary historical sources and comparative essays.' },
+      { id: 'art106', name: 'Digital Media & Visual Design', dept: 'Fine Arts', teacher: 'Elena Rostova, MFA', coursework: 97, midterm: 95, exam: 98, classAvg: 90, remark: 'Innovative graphic compositions and outstanding creative storytelling.' }
+    ]
+  },
+
+  // 14. High School Sections: Grade 10-B (Marcus Vance)
+  {
+    id: 'STU-10495',
+    name: 'Marcus Vance',
+    class: 'Grade 10-B',
+    advisor: 'Ms. Clara Oswald, M.A.',
+    targetUniversity: 'University of Delhi',
+    honor: 'Humanities & Rhetoric Excellence Scholar',
+    parentName: 'Elena Vance',
+    parentRelation: 'Mother',
+    parentAckDate: 'October 11, 2026',
+    attendance: {
+      present: 86,
+      excused: 4,
+      unexcused: 0,
+      tardy: 0,
+      totalDays: 90,
+      notes: 'Dependable and enthusiastic participant in seminar dialogues.',
+      terms: {
+        term1: { present: 87, excused: 3, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Steady attendance.' },
+        midterm: { present: 43, excused: 2, unexcused: 0, tardy: 0, totalDays: 45, notes: 'On track.' },
+        term2: { present: 86, excused: 4, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Good participation.' }
+      }
+    },
+    counselorRemarks: 'Marcus brings creative flair, exceptional rhetorical writing, and cultural sensitivity to class debates. A gifted communicator and historian.',
+    historicalTerms: {
+      term1: 89.6,
+      midterm: 91.2,
+      term2: 92.8
+    },
+    courses: [
+      { id: 'lit107', name: 'Creative Writing & World Literature', dept: 'Humanities', teacher: 'Ms. Clara Oswald, M.A.', coursework: 95, midterm: 94, exam: 97, classAvg: 85, remark: 'Deep thematic voice, compelling narratives, and nuanced characterization.' },
+      { id: 'hist108', name: 'AP World History & Civilizations', dept: 'Social Sciences', teacher: 'Mr. Julian Vance, M.Ed.', coursework: 92, midterm: 91, exam: 94, classAvg: 82, remark: 'Comprehensive comparative analysis of trans-regional maritime trade.' },
+      { id: 'psy109', name: 'Psychology & Cognitive Science', dept: 'Social Sciences', teacher: 'Dr. Priya Nair, Ed.D.', coursework: 94, midterm: 93, exam: 96, classAvg: 83, remark: 'Creative hypothesis testing in perception and behavioral decision models.' },
+      { id: 'art110', name: 'Digital Media Arts & Typography', dept: 'Fine Arts', teacher: 'Elena Rostova, MFA', coursework: 91, midterm: 93, exam: 95, classAvg: 86, remark: 'Innovative branding design and impactful editorial spreads.' },
+      { id: 'math111', name: 'Mathematical Foundations & Statistics', dept: 'Mathematics', teacher: 'Dr. Evelyn Reed, Ph.D.', coursework: 86, midterm: 88, exam: 89, classAvg: 79, remark: 'Solid understanding of standard deviations and probability curves.' },
+      { id: 'soc112', name: 'Sociology & Global Perspectives', dept: 'Social Sciences', teacher: 'Mr. Julian Vance, M.Ed.', coursework: 93, midterm: 92, exam: 95, classAvg: 84, remark: 'Insightful exploration of institutional reforms and demographic shifts.' }
+    ]
+  },
+
+  // 15. High School Sections: Grade 11-A (Aaliyah Patel)
+  {
+    id: 'STU-11042',
+    name: 'Aaliyah Patel',
+    class: 'Grade 11-A',
+    advisor: 'Dr. Evelyn Reed, Ph.D.',
+    targetUniversity: 'Indian Institute of Technology Madras',
+    honor: 'AP Capstone Scholar with Distinction',
+    parentName: 'Zubair Patel',
+    parentRelation: 'Father',
+    parentAckDate: 'October 14, 2026',
+    attendance: {
+      present: 89,
+      excused: 1,
+      unexcused: 0,
+      tardy: 0,
+      totalDays: 90,
+      notes: 'Unbroken record of diligence, lab safety, and seminar leadership.',
+      terms: {
+        term1: { present: 90, excused: 0, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Perfect attendance.' },
+        midterm: { present: 45, excused: 0, unexcused: 0, tardy: 0, totalDays: 45, notes: 'Always prompt.' },
+        term2: { present: 89, excused: 1, unexcused: 0, tardy: 0, totalDays: 90, notes: 'Outstanding punctuality.' }
+      }
+    },
+    counselorRemarks: 'Aaliyah has excelled in collegiate AP examinations, showing extraordinary mastery in advanced physics, calculus, and Java software development.',
+    historicalTerms: {
+      term1: 94.2,
+      midterm: 95.6,
+      term2: 97.2
+    },
+    courses: [
+      { id: 'phys113', name: 'AP Physics C: Mechanics & E&M', dept: 'Science', teacher: 'Dr. Marcus Sterling, Ph.D.', coursework: 96, midterm: 95, exam: 98, classAvg: 82, remark: 'Mastery of calculus-based rotational mechanics and Gauss law derivations.' },
+      { id: 'math114', name: 'AP Calculus BC & Multivariable Prep', dept: 'Mathematics', teacher: 'Dr. Evelyn Reed, Ph.D.', coursework: 97, midterm: 96, exam: 99, classAvg: 83, remark: 'Flawless power series analysis, Taylor expansions, and vector fields.' },
+      { id: 'chem115', name: 'AP Chemistry & Lab Synthesis', dept: 'Science', teacher: 'Dr. Rajeshwar Sharma, Ph.D.', coursework: 94, midterm: 93, exam: 96, classAvg: 81, remark: 'Consistent accuracy in spectrophotometry and thermodynamics calculations.' },
+      { id: 'cs116', name: 'AP Computer Science A (Java)', dept: 'STEM', teacher: 'Prof. David Lin, M.Tech, Ph.D.', coursework: 98, midterm: 97, exam: 100, classAvg: 86, remark: 'Designed elegant recursive algorithms and robust polymorphic class models.' },
+      { id: 'eng117', name: 'AP English Language & Composition', dept: 'Humanities', teacher: 'Ms. Clara Oswald, M.A.', coursework: 92, midterm: 94, exam: 95, classAvg: 85, remark: 'Nuanced rhetorical strategies and high-scoring analytical synthesis essays.' },
+      { id: 'stat118', name: 'AP Statistics & Data Modeling', dept: 'Mathematics', teacher: 'Dr. Evelyn Reed, Ph.D.', coursework: 95, midterm: 93, exam: 97, classAvg: 84, remark: 'Expertise in bivariate regression modeling, ANOVA, and confidence intervals.' }
+    ]
+  }
+];
+
+const DEFAULT_FACULTY = [
+  { id: 'FAC-101', name: 'Dr. Marcus Sterling, Ph.D.', dept: 'Science', subjects: 'Physics, Quantum Mechanics, Mechanics', cohorts: 'Grade 10-A, 9th Class, 10th Class, 11th Class', email: 'm.sterling@edumetrics.edu', status: 'Active' },
+  { id: 'FAC-102', name: 'Dr. Evelyn Reed, Ph.D.', dept: 'Mathematics', subjects: 'AP Calculus BC, Linear Algebra, Geometry', cohorts: 'Grade 10-A, 8th Class, 10th Class, 12th Class, B.Tech 1st Year', email: 'e.reed@edumetrics.edu', status: 'Active' },
+  { id: 'FAC-103', name: 'Prof. David Lin, M.Tech, Ph.D.', dept: 'Computer Science', subjects: 'Data Structures, Cloud Computing, C/Python, OS', cohorts: 'Grade 10-A, B.Tech 1st-4th Year', email: 'd.lin@edumetrics.edu', status: 'Active' },
+  { id: 'FAC-104', name: 'Ms. Clara Oswald, M.A.', dept: 'Humanities', subjects: 'English Literature, Rhetoric, Creative Writing', cohorts: '5th - 12th Class, Grade 10-A, Grade 10-B', email: 'c.oswald@edumetrics.edu', status: 'Active' },
+  { id: 'FAC-105', name: 'Mr. Julian Vance, M.Ed.', dept: 'Social Sciences', subjects: 'Social Science, History, Democratic Politics', cohorts: '5th - 10th Class, Grade 10-B', email: 'j.vance@edumetrics.edu', status: 'Active' },
+  { id: 'FAC-106', name: 'Elena Rostova, MFA', dept: 'Fine Arts', subjects: 'Digital Media, Visual Design, CAD Design', cohorts: 'All Cohorts, B.Tech 1st Year', email: 'e.rostova@edumetrics.edu', status: 'Active' },
+  { id: 'FAC-107', name: 'Dr. Rajeshwar Sharma, Ph.D.', dept: 'Science', subjects: 'Chemistry, Molecular Biology, Electrochemistry', cohorts: '7th - 12th Class, Grade 11-A', email: 'r.sharma@edumetrics.edu', status: 'Active' },
+  { id: 'FAC-108', name: 'Dr. Priya Nair, Ed.D.', dept: 'Counseling', subjects: 'Academic Advising, University Admissions, Psychology', cohorts: 'All Cohorts', email: 'p.nair@edumetrics.edu', status: 'Active' },
+  { id: 'FAC-109', name: 'Prof. Sneha Mukherjee, Ph.D.', dept: 'Computer Science', subjects: 'Artificial Intelligence, Machine Learning, Deep Learning, NLP', cohorts: 'B.Tech 2nd - 4th Year, 9th Class AI', email: 's.mukherjee@edumetrics.edu', status: 'Active' },
+  { id: 'FAC-110', name: 'Dr. K. Venkatraman, Ph.D.', dept: 'Electrical Eng', subjects: 'BEEE, Computer Networks, Digital Microprocessors', cohorts: 'B.Tech 1st - 3rd Year, 12th Class', email: 'k.venkat@edumetrics.edu', status: 'Active' },
+  { id: 'FAC-111', name: 'Mrs. Lakshmi Narayanan, M.Sc.', dept: 'STEM', subjects: 'Primary Mathematics, General Science, Hindi Core', cohorts: '5th Class, 6th Class', email: 'l.narayanan@edumetrics.edu', status: 'Active' },
+  { id: 'FAC-112', name: 'Dr. Amitav Ghosh, Ph.D.', dept: 'Social Sciences', subjects: 'Environmental Studies, Sustainable Tech, Geography', cohorts: '5th Class, 7th Class, B.Tech 1st Year', email: 'a.ghosh@edumetrics.edu', status: 'Active' }
+];
+
+const DEFAULT_AUDIT_LOGS = [
+  { timestamp: '2026-10-15 10:15:22', user: 'Admin (Prudhviraj)', action: 'COHORT_SYNCHRONIZATION', details: 'Populated institutional academic database across 5th–12th Classes and B.Tech 1st–4th Year cohorts.' },
+  { timestamp: '2026-10-15 09:30:14', user: 'Teacher (Dr. Marcus Sterling)', action: 'GRADEBOOK_UPDATE', details: 'Finalized Term 2 laboratory exam grades for 10th Class and Grade 10-A Physics.' },
+  { timestamp: '2026-10-14 16:45:00', user: 'Parent (Carlos Rivera)', action: 'TRANSCRIPT_SIGNATURE', details: "Digitally signed Alex Rivera's official 10th Class Term 2 transcript verification hash." },
+  { timestamp: '2026-10-14 14:20:10', user: 'Teacher (Prof. David Lin)', action: 'COURSEWORK_FINALIZED', details: 'Published B.Tech CSE Data Structures & Programming coursework scores.' },
+  { timestamp: '2026-10-13 11:10:35', user: 'Parent (Arthur Chen)', action: 'TRANSCRIPT_SIGNATURE', details: "Digitally confirmed Sophia Chen's Grade 10-A academic evaluation transcript." },
+  { timestamp: '2026-10-12 15:00:19', user: 'Admin (Prudhviraj)', action: 'CURRICULUM_ASSIGNMENT', details: 'Mapped faculty advisors and updated target universities across all 15 institutional cohorts.' }
+];
+
+const DEFAULT_LEAVE_REQUESTS = [
+  { id: 'LR-201', studentId: 'STU-10492', studentName: 'Sophia Chen', date: '2026-10-20', category: 'Official Academic Competition', reason: 'Representing Academy at National Science Olympiad finals.', status: 'Approved' },
+  { id: 'LR-202', studentId: 'STU-1001', studentName: 'Alex Rivera', date: '2026-10-18', category: 'Approved University Visit', reason: 'Attending IIT Bombay campus open house and research laboratory tour.', status: 'Approved' },
+  { id: 'LR-203', studentId: 'STU-BT101', studentName: 'Prudhviraj K', date: '2026-10-22', category: 'Official Academic Competition', reason: 'Leading collegiate team at Inter-University Smart India Hackathon.', status: 'Approved' },
+  { id: 'LR-204', studentId: 'STU-0801', studentName: 'Tanvi Kulkarni', date: '2026-10-16', category: 'Medical Illness / Doctor Visit', reason: 'Scheduled orthodontic surgical follow-up.', status: 'Approved' },
+  { id: 'LR-205', studentId: 'STU-BT301', studentName: 'Divya Chawla', date: '2026-10-25', category: 'Approved University Visit', reason: 'Presenting research paper on transformer attention at AI symposium.', status: 'Pending Review' }
+];
+
+const DEFAULT_CIRCULARS = [
+  { id: 'CIR-101', title: 'Schedule of Term 2 Comprehensive Examinations & Practicals', category: 'Examination', date: 'October 15, 2026', excerpt: 'Final examination timetable, laboratory practical evaluations, and grading policies for School and B.Tech cohorts.', priority: 'High' },
+  { id: 'CIR-102', title: 'Higher Education Admissions, NIRF & IIT/NIT Guidance Workshop', category: 'Admissions', date: 'October 12, 2026', excerpt: 'Informational seminar for parents & students on 500+ Indian Universities, cutoffs, and counseling processes.', priority: 'Normal' },
+  { id: 'CIR-103', title: 'Annual STEM & Engineering Innovation Expo 2026', category: 'Academic Event', date: 'October 08, 2026', excerpt: 'Collegiate and school student robotics, AI software projects, and science demonstrations scheduled at Main Auditorium.', priority: 'Normal' },
+  { id: 'CIR-104', title: 'Digital Transcript Verification & Parent Sign-Off Window', category: 'Administrative', date: 'October 05, 2026', excerpt: 'Parents and guardians are requested to review and digitally acknowledge Term 2 report cards via the Parent Portal.', priority: 'High' }
+];
+
+const DEFAULT_CONFERENCES = [
+  { id: 'CONF-301', studentId: 'STU-1001', studentName: 'Alex Rivera', parentName: 'Carlos Rivera', teacherName: 'Dr. Marcus Sterling, Ph.D.', date: '2026-10-24', time: '14:30', mode: 'In-Person', status: 'Confirmed', topic: 'Secondary Board Examination Strategy & University Prep' },
+  { id: 'CONF-302', studentId: 'STU-BT101', studentName: 'Prudhviraj K', parentName: 'K. Venkat Rao', teacherName: 'Prof. David Lin, M.Tech, Ph.D.', date: '2026-10-26', time: '16:00', mode: 'Virtual (Video Call)', status: 'Confirmed', topic: 'Undergraduate Research, Coding Hackathons & Semester Trajectory' },
+  { id: 'CONF-303', studentId: 'STU-10492', studentName: 'Sophia Chen', parentName: 'Arthur Chen', teacherName: 'Dr. Evelyn Reed, Ph.D.', date: '2026-10-18', time: '11:00', mode: 'In-Person', status: 'Completed', topic: 'Advanced Placement Calculus Progress & Honors Recognition' }
+];
 
 // Universal Authentication User Accounts (Admin, Teacher, Parent, Student)
 const DEFAULT_USERS = {
@@ -7765,7 +8405,7 @@ const DEFAULT_USERS = {
     shortName: 'Faculty',
     title: 'Teaching Staff',
     email: 'teacher@edumetrics.edu',
-    allowedIdentifiers: ['teacher@edumetrics.edu', 'teacher', 'faculty@edumetrics.edu', 'faculty'],
+    allowedIdentifiers: ['teacher@edumetrics.edu', 'teacher', 'sarah.jenkins', 'dr.sterling', 'faculty@edumetrics.edu', 'faculty'],
     allowedPasswords: ['Teacher@2026', 'teacher123', 'teacher', 'Teacher123'],
     defaultTab: 'tabTeacherBtn',
     defaultView: 'teacherView'
@@ -7777,7 +8417,7 @@ const DEFAULT_USERS = {
     shortName: 'Parent',
     title: 'Guardian Portal',
     email: 'parent@edumetrics.edu',
-    allowedIdentifiers: ['parent@edumetrics.edu', 'parent', 'guardian'],
+    allowedIdentifiers: ['parent@edumetrics.edu', 'parent', 'carlos.rivera', 'arthur.chen', 'guardian'],
     allowedPasswords: ['Parent@2026', 'parent123', 'parent', 'Parent123'],
     defaultTab: 'tabParentBtn',
     defaultView: 'parentView'
@@ -7789,7 +8429,7 @@ const DEFAULT_USERS = {
     shortName: 'Student',
     title: 'Student Access',
     email: 'student@edumetrics.edu',
-    allowedIdentifiers: ['student@edumetrics.edu', 'student'],
+    allowedIdentifiers: ['student@edumetrics.edu', 'student', 'alex.rivera', 'sophia.chen', 'prudhviraj.k', 'STU-1001', 'STU-BT101', 'STU-10492'],
     allowedPasswords: ['Student@2026', 'student123', 'student', 'Student123'],
     defaultTab: 'tabReportBtn',
     defaultView: 'reportView'
@@ -7846,37 +8486,32 @@ class EduMetricsApp {
   loadStudents() {
     try {
       const DB_VERSION_KEY = 'edumetrics_db_version';
-      const CURRENT_DB_VERSION = '3.0.0-clean';
+      const CURRENT_DB_VERSION = '5.0.0-universal';
       const storedVersion = localStorage.getItem(DB_VERSION_KEY);
 
       if (storedVersion !== CURRENT_DB_VERSION) {
-        // Clear all legacy mock cohorts cached from earlier demo versions
+        // Upgrade DB cache to universal multi-cohort dataset
         localStorage.removeItem('edumetrics_students');
         localStorage.removeItem('edumetrics_faculty');
         localStorage.removeItem('edumetrics_audit_logs');
         localStorage.removeItem('edumetrics_leave_requests');
         localStorage.removeItem('edumetrics_conferences');
+        localStorage.removeItem('edumetrics_circulars');
         localStorage.setItem(DB_VERSION_KEY, CURRENT_DB_VERSION);
-        return [];
+        return JSON.parse(JSON.stringify(INITIAL_STUDENTS));
       }
 
       const stored = localStorage.getItem('edumetrics_students');
       if (stored) {
         const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed)) {
-          // If legacy demo students (e.g. STU-10492 or Sophia Chen) exist, purge them
-          const hasLegacyMock = parsed.some(s => s.id === 'STU-10492' || s.name === 'Sophia Chen');
-          if (hasLegacyMock) {
-            localStorage.removeItem('edumetrics_students');
-            return [];
-          }
+        if (Array.isArray(parsed) && parsed.length > 0) {
           return parsed;
         }
       }
-      return [];
+      return JSON.parse(JSON.stringify(INITIAL_STUDENTS));
     } catch (e) {
       console.warn('Failed to parse students from localStorage', e);
-      return [];
+      return JSON.parse(JSON.stringify(INITIAL_STUDENTS));
     }
   }
 
@@ -7927,18 +8562,13 @@ class EduMetricsApp {
       const stored = localStorage.getItem('edumetrics_faculty');
       if (stored) {
         const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed)) {
-          const hasLegacy = parsed.some(f => f.id === 'FAC-01' || f.name === 'Dr. Marcus Sterling');
-          if (hasLegacy) {
-            localStorage.removeItem('edumetrics_faculty');
-            return [];
-          }
+        if (Array.isArray(parsed) && parsed.length > 0) {
           return parsed;
         }
       }
-      return [];
+      return JSON.parse(JSON.stringify(DEFAULT_FACULTY));
     } catch (e) {
-      return [];
+      return JSON.parse(JSON.stringify(DEFAULT_FACULTY));
     }
   }
 
@@ -7955,11 +8585,11 @@ class EduMetricsApp {
       const stored = localStorage.getItem('edumetrics_audit_logs');
       if (stored) {
         const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed)) return parsed;
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
       }
-      return [];
+      return JSON.parse(JSON.stringify(DEFAULT_AUDIT_LOGS));
     } catch (e) {
-      return [];
+      return JSON.parse(JSON.stringify(DEFAULT_AUDIT_LOGS));
     }
   }
 
@@ -7985,18 +8615,13 @@ class EduMetricsApp {
       const stored = localStorage.getItem('edumetrics_leave_requests');
       if (stored) {
         const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed)) {
-          const hasLegacy = parsed.some(l => l.studentId === 'STU-10492' || l.studentName === 'Sophia Chen');
-          if (hasLegacy) {
-            localStorage.removeItem('edumetrics_leave_requests');
-            return [];
-          }
+        if (Array.isArray(parsed) && parsed.length > 0) {
           return parsed;
         }
       }
-      return [];
+      return JSON.parse(JSON.stringify(DEFAULT_LEAVE_REQUESTS));
     } catch (e) {
-      return [];
+      return JSON.parse(JSON.stringify(DEFAULT_LEAVE_REQUESTS));
     }
   }
 
@@ -8013,11 +8638,11 @@ class EduMetricsApp {
       const stored = localStorage.getItem('edumetrics_circulars');
       if (stored) {
         const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed)) return parsed;
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
       }
-      return [];
+      return JSON.parse(JSON.stringify(DEFAULT_CIRCULARS));
     } catch (e) {
-      return [];
+      return JSON.parse(JSON.stringify(DEFAULT_CIRCULARS));
     }
   }
 
@@ -8034,18 +8659,13 @@ class EduMetricsApp {
       const stored = localStorage.getItem('edumetrics_conferences');
       if (stored) {
         const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed)) {
-          const hasLegacy = parsed.some(c => c.studentName === 'Sophia Chen');
-          if (hasLegacy) {
-            localStorage.removeItem('edumetrics_conferences');
-            return [];
-          }
+        if (Array.isArray(parsed) && parsed.length > 0) {
           return parsed;
         }
       }
-      return [];
+      return JSON.parse(JSON.stringify(DEFAULT_CONFERENCES));
     } catch (e) {
-      return [];
+      return JSON.parse(JSON.stringify(DEFAULT_CONFERENCES));
     }
   }
 
@@ -8198,6 +8818,7 @@ class EduMetricsApp {
     this.downloadJsonBackupBtn = document.getElementById('downloadJsonBackupBtn');
     this.importJsonFileInput = document.getElementById('importJsonFileInput');
     this.loadSampleDataBtn = document.getElementById('loadSampleDataBtn');
+    this.cleanSlateBtn = document.getElementById('cleanSlateBtn');
 
     this.batchPrintModal = document.getElementById('batchPrintModal');
     this.closeBatchPrintModalBtn = document.getElementById('closeBatchPrintModalBtn');
@@ -8578,6 +9199,7 @@ class EduMetricsApp {
     this.downloadJsonBackupBtn?.addEventListener('click', () => this.exportJsonBackup());
     this.importJsonFileInput?.addEventListener('change', (e) => this.importJsonBackup(e));
     this.loadSampleDataBtn?.addEventListener('click', () => this.restoreSampleCohort());
+    this.cleanSlateBtn?.addEventListener('click', () => this.resetToCleanSlate());
 
     // Search, Class Filter & Sorting
     this.studentSearchInput?.addEventListener('input', () => this.renderStudentList());
@@ -11461,7 +12083,32 @@ class EduMetricsApp {
   }
 
   restoreSampleCohort() {
-    this.promptConfirmDelete('all current records and reset the system to a clean slate', () => {
+    this.promptConfirmDelete('current records and restore all 15 institutional cohorts (5th–12th Class & B.Tech 1st–4th Year)', () => {
+      this.students = JSON.parse(JSON.stringify(INITIAL_STUDENTS));
+      this.faculty = JSON.parse(JSON.stringify(DEFAULT_FACULTY));
+      this.auditLogs = JSON.parse(JSON.stringify(DEFAULT_AUDIT_LOGS));
+      this.leaveRequests = JSON.parse(JSON.stringify(DEFAULT_LEAVE_REQUESTS));
+      this.conferences = JSON.parse(JSON.stringify(DEFAULT_CONFERENCES));
+      this.circulars = JSON.parse(JSON.stringify(DEFAULT_CIRCULARS));
+      this.scaleConfig = JSON.parse(JSON.stringify(DEFAULT_SCALE_CONFIG));
+      this.institution = { ...DEFAULT_INSTITUTION };
+      this.selectedStudentId = this.students[0]?.id || null;
+      this.saveStudents();
+      this.saveFaculty();
+      this.saveAuditLogs();
+      this.saveLeaveRequests();
+      this.saveConferences();
+      this.saveCirculars();
+      this.saveScaleConfig();
+      this.saveInstitution();
+      this.dataCenterModal?.close();
+      this.showToast('Successfully restored all 15 cohorts with complete academic records!');
+      this.render();
+    });
+  }
+
+  resetToCleanSlate() {
+    this.promptConfirmDelete('all student records, marks, and evaluations to clear the database to a blank slate', () => {
       this.students = [];
       this.faculty = [];
       this.auditLogs = [];

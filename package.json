@@ -1,7 +1,7 @@
 {
   "name": "edumetrics-pro-student-report-system",
-  "version": "2.0.0",
-  "description": "Institutional student performance tracking, custom grading scales, report card transcript compilation, and interactive analytics.",
+  "version": "2.1.0",
+  "description": "Institutional student performance tracking, custom grading scales, report card transcript compilation, multi-cohort management (5th–12th Class & B.Tech 1st–4th Year), and interactive analytics.",
   "main": "index.html",
   "scripts": {
     "dev": "npx -y serve .",
